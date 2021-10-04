@@ -21,4 +21,15 @@ describe('PaginatedNav', () => {
     expect(currentPageDisplay).toBeInTheDocument()
   })
 
+  it('renders on last page of many', () => {
+    const metadata = {
+      ...defaultPaginationMetadata,
+      currentPage: 12,
+      totalPages: 12
+    };
+    render(<PaginatedNav metadata={metadata} />)
+    const currentPageDisplay = screen.getByText(/Page 12 of 12/i)
+    expect(currentPageDisplay).toBeInTheDocument()
+  })
+
 })

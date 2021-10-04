@@ -8,7 +8,7 @@ interface PaginatedNavProps {
 export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   return (
       <div>
-        Page 1 of {props.metadata.totalPages}
+        Page {props.metadata.currentPage} of {props.metadata.totalPages}
       </div>
   )
 }
