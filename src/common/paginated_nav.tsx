@@ -1,9 +1,14 @@
 import React from 'react'
+import PaginationMetadata from "../models/PaginationMetadata";
 
-export function PaginatedNav(): JSX.Element {
+interface PaginatedNavProps {
+  metadata: PaginationMetadata
+}
+
+export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   return (
       <div>
-        Page 1 of 1
+        Page 1 of {props.metadata.totalPages}
       </div>
   )
 }
