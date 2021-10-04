@@ -1,7 +1,9 @@
 export default interface PaginationMetadata {
-  totalPages: number
+  totalPages: number,
+  currentPage: number
 }
 
 export const defaultPaginationMetadata = {
-  totalPages: 1
+  totalPages: 1,
+  currentPage: 1
 }
