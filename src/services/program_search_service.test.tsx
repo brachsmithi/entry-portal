@@ -68,4 +68,15 @@ describe('ProgramSearchService', () => {
     expect(response).toEqual(expected(currentPage))
   })
 
+  it('loads requested page of paginated program data from local service', async () => {
+    const currentPage = 45
+    // @ts-ignore
+    fetch.mockResponseOnce(returnJson(currentPage))
+
+    const response = await loadPrograms(currentPage)
+
+    expect(fetch).toHaveBeenCalledWith(`http://localhost:3000?page=${currentPage}`)
+    expect(response).toEqual(expected(currentPage))
+  })
+
 })
