@@ -1,11 +1,11 @@
 import { PaginatedPrograms } from "./PaginatedPrograms";
 
 class ProgramSearchResponse {
-  programResults: PaginatedPrograms[] | undefined;
+  paginatedPrograms: PaginatedPrograms | undefined;
   error: string | undefined;
 
-  constructor(input: {data?: PaginatedPrograms[], error?: string}) {
-    this.programResults = input.data
+  constructor(input: {data?: PaginatedPrograms, error?: string}) {
+    this.paginatedPrograms = input.data
     this.error = input.error
   }
 
