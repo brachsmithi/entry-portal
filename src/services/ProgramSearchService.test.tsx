@@ -1,4 +1,4 @@
-import loadPrograms from './program_search_service'
+import loadPrograms from './ProgramSearchService'
 import { PaginatedPrograms } from "../models/PaginatedPrograms";
 
 describe('ProgramSearchService', () => {
