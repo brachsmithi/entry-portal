@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { PaginatedNav } from './paginated_nav'
+import { PaginatedNav } from './PaginatedNav'
 import { defaultPaginationMetadata } from "../models/PaginationMetadata";
 
 describe('PaginatedNav', () => {

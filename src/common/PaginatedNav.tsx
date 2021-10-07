@@ -1,5 +1,5 @@
 import React from 'react'
-import PaginationMetadata from "../models/PaginationMetadata";
+import PaginationMetadata from "../models/PaginationMetadata"
 
 interface PaginatedNavProps {
   metadata: PaginationMetadata
