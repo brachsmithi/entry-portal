@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { PaginatedNav } from "./common/paginated_nav";
+import { PaginatedNav } from "./common/PaginatedNav";
 import { defaultPaginationMetadata } from "./models/PaginationMetadata";
 
 function App() {
