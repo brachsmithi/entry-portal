@@ -7,8 +7,9 @@ describe('PaginatedNav', () => {
 
   it('renders with empty metadata', () => {
     render(<PaginatedNav metadata={defaultPaginationMetadata} />)
-    const currentPageDisplay = screen.getByText(/Page 1 of 1/i)
-    expect(currentPageDisplay).toBeInTheDocument()
+    expect(screen.getByText(/Page 1 of 1/i)).toBeInTheDocument()
+    expect(screen.queryByText('Prev')).not.toBeInTheDocument()
+    expect(screen.queryByText('Next')).not.toBeInTheDocument()
   })
 
   it('renders on first page of many', () => {
@@ -17,8 +18,9 @@ describe('PaginatedNav', () => {
       totalPages: 90
     };
     render(<PaginatedNav metadata={metadata} />)
-    const currentPageDisplay = screen.getByText(/Page 1 of 90/i)
-    expect(currentPageDisplay).toBeInTheDocument()
+    expect(screen.getByText(/Page 1 of 90/i)).toBeInTheDocument()
+    expect(screen.queryByText('Prev')).not.toBeInTheDocument()
+    expect(screen.queryByText('Next')).toBeInTheDocument()
   })
 
   it('renders on last page of many', () => {
@@ -28,8 +30,9 @@ describe('PaginatedNav', () => {
       totalPages: 12
     };
     render(<PaginatedNav metadata={metadata} />)
-    const currentPageDisplay = screen.getByText(/Page 12 of 12/i)
-    expect(currentPageDisplay).toBeInTheDocument()
+    expect(screen.getByText(/Page 12 of 12/i)).toBeInTheDocument()
+    expect(screen.queryByText('Prev')).toBeInTheDocument()
+    expect(screen.queryByText('Next')).not.toBeInTheDocument()
   })
 
 })

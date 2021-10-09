@@ -8,7 +8,15 @@ interface PaginatedNavProps {
 export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   return (
       <div>
-        Page {props.metadata.currentPage} of {props.metadata.totalPages}
+        { props.metadata.currentPage > 1 &&
+          <div>Prev</div>
+        }
+        <div>
+          Page {props.metadata.currentPage} of {props.metadata.totalPages}
+        </div>
+        { props.metadata.totalPages > props.metadata.currentPage &&
+          <div>Next</div>
+        }
       </div>
   )
 }
