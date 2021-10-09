@@ -10,7 +10,7 @@ describe('ProgramScreen', () => {
     fetch.resetMocks()
   })
 
-  it('opens on 1st page of loaded programs', async() => {
+  it('opens on 1st page of loaded programs', async () => {
     const currentPage = 1
     // @ts-ignore
     fetch.mockResponseOnce(returnJson(currentPage))
