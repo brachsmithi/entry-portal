@@ -1,12 +1,11 @@
 import React from 'react'
 import './App.css'
-import { PaginatedNav } from "./common/PaginatedNav";
-import { defaultPaginationMetadata } from "./models/PaginationMetadata";
+import { ProgramScreen } from "./programs/ProgramScreen";
 
 function App() {
   return (
     <div className="App">
-      <PaginatedNav metadata={defaultPaginationMetadata}/>
+      <ProgramScreen/>
     </div>
   )
 }
