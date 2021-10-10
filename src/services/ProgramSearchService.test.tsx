@@ -26,7 +26,7 @@ describe('ProgramSearchService', () => {
     const response = await loadPrograms()
 
     expect(fetch).toHaveBeenCalledWith("http://localhost:3000/programs.json")
-    expect(response.paginatedPrograms).toEqual(expected(currentPage))
+    expect(response.paginatedData).toEqual(expected(currentPage))
   })
 
   it('loads requested page of paginated program data from local service', async () => {
@@ -37,7 +37,7 @@ describe('ProgramSearchService', () => {
     const response = await loadPrograms(currentPage)
 
     expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs.json?page=${currentPage}`)
-    expect(response.paginatedPrograms).toEqual(expected(currentPage))
+    expect(response.paginatedData).toEqual(expected(currentPage))
   })
 
 })

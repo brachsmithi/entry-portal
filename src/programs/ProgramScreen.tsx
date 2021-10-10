@@ -7,7 +7,7 @@ export function ProgramScreen(): JSX.Element {
   const [paginatedPrograms, setPaginatedPrograms] = useState(emptyPaginatedPrograms)
   useEffect(() => {
     loadPrograms()
-        .then(result => setPaginatedPrograms(result.paginatedPrograms ?? emptyPaginatedPrograms))
+        .then(result => setPaginatedPrograms(result.paginatedData ?? emptyPaginatedPrograms))
   }, [])
   return (
       <PaginatedNav metadata={ paginatedPrograms.paginationMetadata }/>

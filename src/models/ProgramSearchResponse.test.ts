@@ -12,7 +12,7 @@ describe('SearchResponse', () => {
     }
     const response = new ProgramSearchResponse({data: programs})
     expect(response.isError()).toBeFalsy()
-    expect(response?.paginatedPrograms).toEqual(programs)
+    expect(response?.paginatedData).toEqual(programs)
   })
 
   it ('holds error', () => {
