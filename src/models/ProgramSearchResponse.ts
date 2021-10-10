@@ -1,11 +1,12 @@
 import { PaginatedPrograms } from "./PaginatedPrograms";
+import SearchResponse from "./SearchResponse";
 
-class ProgramSearchResponse {
-  paginatedPrograms: PaginatedPrograms | undefined;
+class ProgramSearchResponse implements SearchResponse {
+  paginatedData: PaginatedPrograms | undefined;
   error: string | undefined;
 
   constructor(input: {data?: PaginatedPrograms, error?: string}) {
-    this.paginatedPrograms = input.data
+    this.paginatedData = input.data
     this.error = input.error
   }
 
