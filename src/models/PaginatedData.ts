@@ -1,9 +1,11 @@
 import PaginationMetadata, { defaultPaginationMetadata } from "./PaginationMetadata";
 
-export interface PaginatedPrograms {
+export default interface PaginatedData {
+  data: Array<unknown>
   paginationMetadata: PaginationMetadata
 }
 
-export const emptyPaginatedPrograms: PaginatedPrograms = {
+export const emptyPaginatedData: PaginatedData = {
+  data: [],
   paginationMetadata: defaultPaginationMetadata
 }

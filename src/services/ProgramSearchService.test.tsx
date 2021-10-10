@@ -1,11 +1,12 @@
 import loadPrograms from './ProgramSearchService'
-import { PaginatedPrograms } from "../models/PaginatedPrograms";
-import { totalPages, returnJson } from "../testhelpers/ProgramSearchJson";
+import { totalPages, returnJson } from "../testhelpers/ProgramSearchJson"
+import PaginatedData from "../models/PaginatedData";
 
 describe('ProgramSearchService', () => {
 
-  function expected(currentPage: number): PaginatedPrograms {
+  function expected(currentPage: number): PaginatedData {
     return {
+      data: [],
       paginationMetadata: {
         currentPage: currentPage,
         totalPages: totalPages
