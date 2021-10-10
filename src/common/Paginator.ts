@@ -1,14 +1,13 @@
-import ProgramSearchResponse from "../models/ProgramSearchResponse"
-import { emptyPaginatedPrograms } from "../models/PaginatedPrograms"
 import PaginationMetadata, { defaultPaginationMetadata } from "../models/PaginationMetadata"
 import SearchResponse from "../models/SearchResponse"
+import { emptyPaginatedData } from "../models/PaginatedData"
 
 export default class Paginator {
 
   private readonly loadMethod: (page?: number) => Promise<SearchResponse>
   private paginationMetadata: PaginationMetadata
 
-  constructor(loadMethod: (page?: number) => Promise<ProgramSearchResponse>) {
+  constructor(loadMethod: (page?: number) => Promise<SearchResponse>) {
     this.loadMethod = loadMethod
     this.paginationMetadata = defaultPaginationMetadata
   }
@@ -23,12 +22,12 @@ export default class Paginator {
 
   async load() {
     return await this.loadMethod()
-        .then((response: ProgramSearchResponse) => {
-          return response.paginatedData ?? emptyPaginatedPrograms
+        .then((response: SearchResponse) => {
+          return response.paginatedData ?? emptyPaginatedData
         })
         .then((paginatedData) => {
           this.paginationMetadata = paginatedData.paginationMetadata
-          return []
+          return paginatedData.data
         })
   }
 }
