@@ -1,14 +1,14 @@
 import PaginationMetadata, { defaultPaginationMetadata } from "../models/PaginationMetadata"
 import SearchResponse from "../models/SearchResponse"
-import { emptyPaginatedData } from "../models/PaginatedData"
+import PaginatedData, { emptyPaginatedData } from "../models/PaginatedData"
 
-export interface Paginatable {
+export interface Pageable {
   currentPage(): number
   totalPages(): number
-  next(): Promise<Array<unknown>>
+  next(): Promise<PaginatedData>
 }
 
-export default class Paginator implements Paginatable {
+export default class Paginator implements Pageable {
 
   private readonly loadMethod: (page?: number) => Promise<SearchResponse>
   private paginationMetadata: PaginationMetadata
@@ -26,14 +26,14 @@ export default class Paginator implements Paginatable {
     return this.paginationMetadata.totalPages
   }
 
-  async next(): Promise<Array<unknown>> {
+  async next(): Promise<PaginatedData> {
     return await this.loadMethod(this.paginationMetadata.nextPage)
         .then((response: SearchResponse) => {
           return response.paginatedData ?? emptyPaginatedData
         })
         .then((paginatedData) => {
           this.paginationMetadata = paginatedData.paginationMetadata
-          return paginatedData.data
+          return paginatedData
         })
   }
 }

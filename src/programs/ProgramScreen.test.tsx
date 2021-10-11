@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { ProgramScreen } from "./ProgramScreen"
-import { returnJson, totalPages } from "../testhelpers/ProgramSearchJson";
+import { returnJson, totalPages } from "../testhelpers/ProgramSearchJson"
 
 describe('ProgramScreen', () => {
 
