@@ -15,26 +15,19 @@ describe('Paginator', () => {
     expect(paginator.totalPages()).toEqual(1)
   })
 
-  it('returns values from data after loading', async () => {
-    // @ts-ignore
-    fetch.mockResponseOnce(returnJson(1))
-    const paginator = new Paginator(loadPrograms)
-    const data = await paginator.load()
-
-    expect(data.length).toEqual(0)
-    expect(paginator.currentPage()).toEqual(1)
-    expect(paginator.totalPages()).toEqual(totalPages)
-  })
-
   it('returns values from data after next', async () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnJson(1))
     const paginator = new Paginator(loadPrograms)
-    await paginator.load()
+    let data = await paginator.next()
+
+    expect(data.length).toEqual(0)
+    expect(paginator.currentPage()).toEqual(1)
+    expect(paginator.totalPages()).toEqual(totalPages)
 
     // @ts-ignore
     fetch.mockResponseOnce(returnJson(2))
-    const data = await paginator.next()
+    data = await paginator.next()
 
     expect(data.length).toEqual(0)
     expect(paginator.currentPage()).toEqual(2)
