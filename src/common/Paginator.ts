@@ -2,7 +2,13 @@ import PaginationMetadata, { defaultPaginationMetadata } from "../models/Paginat
 import SearchResponse from "../models/SearchResponse"
 import { emptyPaginatedData } from "../models/PaginatedData"
 
-export default class Paginator {
+export interface Paginatable {
+  currentPage(): number
+  totalPages(): number
+  next(): Promise<Array<unknown>>
+}
+
+export default class Paginator implements Paginatable {
 
   private readonly loadMethod: (page?: number) => Promise<SearchResponse>
   private paginationMetadata: PaginationMetadata
