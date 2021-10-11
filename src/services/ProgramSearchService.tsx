@@ -12,6 +12,7 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
           data: [],
           paginationMetadata: {
             currentPage: response.pagination_metadata.current_page,
+            nextPage: response.pagination_metadata.next_page,
             totalPages: response.pagination_metadata.total_pages
           }
         }
