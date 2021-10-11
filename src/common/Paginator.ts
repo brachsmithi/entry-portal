@@ -13,14 +13,14 @@ export default class Paginator {
   }
 
   currentPage() {
-    return 1
+    return this.paginationMetadata.currentPage
   }
 
   totalPages() {
     return this.paginationMetadata.totalPages
   }
 
-  async load() {
+  async load(): Promise<Array<unknown>> {
     return await this.loadMethod()
         .then((response: SearchResponse) => {
           return response.paginatedData ?? emptyPaginatedData
@@ -29,5 +29,17 @@ export default class Paginator {
           this.paginationMetadata = paginatedData.paginationMetadata
           return paginatedData.data
         })
+  }
+
+  async next(): Promise<Array<unknown>> {
+    return await this.loadMethod(this.paginationMetadata.nextPage)
+        .then((response: SearchResponse) => {
+          return response.paginatedData ?? emptyPaginatedData
+        })
+        .then((paginatedData) => {
+          this.paginationMetadata = paginatedData.paginationMetadata
+          return paginatedData.data
+        })
+    // return []
   }
 }
