@@ -1,8 +1,8 @@
-import { PaginatedPrograms } from "./PaginatedPrograms";
+import PaginatedData from "./PaginatedData"
 
 export default interface SearchResponse {
 
-  paginatedData: PaginatedPrograms | undefined;
+  paginatedData: PaginatedData | undefined;
   error: string | undefined;
 
   isError(): boolean
