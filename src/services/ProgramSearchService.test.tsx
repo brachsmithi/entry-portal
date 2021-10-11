@@ -1,6 +1,6 @@
 import loadPrograms from './ProgramSearchService'
 import { totalPages, returnJson } from "../testhelpers/ProgramSearchJson"
-import PaginatedData from "../models/PaginatedData";
+import PaginatedData from "../models/PaginatedData"
 
 describe('ProgramSearchService', () => {
 
