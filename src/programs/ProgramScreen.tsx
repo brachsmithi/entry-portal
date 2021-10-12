@@ -4,12 +4,17 @@ import loadPrograms from "../services/ProgramSearchService"
 import { emptyPaginatedData } from "../models/PaginatedData"
 
 export function ProgramScreen(): JSX.Element {
-  const [paginatedPrograms, setPaginatedPrograms] = useState(emptyPaginatedData)
+  const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
+  const loadNextPage = () => {
+    loadPrograms(paginatedData.paginationMetadata.nextPage)
+        .then(result => setPaginatedData(result.paginatedData ?? emptyPaginatedData))
+  }
   useEffect(() => {
-    loadPrograms()
-        .then(result => setPaginatedPrograms(result.paginatedData ?? emptyPaginatedData))
+    loadPrograms(paginatedData.paginationMetadata.currentPage)
+        .then(result => setPaginatedData(result.paginatedData ?? emptyPaginatedData))
   }, [])
+
   return (
-      <PaginatedNav metadata={ paginatedPrograms.paginationMetadata } nextAction={() => {}}/>
+      <PaginatedNav metadata={ paginatedData.paginationMetadata } nextAction={loadNextPage}/>
   )
 }
