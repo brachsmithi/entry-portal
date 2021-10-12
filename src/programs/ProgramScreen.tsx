@@ -10,6 +10,6 @@ export function ProgramScreen(): JSX.Element {
         .then(result => setPaginatedPrograms(result.paginatedData ?? emptyPaginatedData))
   }, [])
   return (
-      <PaginatedNav metadata={ paginatedPrograms.paginationMetadata }/>
+      <PaginatedNav metadata={ paginatedPrograms.paginationMetadata } nextAction={() => {}}/>
   )
 }
