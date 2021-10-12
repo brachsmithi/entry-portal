@@ -2,7 +2,8 @@ import React from 'react'
 import PaginationMetadata from "../models/PaginationMetadata"
 
 interface PaginatedNavProps {
-  metadata: PaginationMetadata
+  metadata: PaginationMetadata,
+  nextAction: () => void
 }
 
 export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
@@ -15,7 +16,9 @@ export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
           Page {props.metadata.currentPage} of {props.metadata.totalPages}
         </div>
         { props.metadata.totalPages > props.metadata.currentPage &&
-          <div>Next</div>
+          <div>
+            <button onClick={props.nextAction}>Next</button>
+          </div>
         }
       </div>
   )
