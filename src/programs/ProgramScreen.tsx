@@ -17,6 +17,10 @@ export function ProgramScreen(): JSX.Element {
   }, [])
 
   return (
-      <PaginatedNav metadata={ paginatedData.paginationMetadata } nextAction={loadNextPage}/>
+      <PaginatedNav
+          metadata={ paginatedData.paginationMetadata }
+          nextAction={loadNextPage}
+          previousAction={() => {}}
+      />
   )
 }
