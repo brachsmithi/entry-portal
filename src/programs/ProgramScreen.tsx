@@ -12,6 +12,9 @@ export function ProgramScreen(): JSX.Element {
   const loadNextPage = () => {
     loadPage(paginatedData.paginationMetadata.nextPage)
   }
+  const loadPreviousPage = () => {
+    loadPage(paginatedData.paginationMetadata.previousPage)
+  }
   useEffect(() => {
     loadPage(1)
   }, [])
@@ -20,7 +23,7 @@ export function ProgramScreen(): JSX.Element {
       <PaginatedNav
           metadata={ paginatedData.paginationMetadata }
           nextAction={loadNextPage}
-          previousAction={() => {}}
+          previousAction={loadPreviousPage}
       />
   )
 }
