@@ -3,14 +3,17 @@ import PaginationMetadata from "../models/PaginationMetadata"
 
 interface PaginatedNavProps {
   metadata: PaginationMetadata,
-  nextAction: () => void
+  nextAction: () => void,
+  previousAction: () => void
 }
 
 export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   return (
       <div>
         { props.metadata.currentPage > 1 &&
-          <div>Prev</div>
+          <div>
+            <button onClick={props.previousAction}>Prev</button>
+          </div>
         }
         <div>
           Page {props.metadata.currentPage} of {props.metadata.totalPages}
