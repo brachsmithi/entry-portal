@@ -5,13 +5,15 @@ import { emptyPaginatedData } from "../models/PaginatedData"
 
 export function ProgramScreen(): JSX.Element {
   const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
-  const loadNextPage = () => {
-    loadPrograms(paginatedData.paginationMetadata.nextPage)
+  const loadPage = (page: number) => {
+    loadPrograms(page)
         .then(result => setPaginatedData(result.paginatedData ?? emptyPaginatedData))
   }
+  const loadNextPage = () => {
+    loadPage(paginatedData.paginationMetadata.nextPage)
+  }
   useEffect(() => {
-    loadPrograms(paginatedData.paginationMetadata.currentPage)
-        .then(result => setPaginatedData(result.paginatedData ?? emptyPaginatedData))
+    loadPage(1)
   }, [])
 
   return (
