@@ -29,11 +29,12 @@ describe('Program Integration', () => {
     expect(await screen.findByText(/Page 2/)).toBeInTheDocument()
 
     // @ts-ignore
-    // fetch.mockResponseOnce(returnJson(currentPage))
-    // element = await screen.findByText('Prev')
-    // userEvent.click(element)
-    // expect(fetch.mock.calls[2][0]).toEqual("http://localhost:3000/programs.json?page=1")
-    // expect(await screen.findByText(/Page 1/)).toBeInTheDocument()
+    fetch.mockResponseOnce(returnJson(currentPage))
+    element = await screen.findByText('Prev')
+    userEvent.click(element)
+    // @ts-ignore
+    expect(fetch.mock.calls[2][0]).toEqual("http://localhost:3000/programs.json?page=1")
+    expect(await screen.findByText(/Page 1/)).toBeInTheDocument()
   })
 
 })
