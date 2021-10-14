@@ -1,7 +1,8 @@
 import React from 'react'
+import { ListingData } from "../models/ListingData"
 
 export interface ProgramListDisplayProperties {
-  listings: Array<any>
+  listings: Array<ListingData>
 }
 
 export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Element {

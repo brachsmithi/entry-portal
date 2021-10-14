@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { PaginatedNav } from "../common/PaginatedNav"
 import loadPrograms from "../services/ProgramSearchService"
 import { emptyPaginatedData } from "../models/PaginatedData"
+import { ProgramListDisplay } from "./ProgramListDisplay";
 
 export function ProgramScreen(): JSX.Element {
   const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
@@ -20,10 +21,13 @@ export function ProgramScreen(): JSX.Element {
   }, [])
 
   return (
-      <PaginatedNav
-          metadata={ paginatedData.paginationMetadata }
-          nextAction={loadNextPage}
-          previousAction={loadPreviousPage}
-      />
+      <>
+        <PaginatedNav
+            metadata={ paginatedData.paginationMetadata }
+            nextAction={loadNextPage}
+            previousAction={loadPreviousPage}
+        />
+        <ProgramListDisplay listings={paginatedData.data}/>
+      </>
   )
 }
