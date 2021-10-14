@@ -9,7 +9,8 @@ describe('SearchResponse', () => {
       paginationMetadata: {
         totalPages: 345,
         currentPage: 7,
-        nextPage: 8
+        nextPage: 8,
+        previousPage: 6
       }
     }
     const response = new ProgramSearchResponse({data: programs})

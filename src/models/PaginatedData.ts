@@ -1,7 +1,8 @@
-import PaginationMetadata, { defaultPaginationMetadata } from "./PaginationMetadata";
+import PaginationMetadata, { defaultPaginationMetadata } from "./PaginationMetadata"
+import { ListingData } from "./ListingData"
 
 export default interface PaginatedData {
-  data: Array<unknown>
+  data: Array<ListingData>
   paginationMetadata: PaginationMetadata
 }
 
