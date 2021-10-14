@@ -6,7 +6,17 @@ describe('ProgramSearchService', () => {
 
   function expected(currentPage: number, nextPage: number, previousPage: number): PaginatedData {
     return {
-      data: [],
+      data: [
+        {
+          name: 'The Cameraman\'s Revenge'
+        },
+        {
+          name: 'Camille'
+        },
+        {
+          name: 'Camouflaged Destruction'
+        }
+      ],
       paginationMetadata: {
         currentPage: currentPage,
         totalPages: totalPages,
