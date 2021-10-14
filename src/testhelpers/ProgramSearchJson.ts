@@ -1,5 +1,15 @@
 export const totalPages = 346
 
+export const programListing1 = {
+  name: 'The Cameraman\'s Revenge'
+}
+export const programListing2 = {
+  name: 'Camille'
+}
+export const programListing3 = {
+  name: 'Camouflaged Destruction'
+}
+
 export function returnJson(currentPage: number): string {
   return `
     {
