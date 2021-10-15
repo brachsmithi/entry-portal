@@ -7,10 +7,10 @@ describe('ProgramListDisplay', () => {
   it('lists given programs',  () => {
     const programs = [
       {
-        name: 'Line Item One'
+        primary: 'Line Item One'
       },
       {
-        name: 'Line Item Two'
+        primary: 'Line Item Two'
       }
     ]
     render(<ProgramListDisplay listings={programs}/>)

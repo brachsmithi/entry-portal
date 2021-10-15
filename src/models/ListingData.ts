@@ -1,3 +1,3 @@
 export interface ListingData {
-  name: string
+  primary: string
 }
