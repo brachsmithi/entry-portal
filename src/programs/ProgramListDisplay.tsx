@@ -6,11 +6,15 @@ export interface ProgramListDisplayProperties {
 }
 
 export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Element {
+  function secondaryContent(secondary: string[]) {
+    return secondary.length > 0 ? `(${secondary})` : ''
+  }
+
   const listingElements = props.listings.map(
       (listing, i) => (
           <div className='listing' key={i}>
             <span className='primary'>{ listing.primary }</span>
-            <span className='secondary'>{ listing.secondary }</span>
+            <span className='secondary'>{secondaryContent(listing.secondary)}</span>
           </div>
       )
   )

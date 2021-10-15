@@ -18,9 +18,10 @@ describe('ProgramListDisplay', () => {
     ]
     render(<ProgramListDisplay listings={programs}/>)
 
-    expect(screen.getByText('Line Item One')).toBeInTheDocument()
-    expect(screen.getByText('2001')).toBeInTheDocument()
-    expect(screen.getByText('Line Item Two')).toBeInTheDocument()
+    expect(screen.queryByText('Line Item One')).toBeInTheDocument()
+    expect(screen.queryByText('(2001)')).toBeInTheDocument()
+    expect(screen.queryByText('Line Item Two')).toBeInTheDocument()
+    expect(screen.queryByText('()')).not.toBeInTheDocument()
   })
 
 })
