@@ -9,9 +9,11 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
       .then(response => response.json())
 
   function listing(program: any): ListingData {
+    const secondary: string[] = []
+    if (program.year && program.year !== '') secondary.push(program.year)
     return {
       primary: program.title,
-      secondary: [program.year]
+      secondary: secondary
     }
   }
 

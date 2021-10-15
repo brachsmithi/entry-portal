@@ -14,15 +14,19 @@ export const programListing3: ListingData = {
   primary: 'Camouflaged Destruction',
   secondary: ['1952']
 }
+export const programListing4: ListingData = {
+  primary: 'The Akira Production Report',
+  secondary: []
+}
 
 export function returnJson(currentPage: number): string {
   return `
     {
       "pagination_metadata": {
         "total_programs": 5177,
-        "current_programs": 3,
+        "current_programs": 4,
         "total_pages": ${totalProgramPages},
-        "programs_per_page": 3,
+        "programs_per_page": 4,
         "current_page": ${currentPage},
         "previous_page": ${currentPage === 1 ? 1 : currentPage - 1},
         "next_page": ${currentPage === totalProgramPages ? totalProgramPages: currentPage + 1}
@@ -47,6 +51,12 @@ export function returnJson(currentPage: number): string {
           "series": [
             "Radar Men from the Moon"
           ]
+        },
+        {
+          "title": "The Akira Production Report",
+          "year": "",
+          "version": "",
+          "series":[]
         }
       ]
     }

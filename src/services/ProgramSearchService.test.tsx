@@ -4,7 +4,8 @@ import {
   returnJson,
   programListing1,
   programListing2,
-  programListing3
+  programListing3,
+  programListing4
 } from "../testhelpers/ProgramSearchJson"
 import PaginatedData from "../models/PaginatedData"
 
@@ -15,7 +16,8 @@ describe('ProgramSearchService', () => {
       data: [
         programListing1,
         programListing2,
-        programListing3
+        programListing3,
+        programListing4
       ],
       paginationMetadata: {
         currentPage: currentPage,
