@@ -3,13 +3,16 @@ import { ListingData } from "../models/ListingData";
 export const totalPages = 346
 
 export const programListing1: ListingData = {
-  primary: 'The Cameraman\'s Revenge'
+  primary: 'The Cameraman\'s Revenge',
+  secondary: '1912'
 }
 export const programListing2: ListingData = {
-  primary: 'Camille'
+  primary: 'Camille',
+  secondary: '1921'
 }
 export const programListing3: ListingData = {
-  primary: 'Camouflaged Destruction'
+  primary: 'Camouflaged Destruction',
+  secondary: '1952'
 }
 
 export function returnJson(currentPage: number): string {
