@@ -1,5 +1,11 @@
 import loadPrograms from './ProgramSearchService'
-import { totalPages, returnJson } from "../testhelpers/ProgramSearchJson"
+import {
+  totalPages,
+  returnJson,
+  programListing1,
+  programListing2,
+  programListing3
+} from "../testhelpers/ProgramSearchJson"
 import PaginatedData from "../models/PaginatedData"
 
 describe('ProgramSearchService', () => {
@@ -7,15 +13,9 @@ describe('ProgramSearchService', () => {
   function expected(currentPage: number, nextPage: number, previousPage: number): PaginatedData {
     return {
       data: [
-        {
-          name: 'The Cameraman\'s Revenge'
-        },
-        {
-          name: 'Camille'
-        },
-        {
-          name: 'Camouflaged Destruction'
-        }
+        programListing1,
+        programListing2,
+        programListing3
       ],
       paginationMetadata: {
         currentPage: currentPage,

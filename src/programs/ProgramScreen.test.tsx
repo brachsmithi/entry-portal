@@ -24,9 +24,9 @@ describe('ProgramScreen', () => {
     render(<ProgramScreen />)
 
     expect(await screen.findByText(`Page 1 of ${ totalPages }`)).toBeInTheDocument()
-    expect(await screen.findByText(programListing1.name)).toBeInTheDocument()
-    expect(await screen.findByText(programListing2.name)).toBeInTheDocument()
-    expect(await screen.findByText(programListing3.name)).toBeInTheDocument()
+    expect(await screen.findByText(programListing1.primary)).toBeInTheDocument()
+    expect(await screen.findByText(programListing2.primary)).toBeInTheDocument()
+    expect(await screen.findByText(programListing3.primary)).toBeInTheDocument()
   })
 
 })

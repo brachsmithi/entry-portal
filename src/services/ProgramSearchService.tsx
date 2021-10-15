@@ -10,7 +10,7 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
 
   function listing(program: any): ListingData {
     return {
-      name: program.title
+      primary: program.title
     }
   }
 
