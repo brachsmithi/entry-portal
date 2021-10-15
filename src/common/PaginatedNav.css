@@ -1,0 +1,25 @@
+.paginatedNav {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+.navButton button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: .5rem 1rem;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8rem;
+}
+
+.location {
+    font-weight: bold;
+    font-size: large;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
