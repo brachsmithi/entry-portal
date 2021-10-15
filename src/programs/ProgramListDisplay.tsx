@@ -7,7 +7,13 @@ export interface ProgramListDisplayProperties {
 
 export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Element {
   const listingElements = props.listings.map(
-      (listing, i) => <div key={i}>{ listing.primary }</div>)
+      (listing, i) => (
+          <div className='listing' key={i}>
+            <span className='primary'>{ listing.primary }</span>
+            <span className='secondary'>{ listing.secondary }</span>
+          </div>
+      )
+  )
   return (
       <div>
         {listingElements}

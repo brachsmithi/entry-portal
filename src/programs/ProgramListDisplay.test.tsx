@@ -7,7 +7,8 @@ describe('ProgramListDisplay', () => {
   it('lists given programs',  () => {
     const programs = [
       {
-        primary: 'Line Item One'
+        primary: 'Line Item One',
+        secondary: '2001'
       },
       {
         primary: 'Line Item Two'
@@ -16,6 +17,8 @@ describe('ProgramListDisplay', () => {
     render(<ProgramListDisplay listings={programs}/>)
 
     expect(screen.getByText('Line Item One')).toBeInTheDocument()
+    expect(screen.getByText('2001')).toBeInTheDocument()
+    expect(screen.getByText('Line Item Two')).toBeInTheDocument()
   })
 
 })
