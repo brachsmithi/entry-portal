@@ -11,7 +11,7 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
   function listing(program: any): ListingData {
     return {
       primary: program.title,
-      secondary: program.year
+      secondary: [program.year]
     }
   }
 

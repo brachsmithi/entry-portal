@@ -6,7 +6,7 @@ import {
   programListing2,
   programListing3,
   returnJson,
-  totalPages
+  totalProgramPages
 } from "../testhelpers/ProgramSearchJson"
 
 describe('ProgramScreen', () => {
@@ -23,7 +23,7 @@ describe('ProgramScreen', () => {
 
     render(<ProgramScreen />)
 
-    expect(await screen.findByText(`Page 1 of ${ totalPages }`)).toBeInTheDocument()
+    expect(await screen.findByText(`Page 1 of ${ totalProgramPages }`)).toBeInTheDocument()
     expect(await screen.findByText(programListing1.primary)).toBeInTheDocument()
     expect(await screen.findByText(programListing2.primary)).toBeInTheDocument()
     expect(await screen.findByText(programListing3.primary)).toBeInTheDocument()

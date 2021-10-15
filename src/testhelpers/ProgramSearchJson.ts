@@ -1,18 +1,18 @@
 import { ListingData } from "../models/ListingData";
 
-export const totalPages = 346
+export const totalProgramPages = 346
 
 export const programListing1: ListingData = {
   primary: 'The Cameraman\'s Revenge',
-  secondary: '1912'
+  secondary: ['1912']
 }
 export const programListing2: ListingData = {
   primary: 'Camille',
-  secondary: '1921'
+  secondary: ['1921']
 }
 export const programListing3: ListingData = {
   primary: 'Camouflaged Destruction',
-  secondary: '1952'
+  secondary: ['1952']
 }
 
 export function returnJson(currentPage: number): string {
@@ -21,11 +21,11 @@ export function returnJson(currentPage: number): string {
       "pagination_metadata": {
         "total_programs": 5177,
         "current_programs": 3,
-        "total_pages": ${totalPages},
+        "total_pages": ${totalProgramPages},
         "programs_per_page": 3,
         "current_page": ${currentPage},
         "previous_page": ${currentPage === 1 ? 1 : currentPage - 1},
-        "next_page": ${currentPage === totalPages ? totalPages: currentPage + 1}
+        "next_page": ${currentPage === totalProgramPages ? totalProgramPages: currentPage + 1}
       },
       "programs": [
         {
