@@ -1,15 +1,11 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { PaginatedNav } from "../common/PaginatedNav"
-import "../common/PaginatedNav.css"
 import { defaultPaginationMetadata } from "../models/PaginationMetadata"
 
 export default {
   title: 'PaginatedNav',
-  component: PaginatedNav,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  component: PaginatedNav
 } as ComponentMeta<typeof PaginatedNav>
 
 const Template: ComponentStory<typeof PaginatedNav> = (args) => <PaginatedNav {...args} />
