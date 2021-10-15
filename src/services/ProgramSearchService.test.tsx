@@ -1,6 +1,6 @@
 import loadPrograms from './ProgramSearchService'
 import {
-  totalPages,
+  totalProgramPages,
   returnJson,
   programListing1,
   programListing2,
@@ -19,7 +19,7 @@ describe('ProgramSearchService', () => {
       ],
       paginationMetadata: {
         currentPage: currentPage,
-        totalPages: totalPages,
+        totalPages: totalProgramPages,
         nextPage: nextPage,
         previousPage: previousPage
       }
@@ -58,9 +58,9 @@ describe('ProgramSearchService', () => {
   })
 
   it('loads last page of paginated program data from local service', async () => {
-    const currentPage = totalPages
-    const nextPage = totalPages
-    const previousPage = totalPages - 1
+    const currentPage = totalProgramPages
+    const nextPage = totalProgramPages
+    const previousPage = totalProgramPages - 1
     // @ts-ignore
     fetch.mockResponseOnce(returnJson(currentPage))
 

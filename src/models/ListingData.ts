@@ -1,4 +1,4 @@
 export interface ListingData {
   primary: string,
-  secondary?: string
+  secondary: string[]
 }
