@@ -1,0 +1,16 @@
+.listings {
+    padding-top: .25rem;
+    padding-left: 1rem;
+}
+
+.listing-entry {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    display: flex;
+}
+.listing-entry .primary {
+    font-weight: bold;
+}
+.listing-entry .secondary {
+    padding-left: .25rem;
+}

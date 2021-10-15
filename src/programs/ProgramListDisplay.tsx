@@ -1,4 +1,5 @@
 import React from 'react'
+import './ProgramListDisplay.css'
 import { ListingData } from "../models/ListingData"
 
 export interface ProgramListDisplayProperties {
@@ -12,14 +13,14 @@ export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Ele
 
   const listingElements = props.listings.map(
       (listing, i) => (
-          <div className='listing' key={i}>
+          <div className='listing-entry' key={i}>
             <span className='primary'>{ listing.primary }</span>
             <span className='secondary'>{secondaryContent(listing.secondary)}</span>
           </div>
       )
   )
   return (
-      <div>
+      <div className='listings'>
         {listingElements}
       </div>
   )
