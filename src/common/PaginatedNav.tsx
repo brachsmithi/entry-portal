@@ -9,21 +9,29 @@ interface PaginatedNavProps {
 }
 
 export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
+  const prevEnabled = props.metadata.currentPage > 1
+  const nextEnabled = props.metadata.totalPages > props.metadata.currentPage
   return (
       <div className='paginatedNav'>
-        { props.metadata.currentPage > 1 &&
-          <div className='navButton'>
-            <button onClick={props.previousAction}>Prev</button>
-          </div>
-        }
+        <div className='navButton'>
+          <button
+              onClick={props.previousAction}
+              disabled={!prevEnabled}
+          >
+            Prev
+          </button>
+        </div>
         <div className='location'>
           Page {props.metadata.currentPage} of {props.metadata.totalPages}
         </div>
-        { props.metadata.totalPages > props.metadata.currentPage &&
-          <div className='navButton'>
-            <button onClick={props.nextAction}>Next</button>
-          </div>
-        }
+        <div className='navButton'>
+          <button
+              onClick={props.nextAction}
+              disabled={!nextEnabled}
+          >
+            Next
+          </button>
+        </div>
       </div>
   )
 }

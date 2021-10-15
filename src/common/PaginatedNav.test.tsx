@@ -9,8 +9,8 @@ describe('PaginatedNav', () => {
   it('renders with empty metadata', () => {
     render(<PaginatedNav metadata={defaultPaginationMetadata} nextAction={jest.fn()} previousAction={jest.fn()} />)
     expect(screen.getByText(/Page 1 of 1/i)).toBeInTheDocument()
-    expect(screen.queryByText('Prev')).not.toBeInTheDocument()
-    expect(screen.queryByText('Next')).not.toBeInTheDocument()
+    expect(screen.queryByText('Prev')).not.toBeEnabled()
+    expect(screen.queryByText('Next')).not.toBeEnabled()
   })
 
   it('renders on first page of many', () => {
@@ -20,8 +20,8 @@ describe('PaginatedNav', () => {
     }
     render(<PaginatedNav metadata={metadata} nextAction={jest.fn()} previousAction={jest.fn()} />)
     expect(screen.getByText(/Page 1 of 90/i)).toBeInTheDocument()
-    expect(screen.queryByText('Prev')).not.toBeInTheDocument()
-    expect(screen.queryByText('Next')).toBeInTheDocument()
+    expect(screen.queryByText('Prev')).not.toBeEnabled()
+    expect(screen.queryByText('Next')).toBeEnabled()
   })
 
   it('renders on last page of many', () => {
@@ -32,8 +32,8 @@ describe('PaginatedNav', () => {
     }
     render(<PaginatedNav metadata={metadata} nextAction={jest.fn()} previousAction={jest.fn()} />)
     expect(screen.getByText(/Page 12 of 12/i)).toBeInTheDocument()
-    expect(screen.queryByText('Prev')).toBeInTheDocument()
-    expect(screen.queryByText('Next')).not.toBeInTheDocument()
+    expect(screen.queryByText('Prev')).toBeEnabled()
+    expect(screen.queryByText('Next')).not.toBeEnabled()
   })
 
   it('uses provided callback for next action', () => {
@@ -62,8 +62,8 @@ describe('PaginatedNav', () => {
     const previousFunction = jest.fn()
     render(<PaginatedNav metadata={metadata} nextAction={nextFunction} previousAction={previousFunction} />)
 
-    const previousElement = screen.getByText('Prev')
-    userEvent.click(previousElement)
+    const previousButton = screen.getByText('Prev')
+    userEvent.click(previousButton)
 
     expect(nextFunction).not.toHaveBeenCalled()
     expect(previousFunction).toHaveBeenCalled()
