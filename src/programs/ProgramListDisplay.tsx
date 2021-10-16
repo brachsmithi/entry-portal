@@ -22,7 +22,10 @@ export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Ele
   )
   return (
       <div className='listings'>
-        {listingElements}
+        {listingElements.length === 0 &&
+            <div className='no-listings'>No listings loaded yet.</div>
+        }
+        {listingElements.length > 0 && listingElements}
       </div>
   )
 }

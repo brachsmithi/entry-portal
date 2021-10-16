@@ -25,6 +25,7 @@ describe('ProgramListDisplay', () => {
     ]
     render(<ProgramListDisplay listings={programs}/>)
 
+    expect(screen.queryByText('No listings loaded yet.')).not.toBeInTheDocument()
     expect(screen.queryByText('Line Item One')).toBeInTheDocument()
     expect(screen.queryByText('(2001)')).toBeInTheDocument()
     expect(screen.queryByText('Line Item Two')).toBeInTheDocument()
@@ -32,6 +33,12 @@ describe('ProgramListDisplay', () => {
     expect(screen.queryByText('Movie Franchise/2nd Series')).toBeInTheDocument()
     expect(screen.queryByText('Line Item Three')).toBeInTheDocument()
     expect(screen.queryByText('(1987/Full Screen)')).toBeInTheDocument()
+  })
+
+  it('shows default text when there is no content', () => {
+    render(<ProgramListDisplay listings={[]}/>)
+
+    expect(screen.queryByText('No listings loaded yet.')).toBeInTheDocument()
   })
 
 })

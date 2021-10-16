@@ -3,6 +3,13 @@
     padding-left: 1rem;
 }
 
+.no-listings {
+    font-size: larger;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}
+
 .listing-entry {
     padding-top: .5rem;
     padding-bottom: .5rem;
