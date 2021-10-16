@@ -9,18 +9,20 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
       .then(response => response.json())
 
   function listing(program: any): ListingData {
-    const secondary: string[] = []
+    const secondaryValues: string[] = []
     const pushIfHasValue = (array: string[], value?: string) => {
       if (value && value !== '') array.push(value)
     }
-    pushIfHasValue(secondary, program.year)
-    pushIfHasValue(secondary, program.version)
+    pushIfHasValue(secondaryValues, program.year)
+    pushIfHasValue(secondaryValues, program.version)
+    const tertiaryValues: string[] = []
     program.series.forEach((series: string)=>{
-      pushIfHasValue(secondary, series)
+      pushIfHasValue(tertiaryValues, series)
     })
     return {
       primary: program.title,
-      secondary: secondary
+      secondary: secondaryValues,
+      tertiary: tertiaryValues
     }
   }
 
