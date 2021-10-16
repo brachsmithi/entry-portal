@@ -14,6 +14,7 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
       if (value && value !== '') array.push(value)
     }
     pushIfHasValue(secondary, program.year)
+    pushIfHasValue(secondary, program.version)
     program.series.forEach((series: string)=>{
       pushIfHasValue(secondary, series)
     })
