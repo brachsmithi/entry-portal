@@ -1,3 +1,36 @@
+import ProgramData from "../models/ProgramData"
+
+export const programData: ProgramData = {
+  id: 2193,
+  title: 'Kidnapped',
+  year: '1974',
+  version: 'Lamberto Bava Reconstruction',
+  series: [],
+  lengthInMinutes: 96,
+  alternateTitles: [
+    {
+      name: 'Wild Dogs'
+    }
+  ],
+  people: [
+    {
+      name: 'Mario Bava',
+      aliases: [
+        {
+          name: 'John M. Old'
+        },
+        {
+          name: 'John Hold'
+        }
+      ]
+    },
+    {
+      name: 'Lamberto Bava',
+      aliases: []
+    }
+  ]
+}
+
 export function returnProgramJson() {
   return `
     {
