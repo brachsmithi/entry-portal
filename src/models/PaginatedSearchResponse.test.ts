@@ -1,7 +1,7 @@
-import ProgramSearchResponse from './ProgramSearchResponse'
-import PaginatedData from "./PaginatedData";
+import PaginatedSearchResponse from './PaginatedSearchResponse'
+import PaginatedData from "./PaginatedData"
 
-describe('SearchResponse', () => {
+describe('PaginatedSearchResponse', () => {
 
   it ('holds search data', () => {
     const programs: PaginatedData = {
@@ -13,14 +13,14 @@ describe('SearchResponse', () => {
         previousPage: 6
       }
     }
-    const response = new ProgramSearchResponse({data: programs})
+    const response = new PaginatedSearchResponse({data: programs})
     expect(response.isError()).toBeFalsy()
     expect(response?.paginatedData).toEqual(programs)
   })
 
   it ('holds error', () => {
     const err = 'i dunno, just an object'
-    const response = new ProgramSearchResponse({error: err})
+    const response = new PaginatedSearchResponse({error: err})
     expect(response.isError()).toBeTruthy()
     expect(response.error).toEqual(err)
   })
