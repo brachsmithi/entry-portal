@@ -8,7 +8,7 @@ export interface ProgramListDisplayProperties {
 
 export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Element {
   function secondaryContent(secondary: string[]) {
-    return secondary.length > 0 ? `(${secondary})` : ''
+    return secondary.length > 0 ? `(${secondary.join('/')})` : ''
   }
 
   const listingElements = props.listings.map(
