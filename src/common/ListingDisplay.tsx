@@ -1,12 +1,12 @@
 import React from 'react'
-import './ProgramListDisplay.css'
+import './ListingDisplay.css'
 import { ListingData } from "../models/ListingData"
 
-export interface ProgramListDisplayProperties {
+export interface ListingDisplayProperties {
   listings: Array<ListingData>
 }
 
-export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Element {
+export function ListingDisplay(props: ListingDisplayProperties): JSX.Element {
   function secondaryContent(secondary: string[]) {
     return secondary.length > 0 ? `(${secondary.join('/')})` : ''
   }
