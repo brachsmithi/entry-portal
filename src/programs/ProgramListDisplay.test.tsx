@@ -14,6 +14,10 @@ describe('ProgramListDisplay', () => {
       {
         primary: 'Line Item Two',
         secondary: []
+      },
+      {
+        primary: 'Line Item Three',
+        secondary: ['1908', 'Crime Serial']
       }
     ]
     render(<ProgramListDisplay listings={programs}/>)
@@ -22,6 +26,8 @@ describe('ProgramListDisplay', () => {
     expect(screen.queryByText('(2001)')).toBeInTheDocument()
     expect(screen.queryByText('Line Item Two')).toBeInTheDocument()
     expect(screen.queryByText('()')).not.toBeInTheDocument()
+    expect(screen.queryByText('Line Item Three')).toBeInTheDocument()
+    expect(screen.queryByText('(1908/Crime Serial)')).toBeInTheDocument()
   })
 
 })
