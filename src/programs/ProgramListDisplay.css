@@ -16,3 +16,7 @@
 .listing-entry .secondary {
     padding-left: .25rem;
 }
+.listing-entry .tertiary {
+    padding-left: .25rem;
+    font-style: italic;
+}
