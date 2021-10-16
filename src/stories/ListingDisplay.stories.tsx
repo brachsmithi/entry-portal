@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { ListingDisplay } from "../common/ListingDisplay"
 
 export default {
-  title: 'ProgramListDisplay',
+  title: 'ListingDisplay',
   component: ListingDisplay
 } as ComponentMeta<typeof ListingDisplay>
 
