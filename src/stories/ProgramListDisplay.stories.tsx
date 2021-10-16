@@ -10,6 +10,11 @@ export default {
 
 const Template: ComponentStory<typeof ProgramListDisplay> = (args) => <ProgramListDisplay {...args} />
 
+export const NoListings = Template.bind({})
+NoListings.args = {
+  listings: []
+}
+
 export const Listings = Template.bind({})
 Listings.args = {
   listings: [
