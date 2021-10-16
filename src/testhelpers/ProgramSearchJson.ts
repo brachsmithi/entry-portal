@@ -12,7 +12,7 @@ export const programListing2: ListingData = {
 }
 export const programListing3: ListingData = {
   primary: 'Camouflaged Destruction',
-  secondary: ['1952']
+  secondary: ['1952', 'Radar Men from the Moon']
 }
 export const programListing4: ListingData = {
   primary: 'The Akira Production Report',
