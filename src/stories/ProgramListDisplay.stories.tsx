@@ -15,63 +15,78 @@ Listings.args = {
   listings: [
     {
       primary: 'Asphalt',
-      secondary: ['1929']
+      secondary: ['1929'],
+      tertiary: []
     },
     {
       primary: 'The Asphalt Jungle',
-      secondary: ['1950']
+      secondary: ['1950'],
+      tertiary: []
     },
     {
       primary: 'Assassin',
-      secondary: ['1986']
+      secondary: ['1986'],
+      tertiary: []
     },
     {
       primary: 'Assassin',
-      secondary: ['2007']
+      secondary: ['2007'],
+      tertiary: ['Flash Gordon: A Modern Space Opera']
     },
     {
       primary: 'Assault on Precinct 13',
-      secondary: ['1976']
+      secondary: ['1976'],
+      tertiary: []
     },
     {
       primary: 'Assault on the Girls Locker Room',
-      secondary: ['1990']
+      secondary: ['1990'],
+      tertiary: ['Ranma 1/2: Season 2']
     },
     {
       primary: 'Assignment Terror',
-      secondary: ['1972']
+      secondary: ['1972'],
+      tertiary: ['Waldemar Daninsky']
     },
     {
       primary: 'Asteroid Blues',
-      secondary: ['2001']
+      secondary: ['2001'],
+      tertiary: ['Cowboy Bebop']
     },
     {
       primary: 'The Astounding She-Monster',
-      secondary: ['1957']
+      secondary: ['1957'],
+      tertiary: []
     },
     {
       primary: 'The Astral Factor',
-      secondary: ['1978']
+      secondary: ['1978'],
+      tertiary: []
     },
     {
       primary: 'The Astro-Zombies',
-      secondary: ['1968']
+      secondary: ['1968'],
+      tertiary: []
     },
     {
       primary: 'Asylum',
-      secondary: ['1972']
+      secondary: ['1972'],
+      tertiary: []
     },
     {
       primary: 'Asylum',
-      secondary: ['2004']
+      secondary: ['2004'],
+      tertiary: ['Smallville: Season 3']
     },
     {
       primary: 'Asylum',
-      secondary: ['2018']
+      secondary: ['2018'],
+      tertiary: ['Titans: Season 1']
     },
     {
       primary: 'At the Earth\'s Core',
-      secondary: ['1976']
+      secondary: ['1976'],
+      tertiary: []
     }
   ]
 }

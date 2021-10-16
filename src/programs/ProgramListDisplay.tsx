@@ -16,6 +16,7 @@ export function ProgramListDisplay(props: ProgramListDisplayProperties): JSX.Ele
           <div className='listing-entry' key={i}>
             <span className='primary'>{ listing.primary }</span>
             <span className='secondary'>{secondaryContent(listing.secondary)}</span>
+            <span className='tertiary'>{listing.tertiary.join('/')}</span>
           </div>
       )
   )
