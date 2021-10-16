@@ -1,6 +1,6 @@
 import ProgramSearchResponse from "../models/ProgramSearchResponse"
 import SearchResponse from "../models/SearchResponse"
-import { ListingData } from "../models/ListingData";
+import { ListingData } from "../models/ListingData"
 
 export default async function loadPrograms(page?: number): Promise<SearchResponse> {
   let url = 'http://localhost:3000/programs.json'
@@ -10,7 +10,13 @@ export default async function loadPrograms(page?: number): Promise<SearchRespons
 
   function listing(program: any): ListingData {
     const secondary: string[] = []
-    if (program.year && program.year !== '') secondary.push(program.year)
+    const pushIfHasValue = (array: string[], value?: string) => {
+      if (value && value !== '') array.push(value)
+    }
+    pushIfHasValue(secondary, program.year)
+    program.series.forEach((series: string)=>{
+      pushIfHasValue(secondary, series)
+    })
     return {
       primary: program.title,
       secondary: secondary
