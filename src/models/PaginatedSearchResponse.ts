@@ -1,8 +1,8 @@
 import PaginatedData, { emptyPaginatedData } from "./PaginatedData"
 
 export default class PaginatedSearchResponse {
-  paginatedData: PaginatedData;
-  error: string | undefined;
+  paginatedData: PaginatedData
+  error: string | undefined
 
   constructor(input: { data?: PaginatedData, error?: string }) {
     this.paginatedData = input.data ?? emptyPaginatedData
