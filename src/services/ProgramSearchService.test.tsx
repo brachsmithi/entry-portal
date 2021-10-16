@@ -1,4 +1,4 @@
-import loadPrograms from './ProgramSearchService'
+import loadProgramListings from './ProgramSearchService'
 import {
   totalProgramPages,
   returnProgramListingJson,
@@ -40,7 +40,7 @@ describe('ProgramSearchService', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
-    const response = await loadPrograms()
+    const response = await loadProgramListings()
 
     expect(fetch).toHaveBeenCalledWith("http://localhost:3000/programs.json")
     expect(response.paginatedData).toEqual(expected(currentPage, nextPage, previousPage))
@@ -53,7 +53,7 @@ describe('ProgramSearchService', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
-    const response = await loadPrograms(currentPage)
+    const response = await loadProgramListings(currentPage)
 
     expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs.json?page=${currentPage}`)
     expect(response.paginatedData).toEqual(expected(currentPage, nextPage, previousPage))
@@ -66,7 +66,7 @@ describe('ProgramSearchService', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
-    const response = await loadPrograms(currentPage)
+    const response = await loadProgramListings(currentPage)
 
     expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs.json?page=${currentPage}`)
     expect(response.paginatedData).toEqual(expected(currentPage, nextPage, previousPage))
