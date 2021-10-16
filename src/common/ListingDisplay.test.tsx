@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { ProgramListDisplay } from "./ProgramListDisplay"
+import { ListingDisplay } from "./ListingDisplay"
 import { ListingData } from "../models/ListingData";
 
 describe('ProgramListDisplay', () => {
@@ -23,7 +23,7 @@ describe('ProgramListDisplay', () => {
         tertiary: []
       }
     ]
-    render(<ProgramListDisplay listings={programs}/>)
+    render(<ListingDisplay listings={programs}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).not.toBeInTheDocument()
     expect(screen.queryByText('Line Item One')).toBeInTheDocument()
@@ -36,7 +36,7 @@ describe('ProgramListDisplay', () => {
   })
 
   it('shows default text when there is no content', () => {
-    render(<ProgramListDisplay listings={[]}/>)
+    render(<ListingDisplay listings={[]}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).toBeInTheDocument()
   })

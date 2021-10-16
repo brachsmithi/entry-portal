@@ -1,14 +1,14 @@
 // @ts-ignore
 import React from 'react'
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { ProgramListDisplay } from "../programs/ProgramListDisplay"
+import { ListingDisplay } from "../common/ListingDisplay"
 
 export default {
   title: 'ProgramListDisplay',
-  component: ProgramListDisplay
-} as ComponentMeta<typeof ProgramListDisplay>
+  component: ListingDisplay
+} as ComponentMeta<typeof ListingDisplay>
 
-const Template: ComponentStory<typeof ProgramListDisplay> = (args) => <ProgramListDisplay {...args} />
+const Template: ComponentStory<typeof ListingDisplay> = (args) => <ListingDisplay {...args} />
 
 export const NoListings = Template.bind({})
 NoListings.args = {
