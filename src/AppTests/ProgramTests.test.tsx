@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import App from '../App'
-import { returnJson } from "../testhelpers/ProgramSearchJson"
+import { returnProgramListingJson } from "../testhelpers/ProgramSearchJson"
 import userEvent from "@testing-library/user-event"
 
 describe('Program Integration', () => {
@@ -14,14 +14,14 @@ describe('Program Integration', () => {
   it('renders pagination nav', async () => {
     const currentPage = 1
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage))
     render(<App />)
     // @ts-ignore
     expect(fetch.mock.calls[0][0]).toEqual("http://localhost:3000/programs.json?page=1")
     expect(await screen.findByText(/Page 1/)).toBeInTheDocument()
 
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage+1))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage+1))
     let element = await screen.findByText('Next')
     userEvent.click(element)
     // @ts-ignore
@@ -29,7 +29,7 @@ describe('Program Integration', () => {
     expect(await screen.findByText(/Page 2/)).toBeInTheDocument()
 
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage))
     element = await screen.findByText('Prev')
     userEvent.click(element)
     // @ts-ignore

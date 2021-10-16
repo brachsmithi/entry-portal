@@ -1,7 +1,7 @@
 import loadPrograms from './ProgramSearchService'
 import {
   totalProgramPages,
-  returnJson,
+  returnProgramListingJson,
   programListing1,
   programListing2,
   programListing3,
@@ -38,7 +38,7 @@ describe('ProgramSearchService', () => {
     const nextPage = 2
     const previousPage = 1
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
     const response = await loadPrograms()
 
@@ -51,7 +51,7 @@ describe('ProgramSearchService', () => {
     const nextPage = 46
     const previousPage = 44
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
     const response = await loadPrograms(currentPage)
 
@@ -64,7 +64,7 @@ describe('ProgramSearchService', () => {
     const nextPage = totalProgramPages
     const previousPage = totalProgramPages - 1
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
     const response = await loadPrograms(currentPage)
 

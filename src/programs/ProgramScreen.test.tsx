@@ -5,7 +5,7 @@ import {
   programListing1,
   programListing2,
   programListing3,
-  returnJson,
+  returnProgramListingJson,
   totalProgramPages
 } from "../testhelpers/ProgramSearchJson"
 
@@ -19,7 +19,7 @@ describe('ProgramScreen', () => {
   it('opens on 1st page of loaded programs', async () => {
     const currentPage = 1
     // @ts-ignore
-    fetch.mockResponseOnce(returnJson(currentPage))
+    fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
     render(<ProgramScreen />)
 

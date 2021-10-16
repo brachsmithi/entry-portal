@@ -23,7 +23,7 @@ export const programListing4: ListingData = {
   tertiary: []
 }
 
-export function returnJson(currentPage: number): string {
+export function returnProgramListingJson(currentPage: number): string {
   return `
     {
       "pagination_metadata": {
