@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { ProgramScreen } from "./ProgramScreen"
+import { PaginatedProgramsScreen } from "./PaginatedProgramsScreen"
 import {
   programListing1,
   programListing2,
@@ -9,7 +9,7 @@ import {
   totalProgramPages
 } from "../testhelpers/ProgramSearchJson"
 
-describe('ProgramScreen', () => {
+describe('PaginatedProgramsScreen', () => {
 
   beforeEach(() => {
     // @ts-ignore
@@ -21,7 +21,7 @@ describe('ProgramScreen', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson(currentPage))
 
-    render(<ProgramScreen />)
+    render(<PaginatedProgramsScreen />)
 
     expect(await screen.findByText(`Page 1 of ${ totalProgramPages }`)).toBeInTheDocument()
     expect(await screen.findByText(programListing1.primary)).toBeInTheDocument()

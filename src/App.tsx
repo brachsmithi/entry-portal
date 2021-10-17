@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import { ProgramScreen } from "./programs/ProgramScreen";
+import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen";
 
 function App() {
   return (
     <div className="App">
-      <ProgramScreen/>
+      <PaginatedProgramsScreen/>
     </div>
   )
 }
