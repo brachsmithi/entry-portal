@@ -52,6 +52,9 @@ describe('ProgramDisplay', () => {
     render(<ProgramDisplay program={program}/>)
 
     expect(screen.queryByText('The Film\'s Title')).toBeInTheDocument()
+    expect(screen.queryByText('2021')).toBeInTheDocument()
+    expect(screen.queryByText('TV Edit')).toBeInTheDocument()
+    expect(screen.queryByText('1:27')).toBeInTheDocument()
   })
 
 })
