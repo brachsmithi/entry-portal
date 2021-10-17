@@ -17,8 +17,8 @@ export default interface ProgramData {
   title: string,
   year: string,
   version: string,
-  series: string[],
   lengthInMinutes: number,
+  series: string[],
   alternateTitles: AlternateTitle[],
   people: Person[]
 
