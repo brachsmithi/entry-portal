@@ -2,8 +2,8 @@ import PaginatedSearchResponse from "../models/PaginatedSearchResponse"
 import { ListingData } from "../models/ListingData"
 import ProgramResponse from "../models/ProgramResponse"
 import AlternateTitle from "../models/AlternateTitle"
-import Person from "../models/Person";
-import Alias from "../models/Alias";
+import Person from "../models/Person"
+import Alias from "../models/Alias"
 
 export default async function loadProgramListings(page?: number): Promise<PaginatedSearchResponse> {
   let url = 'http://localhost:3000/programs.json'
@@ -92,7 +92,7 @@ export async function loadProgramDetails(id: number): Promise<ProgramResponse> {
           year: response.year,
           version: response.version,
           lengthInMinutes: response.length_in_minutes,
-          series: [],
+          series: response.series,
           alternateTitles: alternateTitles(response.alternate_titles),
           people: people(response.people)
         }
