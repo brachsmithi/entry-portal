@@ -55,6 +55,10 @@ describe('ProgramDisplay', () => {
     expect(screen.queryByText('2021')).toBeInTheDocument()
     expect(screen.queryByText('TV Edit')).toBeInTheDocument()
     expect(screen.queryByText('1:27')).toBeInTheDocument()
+    expect(screen.queryByText('Director One')).toBeInTheDocument()
+    expect(screen.queryByText('D. One/Director Uno')).toBeInTheDocument()
+    expect(screen.queryByText('Director Two')).toBeInTheDocument()
+    expect(screen.queryByText('D. Two/Director Dos')).toBeInTheDocument()
   })
 
 })
