@@ -59,6 +59,7 @@ describe('ProgramDisplay', () => {
     expect(screen.queryByText('D. One/Director Uno')).toBeInTheDocument()
     expect(screen.queryByText('Director Two')).toBeInTheDocument()
     expect(screen.queryByText('D. Two/Director Dos')).toBeInTheDocument()
+    expect(screen.queryByText('The Film Series/The Unofficial Film Series')).toBeInTheDocument()
   })
 
 })

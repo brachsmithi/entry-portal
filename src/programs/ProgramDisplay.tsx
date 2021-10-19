@@ -23,14 +23,13 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
       )
     }
 
-    const personElements = personArray.map((person, index) => {
+    return personArray.map((person, index) => {
       return personElement(person, index)
     })
-    return (
-        <div className='people'>
-          {personElements}
-        </div>
-    )
+  }
+
+  const seriesElements = (seriesArray: Array<string>) => {
+    return seriesArray.join('/')
   }
   return (
       <div className='program-display'>
@@ -38,7 +37,8 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
         <div className='year'>{props.program.year}</div>
         <div className='version'>{props.program.version}</div>
         <div className='duration'>{formatDuration(props.program.lengthInMinutes)}</div>
-        <div>{peopleElements(props.program.people)}</div>
+        <div className='people'>{peopleElements(props.program.people)}</div>
+        <div className='series'>{seriesElements(props.program.series)}</div>
       </div>
   )
 }
