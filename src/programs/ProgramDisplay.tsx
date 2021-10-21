@@ -1,9 +1,10 @@
 import React from 'react'
-import ProgramData from "../models/ProgramData";
+import "./ProgramDisplay.css"
+import ProgramData from "../models/ProgramData"
 import { formatDuration } from "../common/DisplayFormatters"
 import Person from "../models/Person"
-import Alias from "../models/Alias";
-import AlternateTitle from "../models/AlternateTitle";
+import Alias from "../models/Alias"
+import AlternateTitle from "../models/AlternateTitle"
 
 export interface ProgramDisplayProperties {
   program: ProgramData
@@ -41,13 +42,16 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
 
   return (
       <div className='program-display'>
-        <div className='title'>{props.program.title}</div>
-        <div className='year'>{props.program.year}</div>
+        <div className='header'>
+          <span className='title'>{props.program.title}</span>
+          <span className='year'>{props.program.year}</span>
+        </div>
+        <div className='alternate-titles'>{alternateTitlesElements(props.program.alternateTitles)}</div>
         <div className='version'>{props.program.version}</div>
+
         <div className='duration'>{formatDuration(props.program.lengthInMinutes)}</div>
         <div className='people'>{peopleElements(props.program.people)}</div>
         <div className='series'>{seriesElements(props.program.series)}</div>
-        <div className='alternate-titles'>{alternateTitlesElements(props.program.alternateTitles)}</div>
       </div>
   )
 }
