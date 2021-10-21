@@ -1,0 +1,49 @@
+.program-display {
+    padding-top: 1rem;
+}
+
+.program-display .header {
+    font-size: x-large;
+}
+
+.program-display .header .title {
+    font-weight: bold;
+}
+
+.program-display .header .year {
+    margin-left: .5rem;
+}
+
+.program-display .version {
+    font-weight: bold;
+}
+
+.program-display .duration {
+
+}
+
+.program-display .people {
+    margin-top: .5rem;
+}
+
+.program-display .people .person {
+    margin-top: .25rem;
+}
+
+.program-display .people .person .main {
+    font-weight: bold;
+}
+
+.program-display .people .person .alias {
+    font-style: italic;
+    margin-left: .5rem;
+}
+
+.program-display .series {
+    margin-top: .5rem;
+}
+
+.program-display .alternate-titles {
+    font-style: italic;
+    font-size: larger;
+}
