@@ -1,13 +1,26 @@
 import React from 'react'
 import './App.css'
-import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from "react-router-dom"
+import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen"
 
 function App() {
   return (
-    <div className="App">
-      <PaginatedProgramsScreen/>
-    </div>
+      <Router>
+        <Switch>
+          <Route path='/'>
+            <Programs/>
+          </Route>
+        </Switch>
+      </Router>
   )
 }
 
 export default App
+
+function Programs() {
+  return <PaginatedProgramsScreen/>
+}
