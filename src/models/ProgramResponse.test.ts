@@ -1,11 +1,11 @@
 import ProgramData, { emptyProgramData } from "./ProgramData"
 import ProgramResponse from "./ProgramResponse"
-import { programData1 } from "../testhelpers/ProgramJson"
+import { programData2 } from "../testhelpers/ProgramJson"
 
 describe('ProgramResponse', () => {
 
   it ('holds program data', () => {
-    const program: ProgramData = programData1
+    const program: ProgramData = programData2
     const response = new ProgramResponse({data: program})
     expect(response.isError()).toBeFalsy()
     expect(response?.programData).toEqual(program)
