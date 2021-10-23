@@ -23,6 +23,7 @@ export default async function loadProgramListings(page?: number): Promise<Pagina
       pushIfHasValue(tertiaryValues, series)
     })
     return {
+      id: program.id,
       primary: program.title,
       secondary: secondaryValues,
       tertiary: tertiaryValues

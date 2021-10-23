@@ -8,16 +8,19 @@ describe('ProgramListDisplay', () => {
   it('lists given programs',  () => {
     const programs: ListingData[] = [
       {
+        id: 236,
         primary: 'Line Item One',
         secondary: ['2001'],
         tertiary: []
       },
       {
+        id: 252,
         primary: 'Line Item Two',
         secondary: [],
         tertiary: ['Movie Franchise', '2nd Series']
       },
       {
+        id: 634,
         primary: 'Line Item Three',
         secondary: ['1987', 'Full Screen'],
         tertiary: []
