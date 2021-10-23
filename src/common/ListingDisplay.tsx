@@ -4,6 +4,7 @@ import { ListingData } from "../models/ListingData"
 
 export interface ListingDisplayProperties {
   listings: Array<ListingData>
+  path: string
 }
 
 export function ListingDisplay(props: ListingDisplayProperties): JSX.Element {
@@ -14,7 +15,7 @@ export function ListingDisplay(props: ListingDisplayProperties): JSX.Element {
   const listingElements = props.listings.map(
       (listing, i) => (
           <div className='listing-entry' key={i}>
-            <span className='primary'>{ listing.primary }</span>
+            <a href={`${props.path}/${listing.id}`} className='primary'>{ listing.primary }</a>
             <span className='secondary'>{secondaryContent(listing.secondary)}</span>
             <span className='tertiary'>{listing.tertiary.join('/')}</span>
           </div>

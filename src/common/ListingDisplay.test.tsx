@@ -1,12 +1,12 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { ListingDisplay } from "./ListingDisplay"
-import { ListingData } from "../models/ListingData";
+import { ListingData } from "../models/ListingData"
 
 describe('ProgramListDisplay', () => {
 
-  it('lists given programs',  () => {
-    const programs: ListingData[] = [
+  it('lists given programs', async () => {
+    const listings: ListingData[] = [
       {
         id: 236,
         primary: 'Line Item One',
@@ -26,22 +26,28 @@ describe('ProgramListDisplay', () => {
         tertiary: []
       }
     ]
-    render(<ListingDisplay listings={programs}/>)
+    const path = '/fakePath'
+    render(<ListingDisplay listings={listings} path={path}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).not.toBeInTheDocument()
-    expect(screen.queryByText('Line Item One')).toBeInTheDocument()
+    await verifyLink(listings[0], path)
     expect(screen.queryByText('(2001)')).toBeInTheDocument()
-    expect(screen.queryByText('Line Item Two')).toBeInTheDocument()
+    await verifyLink(listings[1], path)
     expect(screen.queryByText('()')).not.toBeInTheDocument()
     expect(screen.queryByText('Movie Franchise/2nd Series')).toBeInTheDocument()
-    expect(screen.queryByText('Line Item Three')).toBeInTheDocument()
+    await verifyLink(listings[2], path)
     expect(screen.queryByText('(1987/Full Screen)')).toBeInTheDocument()
   })
 
   it('shows default text when there is no content', () => {
-    render(<ListingDisplay listings={[]}/>)
+    render(<ListingDisplay listings={[]} path=''/>)
 
     expect(screen.queryByText('No listings loaded yet.')).toBeInTheDocument()
   })
+
+  async function verifyLink(listing: ListingData, path: string) {
+    const element = await screen.findByText(listing.primary)
+    expect(element.closest('a')).toHaveAttribute('href', `${path}/${listing.id}`)
+  }
 
 })
