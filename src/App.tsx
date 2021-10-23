@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Switch>
           <Route path='/'>
-            <Programs/>
+            <ProgramList/>
           </Route>
         </Switch>
       </Router>
@@ -21,6 +21,6 @@ function App() {
 
 export default App
 
-function Programs() {
+function ProgramList() {
   return <PaginatedProgramsScreen/>
 }

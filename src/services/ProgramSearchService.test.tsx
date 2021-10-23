@@ -8,7 +8,7 @@ import {
   programListing4
 } from "../testhelpers/ProgramSearchJson"
 import PaginatedData from "../models/PaginatedData"
-import { programData1, programData2, programJson1, programJson2 } from "../testhelpers/ProgramJson"
+import { programData2, programData3, programJson2, programJson3 } from "../testhelpers/ProgramJson"
 
 describe('ProgramSearchService', () => {
 
@@ -86,22 +86,22 @@ describe('ProgramSearchService', () => {
 
     it('loads the requested program from local service', async () => {
       // @ts-ignore
-      fetch.mockResponseOnce(programJson1)
-
-      const response = await loadProgramDetails(programData1.id)
-
-      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${programData1.id}.json`)
-      expect(response.programData).toEqual(programData1)
-    })
-
-    it('loads series for requested program', async () => {
-      // @ts-ignore
       fetch.mockResponseOnce(programJson2)
 
       const response = await loadProgramDetails(programData2.id)
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${programData2.id}.json`)
       expect(response.programData).toEqual(programData2)
+    })
+
+    it('loads series for requested program', async () => {
+      // @ts-ignore
+      fetch.mockResponseOnce(programJson3)
+
+      const response = await loadProgramDetails(programData3.id)
+
+      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${programData3.id}.json`)
+      expect(response.programData).toEqual(programData3)
     })
 
   })
