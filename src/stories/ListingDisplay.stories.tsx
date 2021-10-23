@@ -108,5 +108,6 @@ Listings.args = {
       secondary: ['1976'],
       tertiary: []
     }
-  ]
+  ],
+  path: '/programs'
 }

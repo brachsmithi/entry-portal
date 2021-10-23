@@ -17,6 +17,11 @@
     justify-content: start;
     flex-wrap: wrap;
 }
+
+.listing-entry a {
+    color: black;
+}
+
 .listing-entry .primary {
     font-weight: bold;
 }

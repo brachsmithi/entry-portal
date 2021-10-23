@@ -41,8 +41,6 @@ describe('Program Integration', () => {
   it('loads program from link', async () => {
     // @ts-ignore
     fetch.mockResponseOnce(programJson2)
-    // const history = createMemoryHistory()
-    // history.push(`/programs/${programData2.id}`)
     window.history.pushState({}, '', `/programs/${programData2.id}`)
     render(
           <App />

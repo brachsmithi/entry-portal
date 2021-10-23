@@ -27,7 +27,7 @@ export function PaginatedProgramsScreen(): JSX.Element {
             nextAction={loadNextPage}
             previousAction={loadPreviousPage}
         />
-        <ListingDisplay listings={paginatedData.data}/>
+        <ListingDisplay listings={paginatedData.data} path='/programs'/>
       </>
   )
 }
