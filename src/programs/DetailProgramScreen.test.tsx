@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import DetailProgramScreen from "./DetailProgramScreen";
-import { programData2, programJson2 } from "../testhelpers/ProgramJson";
+import DetailProgramScreen from "./DetailProgramScreen"
+import { programData2, programJson2 } from "../testhelpers/ProgramJson"
 
 describe('DetailProgramScreen', () => {
 
@@ -18,7 +18,7 @@ describe('DetailProgramScreen', () => {
 
     // @ts-ignore
     expect(fetch.mock.calls[0][0]).toEqual(`http://localhost:3000/programs/${programId}.json`)
-    expect(await screen.findByText('Back')).toBeInTheDocument()
+    expect((await screen.findByText('Back')).closest('a')).toHaveAttribute('href', '/programs')
     expect(await screen.findByText(programData2.title)).toBeInTheDocument()
   })
 })

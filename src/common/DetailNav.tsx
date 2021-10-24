@@ -2,18 +2,18 @@ import React from "react"
 import './DetailNav.css'
 
 interface DetailNavProps {
-  backAction: () => void
+  backPath: string
 }
 
 export default function DetailNav(props: DetailNavProps) {
   return (
       <div className='detailNav'>
-        <button
+        <a
             className='navButton'
-            onClick={props.backAction}
+            href={props.backPath}
         >
           Back
-        </button>
+        </a>
       </div>
   )
 }
