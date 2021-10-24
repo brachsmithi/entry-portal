@@ -7,11 +7,12 @@
     padding-bottom: .5rem;
 }
 
-.detailNav button {
+.detailNav a {
     background-color: black;
     border: none;
     color: white;
     padding: .5rem 1rem;
+    font-family: Arial, sans-serif;
     font-size: small;
     font-weight: bold;
     border-radius: 8rem;

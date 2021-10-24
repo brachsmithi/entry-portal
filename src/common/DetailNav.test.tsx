@@ -1,24 +1,21 @@
 import React from 'react'
 import { render, screen } from "@testing-library/react"
 import DetailNav from "./DetailNav"
-import userEvent from "@testing-library/user-event"
 
 describe('DetailNav', () => {
 
   it('should have default buttons', () => {
-    render(<DetailNav backAction={jest.fn}/>)
+    render(<DetailNav backPath=''/>)
 
     expect(screen.getByText('Back')).toBeEnabled()
   })
 
   it('uses provided callback for back action', () => {
-    const backFunction = jest.fn()
-    render(<DetailNav backAction={backFunction} />)
+    const path = '/foobar'
+    render(<DetailNav backPath={path} />)
 
     const backElement = screen.getByText('Back')
-    userEvent.click(backElement)
-
-    expect(backFunction).toHaveBeenCalled()
+    expect(backElement.closest('a')).toHaveAttribute('href', path)
   })
 
 })
