@@ -1,0 +1,18 @@
+.detailNav {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+.detailNav button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: .5rem 1rem;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8rem;
+}
