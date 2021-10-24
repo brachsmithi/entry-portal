@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { PaginatedNav } from './PaginatedNav'
-import { defaultPaginationMetadata } from "../models/PaginationMetadata";
-import userEvent from "@testing-library/user-event";
+import { defaultPaginationMetadata } from "../models/PaginationMetadata"
+import userEvent from "@testing-library/user-event"
 
 describe('PaginatedNav', () => {
 
