@@ -1,4 +1,5 @@
 import React from "react"
+import './DetailNav.css'
 
 interface DetailNavProps {
   backAction: () => void
@@ -6,9 +7,10 @@ interface DetailNavProps {
 
 export default function DetailNav(props: DetailNavProps) {
   return (
-      <div>
+      <div className='detailNav'>
         <button
-          onClick={props.backAction}
+            className='navButton'
+            onClick={props.backAction}
         >
           Back
         </button>
