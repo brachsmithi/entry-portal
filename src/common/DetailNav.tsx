@@ -1,9 +1,17 @@
 import React from "react"
 
-export default function DetailNav() {
+interface DetailNavProps {
+  backAction: () => void
+}
+
+export default function DetailNav(props: DetailNavProps) {
   return (
       <div>
-        Back
+        <button
+          onClick={props.backAction}
+        >
+          Back
+        </button>
       </div>
   )
 }
