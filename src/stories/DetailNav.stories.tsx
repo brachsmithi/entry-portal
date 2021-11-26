@@ -11,5 +11,5 @@ const Template: ComponentStory<typeof DetailNav> = (args) => <DetailNav {...args
 
 export const Default = Template.bind({})
 Default.args = {
-  backAction: () => {}
+  backPath: ""
 }
