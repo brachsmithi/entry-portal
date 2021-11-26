@@ -4,11 +4,11 @@ import { ProgramDisplay } from "./ProgramDisplay"
 import { emptyProgramData } from "../models/ProgramData"
 import { loadProgramDetails } from "../services/ProgramSearchService"
 
-interface DetailProgramDisplayProps {
+interface DetailProgramScreenProps {
   programId: number
 }
 
-export default function DetailProgramDisplay(props: DetailProgramDisplayProps) {
+export default function DetailProgramScreen(props: DetailProgramScreenProps) {
   const [program, setProgram] = useState(emptyProgramData)
   useEffect(() => {
     loadProgramDetails(props.programId).then((response) => {

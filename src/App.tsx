@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './App.css'
 import {
     BrowserRouter as Router,
@@ -8,9 +8,7 @@ import {
     useRouteMatch
 } from "react-router-dom"
 import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen"
-import { ProgramDisplay } from "./programs/ProgramDisplay"
-import { loadProgramDetails } from "./services/ProgramSearchService"
-import { emptyProgramData } from "./models/ProgramData"
+import DetailProgramScreen from "./programs/DetailProgramScreen"
 
 function App() {
   return (
@@ -49,13 +47,7 @@ function ProgramList() {
 
 function ProgramDetail() {
   // @ts-ignore
-  let { programId } = useParams()
-  const [program, setProgram] = useState(emptyProgramData)
-  useEffect(() => {
-    loadProgramDetails(programId).then((response) => {
-      setProgram(response.programData)
-    })
-  }, [programId, setProgram])
+  const { programId } = useParams()
 
-  return <ProgramDisplay program={program}/>
+  return <DetailProgramScreen programId={programId}/>
 }
