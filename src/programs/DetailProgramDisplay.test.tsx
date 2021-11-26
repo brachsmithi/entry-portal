@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import DetailProgramScreen from "./DetailProgramScreen"
+import DetailProgramDisplay from "./DetailProgramDisplay"
 import { programData2, programJson2 } from "../testhelpers/ProgramJson"
 
 describe('DetailProgramScreen', () => {
@@ -14,7 +14,7 @@ describe('DetailProgramScreen', () => {
     const programId = programData2.id
     // @ts-ignore
     fetch.mockResponseOnce(programJson2)
-    render(<DetailProgramScreen programId={programId}/>)
+    render(<DetailProgramDisplay programId={programId}/>)
 
     // @ts-ignore
     expect(fetch.mock.calls[0][0]).toEqual(`http://localhost:3000/programs/${programId}.json`)
