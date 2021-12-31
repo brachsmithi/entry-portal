@@ -4,6 +4,7 @@ import ProgramResponse from "../models/ProgramResponse"
 import AlternateTitle from "../models/AlternateTitle"
 import Person from "../models/Person"
 import Alias from "../models/Alias"
+import SearchTermResponse from "../models/SearchTermResponse";
 
 export default async function loadProgramListings(page?: number): Promise<PaginatedSearchResponse> {
   let url = 'http://localhost:3000/programs.json'
@@ -99,4 +100,43 @@ export async function loadProgramDetails(id: number): Promise<ProgramResponse> {
         }
       }
   )
+}
+
+export async function loadProgramSearchResults(searchTerm: string): Promise<SearchTermResponse> {
+  let url = `http://localhost:3000/programs.json?search=${searchTerm}`
+  const response = await fetch(url)
+      .then(response => response.json())
+
+  function listing(program: any): ListingData {
+    const secondaryValues: string[] = []
+    const pushIfHasValue = (array: string[], value?: string) => {
+      if (value && value !== '') array.push(value)
+    }
+    pushIfHasValue(secondaryValues, program.year)
+    pushIfHasValue(secondaryValues, program.version)
+    const tertiaryValues: string[] = []
+    program.series.forEach((series: string)=>{
+      pushIfHasValue(tertiaryValues, series)
+    })
+    return {
+      id: program.id,
+      primary: program.title,
+      secondary: secondaryValues,
+      tertiary: tertiaryValues
+    }
+  }
+
+  function searchListings(programs: any[]): Array<ListingData> {
+    return programs.map(program => listing(program));
+  }
+
+  return new SearchTermResponse({
+    data: {
+      data: searchListings(response.programs),
+      searchMetadata: {
+        resultCount: response.search_metadata.program_count,
+        searchTerm: searchTerm
+      }
+    }
+  })
 }

@@ -8,7 +8,7 @@ import {
   returnProgramListingJson,
   totalProgramPages
 } from "../testhelpers/ProgramSearchJson"
-import { ListingData } from "../models/ListingData";
+import { ListingData } from "../models/ListingData"
 
 describe('PaginatedProgramsScreen', () => {
 

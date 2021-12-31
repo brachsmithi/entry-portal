@@ -27,6 +27,28 @@ export const programListing4: ListingData = {
   tertiary: []
 }
 
+export const searchListing1: ListingData = {
+  id: 47,
+  primary: 'April Fool\'s Day',
+  secondary: ['1986'],
+  tertiary: []
+}
+
+export const searchListing2: ListingData = {
+  id: 684,
+  primary: 'The Food of the Gods',
+  secondary: ['1976'],
+  tertiary: ['Food of the Gods']
+}
+
+export const searchListing3: ListingData = {
+  id: 2074,
+  primary: 'Yeti: Giant of the 20th Century',
+  secondary: ['1977'],
+  tertiary: []
+}
+
+
 export function returnProgramListingJson(currentPage: number = 1): string {
   return `
     {
@@ -73,4 +95,39 @@ export function returnProgramListingJson(currentPage: number = 1): string {
       ]
     }
     `
+}
+
+export function returnSearchListingJson(): string {
+  return `
+  {
+    "search_metadata": {
+        "search_term": "foo",
+        "program_count": 3
+    },
+    "programs": [
+        {
+            "title": "April Fool's Day",
+            "year": "1986",
+            "version": "",
+            "series": [],
+            "id": 47
+        },
+        {
+            "title": "The Food of the Gods",
+            "year": "1976",
+            "version": "",
+            "series": [
+                "Food of the Gods"
+            ],
+            "id": 684
+        },
+        {
+            "title": "Yeti: Giant of the 20th Century",
+            "year": "1977",
+            "version": "",
+            "series": [],
+            "id": 2074
+        }
+    ]
+}`
 }

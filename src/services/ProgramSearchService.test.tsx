@@ -1,14 +1,15 @@
-import loadProgramListings, { loadProgramDetails } from './ProgramSearchService'
+import loadProgramListings, { loadProgramDetails, loadProgramSearchResults } from './ProgramSearchService'
 import {
   totalProgramPages,
   returnProgramListingJson,
   programListing1,
   programListing2,
   programListing3,
-  programListing4
+  programListing4, returnSearchListingJson, searchListing1, searchListing2, searchListing3
 } from "../testhelpers/ProgramSearchJson"
 import PaginatedData from "../models/PaginatedData"
 import { programData2, programData3, programJson2, programJson3 } from "../testhelpers/ProgramJson"
+import SearchData from "../models/SearchData"
 
 describe('ProgramSearchService', () => {
 
@@ -102,6 +103,40 @@ describe('ProgramSearchService', () => {
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${programData3.id}.json`)
       expect(response.programData).toEqual(programData3)
+    })
+
+  })
+
+  describe('loadProgramSearchResults', () => {
+
+    function expected(searchTerm: string): SearchData {
+      return {
+        data: [
+          searchListing1,
+          searchListing2,
+          searchListing3
+        ],
+        searchMetadata: {
+          searchTerm: searchTerm,
+          resultCount: 3
+        }
+      }
+    }
+
+    beforeEach(() => {
+      // @ts-ignore
+      fetch.resetMocks()
+    })
+
+    it('loads program data for search query from local service', async () => {
+      const searchTerm = 'foo'
+      // @ts-ignore
+      fetch.mockResponseOnce(returnSearchListingJson(searchTerm))
+
+      const response = await loadProgramSearchResults(searchTerm)
+
+      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs.json?search=${searchTerm}`)
+      expect(response.data).toEqual(expected(searchTerm))
     })
 
   })
