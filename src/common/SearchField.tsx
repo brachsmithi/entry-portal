@@ -14,9 +14,9 @@ const emptyOptionLinks: Array<OptionLinkData> = []
 
 export function SearchField(props: SearchFieldProps): JSX.Element {
   const [optionLinks, setOptionLinks] = useState(emptyOptionLinks)
-  const createOptionLinkData = (_: ListingData) => {
+  const createOptionLinkData = (listing: ListingData) => {
     return {
-      text: "foo"
+      text: listing.primary
     }
   }
   const callAction = (event: ChangeEvent<HTMLInputElement>) => {

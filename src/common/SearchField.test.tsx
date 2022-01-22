@@ -49,21 +49,18 @@ describe('SearchField', () => {
         }
       }
     })
-    // create mock function
     const action = jest.fn()
-    // attach return to mock function
     action.mockResolvedValue(Promise.resolve(response))
-    // create search field with hooks
+
     const { getByRole } = render(<SearchField action={action}/>)
-    // retrieve field from hook
     const textbox = getByRole('textbox')
-    // fill in field with search text
+
     await act(() => userEvent.type(textbox, searchTerm))
-    expect(action).toHaveBeenCalledWith(searchTerm)
-    // retrieve list from hook
+
     const list = getByRole('listbox')
-    // verify contents of list
     const options = list.getElementsByTagName('li')
     expect(options.length).toEqual(2)
+    expect(options[0].textContent).toEqual('Disco Godfather')
+    expect(options[1].textContent).toEqual('Star Trek VI: The Undiscovered Country')
   })
 })
