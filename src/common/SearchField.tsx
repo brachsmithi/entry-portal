@@ -3,7 +3,7 @@ import SearchTermResponse from "../models/SearchTermResponse"
 import { ListingData } from "../models/ListingData"
 
 interface SearchFieldProps {
-  action: (searchTerm: string) => Promise<SearchTermResponse>
+  searchAction: (searchTerm: string) => Promise<SearchTermResponse>
 }
 
 interface OptionLinkData {
@@ -22,7 +22,7 @@ export function SearchField(props: SearchFieldProps): JSX.Element {
   const callAction = (event: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value
     if (searchTerm.length >= 3) {
-      props.action(searchTerm)
+      props.searchAction(searchTerm)
           .then(result => {
             const options = result.data.data.map(listing => createOptionLinkData(listing))
             setOptionLinks(options)

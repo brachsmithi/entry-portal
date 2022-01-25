@@ -6,23 +6,23 @@ import SearchTermResponse from "../models/SearchTermResponse"
 describe('SearchField', () => {
 
   it('renders a text field', () => {
-    const { getByRole } = render(<SearchField action={jest.fn()}/>)
+    const { getByRole } = render(<SearchField searchAction={jest.fn()}/>)
     const textbox = getByRole('textbox') as HTMLInputElement
     expect(textbox.placeholder).toEqual('Enter search text')
     expect(textbox).toHaveAttribute('id', 'searchField')
   })
 
   it('fires action when there are 3 letters in search text', async () => {
-    const action = jest.fn((_: string) => Promise.resolve(new SearchTermResponse({})))
-    const { getByRole } = render(<SearchField action={action}/>)
+    const searchAction = jest.fn((_: string) => Promise.resolve(new SearchTermResponse({})))
+    const { getByRole } = render(<SearchField searchAction={searchAction}/>)
     const textbox = getByRole('textbox')
 
     userEvent.type(textbox, 'ab')
-    expect(action).not.toHaveBeenCalled()
+    expect(searchAction).not.toHaveBeenCalled()
 
     await act(() => userEvent.type(textbox, 'c'))
 
-    expect(action).toHaveBeenCalledWith('abc')
+    expect(searchAction).toHaveBeenCalledWith('abc')
   })
 
   it('displays list of options matching search text', async () => {
@@ -49,10 +49,10 @@ describe('SearchField', () => {
         }
       }
     })
-    const action = jest.fn()
-    action.mockResolvedValue(Promise.resolve(response))
+    const searchAction = jest.fn()
+    searchAction.mockResolvedValue(Promise.resolve(response))
 
-    const { getByRole } = render(<SearchField action={action}/>)
+    const { getByRole } = render(<SearchField searchAction={searchAction}/>)
     const textbox = getByRole('textbox')
 
     await act(() => userEvent.type(textbox, searchTerm))
