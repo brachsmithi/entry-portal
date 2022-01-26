@@ -1,12 +1,14 @@
-import { ChangeEvent, useState } from "react"
+import React, { ChangeEvent, useState } from "react"
 import SearchTermResponse from "../models/SearchTermResponse"
 import { ListingData } from "../models/ListingData"
 
 interface SearchFieldProps {
   searchAction: (searchTerm: string) => Promise<SearchTermResponse>
+  loadAction: (id: number) => void
 }
 
 interface OptionLinkData {
+  id: number
   text: string
 }
 
@@ -14,12 +16,16 @@ const emptyOptionLinks: Array<OptionLinkData> = []
 
 export function SearchField(props: SearchFieldProps): JSX.Element {
   const [optionLinks, setOptionLinks] = useState(emptyOptionLinks)
+  const callLoadAction = (event: React.MouseEvent<HTMLLIElement>) => {
+    props.loadAction(event.currentTarget.value)
+  }
   const createOptionLinkData = (listing: ListingData) => {
     return {
+      id: listing.id,
       text: listing.primary
     }
   }
-  const callAction = (event: ChangeEvent<HTMLInputElement>) => {
+  const callSearchAction = (event: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value
     if (searchTerm.length >= 3) {
       props.searchAction(searchTerm)
@@ -29,8 +35,8 @@ export function SearchField(props: SearchFieldProps): JSX.Element {
           })
     }
   }
-  const options = (linkData: Array<OptionLinkData>) => linkData.map((data, i) => {
-    return <li key={i}>{data.text}</li>
+  const options = (linkData: Array<OptionLinkData>) => linkData.map((data) => {
+    return <li key={data.id} value={data.id} onClick={callLoadAction}>{data.text}</li>
   })
   return (
       <>
@@ -38,7 +44,7 @@ export function SearchField(props: SearchFieldProps): JSX.Element {
             id='searchField'
             type='text'
             placeholder='Enter search text'
-            onChange={callAction}
+            onChange={callSearchAction}
         />
         <ul role='listbox'>{options(optionLinks)}</ul>
       </>

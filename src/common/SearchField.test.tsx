@@ -6,7 +6,7 @@ import SearchTermResponse from "../models/SearchTermResponse"
 describe('SearchField', () => {
 
   it('renders a text field', () => {
-    const { getByRole } = render(<SearchField searchAction={jest.fn()}/>)
+    const { getByRole } = render(<SearchField searchAction={jest.fn()} loadAction={jest.fn()}/>)
     const textbox = getByRole('textbox') as HTMLInputElement
     expect(textbox.placeholder).toEqual('Enter search text')
     expect(textbox).toHaveAttribute('id', 'searchField')
@@ -14,7 +14,7 @@ describe('SearchField', () => {
 
   it('fires action when there are 3 letters in search text', async () => {
     const searchAction = jest.fn((_: string) => Promise.resolve(new SearchTermResponse({})))
-    const { getByRole } = render(<SearchField searchAction={searchAction}/>)
+    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()}/>)
     const textbox = getByRole('textbox')
 
     userEvent.type(textbox, 'ab')
@@ -52,7 +52,7 @@ describe('SearchField', () => {
     const searchAction = jest.fn()
     searchAction.mockResolvedValue(Promise.resolve(response))
 
-    const { getByRole } = render(<SearchField searchAction={searchAction}/>)
+    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()}/>)
     const textbox = getByRole('textbox')
 
     await act(() => userEvent.type(textbox, searchTerm))
@@ -62,5 +62,38 @@ describe('SearchField', () => {
     expect(options.length).toEqual(2)
     expect(options[0].textContent).toEqual('Disco Godfather')
     expect(options[1].textContent).toEqual('Star Trek VI: The Undiscovered Country')
+  })
+
+  it('clicking an option sends item id to load action', async () => {
+    const searchTerm = 'sheen'
+    const response = new SearchTermResponse({
+      data: {
+        data: [
+          {
+            id: 1797,
+            primary: 'Sheena: Queen of the Jungle',
+            secondary: ['1984'],
+            tertiary: []
+          }
+        ],
+        searchMetadata: {
+          searchTerm: searchTerm,
+          resultCount: 1
+        }
+      }
+    })
+    const searchAction = jest.fn()
+    searchAction.mockResolvedValue(Promise.resolve(response))
+    const loadAction = jest.fn()
+
+    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={loadAction}/>)
+    const textbox = getByRole('textbox')
+
+    await act(() => userEvent.type(textbox, searchTerm))
+
+    const list = getByRole('listbox')
+    const options = list.getElementsByTagName('li')
+    act(() => userEvent.click(options[0]))
+    expect(loadAction).toHaveBeenCalledWith(1797)
   })
 })
