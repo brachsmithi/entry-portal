@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from "react"
+import './SearchField.css'
 import SearchTermResponse from "../models/SearchTermResponse"
 import { ListingData } from "../models/ListingData"
 
@@ -14,7 +15,7 @@ interface OptionLinkData {
 
 const emptyOptionLinks: Array<OptionLinkData> = []
 
-export function SearchField(props: SearchFieldProps): JSX.Element {
+export default function SearchField(props: SearchFieldProps): JSX.Element {
   const [optionLinks, setOptionLinks] = useState(emptyOptionLinks)
   const callLoadAction = (event: React.MouseEvent<HTMLLIElement>) => {
     props.loadAction(event.currentTarget.value)
@@ -43,10 +44,13 @@ export function SearchField(props: SearchFieldProps): JSX.Element {
         <input
             id='searchField'
             type='text'
+            className='search-field'
             placeholder='Enter search text'
             onChange={callSearchAction}
         />
-        <ul role='listbox'>{options(optionLinks)}</ul>
+        { optionLinks.length > 0 &&
+          <ul className='search-options' role='listbox'>{options(optionLinks)}</ul>
+        }
       </>
   )
 }

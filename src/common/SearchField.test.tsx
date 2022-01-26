@@ -1,5 +1,5 @@
 import { act, render } from "@testing-library/react"
-import { SearchField } from "./SearchField"
+import SearchField from "./SearchField"
 import userEvent from "@testing-library/user-event"
 import SearchTermResponse from "../models/SearchTermResponse"
 
