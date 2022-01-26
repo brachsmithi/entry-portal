@@ -6,6 +6,7 @@ import { ListingData } from "../models/ListingData"
 interface SearchFieldProps {
   searchAction: (searchTerm: string) => Promise<SearchTermResponse>
   loadAction: (id: number) => void
+  setSearchTerm: (term: string) => void
 }
 
 interface OptionLinkData {
@@ -26,7 +27,7 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
       text: listing.primary
     }
   }
-  const callSearchAction = (event: ChangeEvent<HTMLInputElement>) => {
+  const onSearchTermChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value
     if (searchTerm.length >= 3) {
       props.searchAction(searchTerm)
@@ -35,6 +36,7 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
             setOptionLinks(options)
           })
     }
+    props.setSearchTerm(searchTerm)
   }
   const options = (linkData: Array<OptionLinkData>) => linkData.map((data) => {
     return <li key={data.id} value={data.id} onClick={callLoadAction}>{data.text}</li>
@@ -46,7 +48,7 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
             type='text'
             className='search-field'
             placeholder='Enter search text'
-            onChange={callSearchAction}
+            onChange={onSearchTermChange}
         />
         { optionLinks.length > 0 &&
           <ul className='search-options' role='listbox'>{options(optionLinks)}</ul>
