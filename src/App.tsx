@@ -9,6 +9,8 @@ import {
 } from "react-router-dom"
 import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen"
 import DetailProgramScreen from "./programs/DetailProgramScreen"
+import SearchDisplay from "./common/SearchDisplay";
+import ProgramSearchStrategy from "./programs/ProgramSearchStrategy";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function Programs() {
   let match = useRouteMatch()
   return (
     <Switch>
+      <Route path={`${match.path}/search`}>
+        <ProgramSearch/>
+      </Route>
       <Route path={`${match.path}/:programId`}>
         <ProgramDetail/>
       </Route>
@@ -43,6 +48,10 @@ function Programs() {
 
 function ProgramList() {
   return <PaginatedProgramsScreen/>
+}
+
+function ProgramSearch() {
+  return <SearchDisplay searchStrategy={ProgramSearchStrategy()}/>
 }
 
 function ProgramDetail() {
