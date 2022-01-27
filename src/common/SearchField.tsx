@@ -42,7 +42,7 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
     return <li key={data.id} value={data.id} onClick={callLoadAction}>{data.text}</li>
   })
   return (
-      <>
+      <div className='search-entry'>
         <input
             id='searchField'
             type='text'
@@ -53,6 +53,6 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
         { optionLinks.length > 0 &&
           <ul className='search-options' role='listbox'>{options(optionLinks)}</ul>
         }
-      </>
+      </div>
   )
 }

@@ -1,4 +1,5 @@
 import SearchField from "./SearchField"
+import "./SearchScreen.css"
 import SearchStrategy from "../models/SearchStrategy"
 import { useState } from "react"
 
@@ -14,15 +15,15 @@ export default function SearchScreen(props: SearchScreenProps): JSX.Element {
     })
   }
   return (
-      <>
+      <div className='search'>
         <SearchField
             searchAction={props.searchStrategy.searchAction}
             loadAction={props.searchStrategy.loadAction}
             setSearchTerm={setSearchTerm}
         />
-        <div>
+        <div className='search-button'>
           <button onClick={onClick}>Search</button>
         </div>
-      </>
+      </div>
   )
 }
