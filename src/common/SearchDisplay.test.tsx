@@ -1,10 +1,10 @@
 import { render, waitFor } from "@testing-library/react"
-import SearchScreen from "./SearchScreen"
+import SearchDisplay from "./SearchDisplay"
 import SearchStrategy from "../models/SearchStrategy"
 import SearchTermResponse from "../models/SearchTermResponse";
 import userEvent from "@testing-library/user-event";
 
-describe('SearchScreen', () => {
+describe('SearchDisplay', () => {
 
   it('contains a field and a button', async () => {
     const strategy: SearchStrategy = {
@@ -12,7 +12,7 @@ describe('SearchScreen', () => {
       loadAction: jest.fn(),
       setSearchResponse: jest.fn()
     }
-    const { getByRole } = render(<SearchScreen searchStrategy={strategy}/>)
+    const { getByRole } = render(<SearchDisplay searchStrategy={strategy}/>)
 
     expect(getByRole('textbox')).toBeInTheDocument()
     expect(getByRole('button')).toBeInTheDocument()
@@ -55,7 +55,7 @@ describe('SearchScreen', () => {
       loadAction: jest.fn(),
       setSearchResponse: setResponseFunction
     }
-    const { getByRole } = render(<SearchScreen searchStrategy={strategy}/>)
+    const { getByRole } = render(<SearchDisplay searchStrategy={strategy}/>)
     await waitFor(() => {
       const input = getByRole('textbox')
       userEvent.type(input, 'mu')

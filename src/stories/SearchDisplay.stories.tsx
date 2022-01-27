@@ -1,17 +1,17 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import SearchScreen from "../common/SearchScreen"
+import SearchDisplay from "../common/SearchDisplay"
 import SearchTermResponse from "../models/SearchTermResponse"
 
 export default {
-  title: 'SearchScreen',
-  component: SearchScreen
-} as ComponentMeta<typeof SearchScreen>
+  title: 'SearchDisplay',
+  component: SearchDisplay
+} as ComponentMeta<typeof SearchDisplay>
 
-const Template: ComponentStory<typeof SearchScreen> = (args) => <SearchScreen {...args} />
+const Template: ComponentStory<typeof SearchDisplay> = (args) => <SearchDisplay {...args} />
 
-export const ProgramSearch = Template.bind({})
-ProgramSearch.args = {
+export const Default = Template.bind({})
+Default.args = {
   searchStrategy: {
     setSearchResponse: (_) => {},
     searchAction: (term: string) => {

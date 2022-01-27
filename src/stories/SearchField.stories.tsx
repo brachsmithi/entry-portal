@@ -10,8 +10,8 @@ export default {
 
 const Template: ComponentStory<typeof SearchField> = (args) => <SearchField {...args} />
 
-export const FieldOnly = Template.bind({})
-FieldOnly.args = {
+export const Default = Template.bind({})
+Default.args = {
   loadAction: (_: number) => {},
   searchAction: (term: string) => {
     return Promise.resolve(new SearchTermResponse({
@@ -42,5 +42,6 @@ FieldOnly.args = {
         }
       }
     }))
-  }
+  },
+  setSearchTerm: (_: string) => {}
 }
