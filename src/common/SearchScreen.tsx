@@ -1,6 +1,6 @@
 import SearchField from "./SearchField"
 import SearchStrategy from "../models/SearchStrategy"
-import { useState } from "react";
+import { useState } from "react"
 
 interface SearchScreenProps {
   searchStrategy: SearchStrategy
@@ -8,6 +8,11 @@ interface SearchScreenProps {
 
 export default function SearchScreen(props: SearchScreenProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('')
+  const onClick = () => {
+    props.searchStrategy.searchAction(searchTerm).then(value => {
+      props.searchStrategy.setSearchResponse(value)
+    })
+  }
   return (
       <>
         <SearchField
@@ -16,7 +21,7 @@ export default function SearchScreen(props: SearchScreenProps): JSX.Element {
             setSearchTerm={setSearchTerm}
         />
         <div>
-          <button>Search</button>
+          <button onClick={onClick}>Search</button>
         </div>
       </>
   )

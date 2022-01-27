@@ -29,6 +29,7 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
   }
   const onSearchTermChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value
+    props.setSearchTerm(searchTerm)
     if (searchTerm.length >= 3) {
       props.searchAction(searchTerm)
           .then(result => {
@@ -36,7 +37,6 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
             setOptionLinks(options)
           })
     }
-    props.setSearchTerm(searchTerm)
   }
   const options = (linkData: Array<OptionLinkData>) => linkData.map((data) => {
     return <li key={data.id} value={data.id} onClick={callLoadAction}>{data.text}</li>
