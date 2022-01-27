@@ -5,7 +5,7 @@
     margin: 0;
     padding-left: .15rem;
     padding-right: .15rem;
-    width: 10rem;
+    width: 20rem;
 }
 
 .search-options li {
@@ -20,5 +20,5 @@
 }
 
 .search-field {
-    width: 10rem;
+    width: 20rem;
 }

@@ -1,5 +1,7 @@
 .search {
     display: flex;
+    padding-top: 2rem;
+    padding-left: 1rem;
 }
 
 .search-entry {
