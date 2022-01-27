@@ -1,12 +1,15 @@
 import SearchStrategy from "../models/SearchStrategy"
-import SearchTermResponse from "../models/SearchTermResponse"
+import { loadProgramSearchResults } from "../services/ProgramSearchService"
 
 export default function ProgramSearchStrategy(): SearchStrategy {
+  const path = '/programs'
   return {
-    searchAction: (_: string) => {
-      return Promise.resolve(new SearchTermResponse({}))
+    searchAction: (searchTerm: string) => {
+      return loadProgramSearchResults(searchTerm)
     },
-    loadAction: (_: number) => {},
-    rootPath: '/'
+    loadAction: (id: number) => {
+      window.location.href = `${path}/${id}`
+    },
+    rootPath: path
   }
 }
