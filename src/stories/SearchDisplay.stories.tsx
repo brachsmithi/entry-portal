@@ -10,10 +10,10 @@ export default {
 
 const Template: ComponentStory<typeof SearchDisplay> = (args) => <SearchDisplay {...args} />
 
-export const Default = Template.bind({})
-Default.args = {
+export const ProgramSearch = Template.bind({})
+ProgramSearch.args = {
   searchStrategy: {
-    setSearchResponse: (_) => {},
+    rootPath: '/programs',
     searchAction: (term: string) => {
       return Promise.resolve(new SearchTermResponse({
         data: {

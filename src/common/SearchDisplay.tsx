@@ -9,11 +9,6 @@ interface SearchDisplayProps {
 
 export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('')
-  const onClick = () => {
-    props.searchStrategy.searchAction(searchTerm).then(value => {
-      props.searchStrategy.setSearchResponse(value)
-    })
-  }
   return (
       <div className='search'>
         <SearchField
@@ -22,7 +17,7 @@ export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {
             setSearchTerm={setSearchTerm}
         />
         <div className='search-button'>
-          <button onClick={onClick}>Search</button>
+          <a href={props.searchStrategy.rootPath.concat('?search=', searchTerm)}>Search</a>
         </div>
       </div>
   )
