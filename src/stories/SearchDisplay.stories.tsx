@@ -40,6 +40,12 @@ ProgramSearch.args = {
           searchMetadata: {
             searchTerm: term,
             resultCount: 3
+          },
+          paginationMetadata: {
+            currentPage: 1,
+            previousPage: 1,
+            nextPage: 1,
+            totalPages: 1
           }
         }
       }))
