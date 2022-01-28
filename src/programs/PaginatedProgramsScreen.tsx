@@ -4,7 +4,11 @@ import loadProgramListings from "../services/ProgramSearchService"
 import { emptyPaginatedData } from "../models/PaginatedData"
 import { ListingDisplay } from "../common/ListingDisplay"
 
-export function PaginatedProgramsScreen(): JSX.Element {
+interface PaginatedProgramsScreenProps {
+  searchTerm?: string
+}
+
+export function PaginatedProgramsScreen(props: PaginatedProgramsScreenProps): JSX.Element {
   const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
   const loadPage = (page: number) => {
     loadProgramListings(page)
