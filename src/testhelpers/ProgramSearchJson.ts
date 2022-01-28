@@ -97,12 +97,21 @@ export function returnProgramListingJson(currentPage: number = 1): string {
     `
 }
 
-export function returnSearchListingJson(): string {
+export function returnSearchListingJson(searchTerm: string, currentPage: number, nextPage: number, previousPage: number): string {
   return `
   {
     "search_metadata": {
-        "search_term": "foo",
-        "program_count": 3
+        "search_term": "${searchTerm}",
+        "current_programs": 3
+    },
+    "pagination_metadata": {
+        "total_programs": 3557,
+        "current_programs": 3,
+        "total_pages": 238,
+        "programs_per_page": 3,
+        "current_page": ${currentPage},
+        "previous_page": ${previousPage},
+        "next_page": ${nextPage}
     },
     "programs": [
         {

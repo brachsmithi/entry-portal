@@ -102,8 +102,9 @@ export async function loadProgramDetails(id: number): Promise<ProgramResponse> {
   )
 }
 
-export async function loadProgramSearchResults(searchTerm: string): Promise<SearchTermResponse> {
+export async function loadProgramSearchResults(searchTerm: string, page?: number): Promise<SearchTermResponse> {
   let url = `http://localhost:3000/programs.json?search=${searchTerm}`
+  if (page) url += `&page=${page}`
   const response = await fetch(url)
       .then(response => response.json())
 
@@ -134,8 +135,14 @@ export async function loadProgramSearchResults(searchTerm: string): Promise<Sear
     data: {
       data: searchListings(response.programs),
       searchMetadata: {
-        resultCount: response.search_metadata.program_count,
+        resultCount: response.search_metadata.current_programs,
         searchTerm: searchTerm
+      },
+      paginationMetadata: {
+        currentPage: response.pagination_metadata.current_page,
+        nextPage: response.pagination_metadata.next_page,
+        previousPage: response.pagination_metadata.previous_page,
+        totalPages: response.pagination_metadata.total_pages
       }
     }
   })

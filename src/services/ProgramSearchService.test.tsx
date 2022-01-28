@@ -109,7 +109,7 @@ describe('ProgramSearchService', () => {
 
   describe('loadProgramSearchResults', () => {
 
-    function expected(searchTerm: string): SearchData {
+    function expected(searchTerm: string, currentPage: number, nextPage: number, previousPage: number): SearchData {
       return {
         data: [
           searchListing1,
@@ -119,6 +119,12 @@ describe('ProgramSearchService', () => {
         searchMetadata: {
           searchTerm: searchTerm,
           resultCount: 3
+        },
+        paginationMetadata: {
+          currentPage: currentPage,
+          totalPages: 238,
+          nextPage: nextPage,
+          previousPage: previousPage
         }
       }
     }
@@ -128,15 +134,32 @@ describe('ProgramSearchService', () => {
       fetch.resetMocks()
     })
 
-    it('loads program data for search query from local service', async () => {
+    it('defaults to loading first page of program data for search query from local service', async () => {
       const searchTerm = 'foo'
+      const currentPage = 1
+      const nextPage = 2
+      const previousPage = 1
       // @ts-ignore
-      fetch.mockResponseOnce(returnSearchListingJson(searchTerm))
+      fetch.mockResponseOnce(returnSearchListingJson(searchTerm, currentPage, nextPage, previousPage))
 
       const response = await loadProgramSearchResults(searchTerm)
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs.json?search=${searchTerm}`)
-      expect(response.data).toEqual(expected(searchTerm))
+      expect(response.data).toEqual(expected(searchTerm, currentPage, nextPage, previousPage))
+    })
+
+    it('loads requested page of paginated program data for search query from local service', async () => {
+      const searchTerm = 'bar'
+      const currentPage = 143
+      const nextPage = 144
+      const previousPage = 142
+      // @ts-ignore
+      fetch.mockResponseOnce(returnSearchListingJson(searchTerm, currentPage, nextPage, previousPage))
+
+      const response = await loadProgramSearchResults(searchTerm, currentPage)
+
+      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs.json?search=${searchTerm}&page=${currentPage}`)
+      expect(response.data).toEqual(expected(searchTerm, currentPage, nextPage, previousPage))
     })
 
   })
