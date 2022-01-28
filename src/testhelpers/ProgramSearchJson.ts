@@ -1,6 +1,7 @@
 import { ListingData } from "../models/ListingData";
 
 export const totalProgramPages = 346
+export const totalSearchPages = 238
 
 export const programListing1: ListingData = {
   id: 1,
@@ -33,14 +34,12 @@ export const searchListing1: ListingData = {
   secondary: ['1986'],
   tertiary: []
 }
-
 export const searchListing2: ListingData = {
   id: 684,
   primary: 'The Food of the Gods',
   secondary: ['1976'],
   tertiary: ['Food of the Gods']
 }
-
 export const searchListing3: ListingData = {
   id: 2074,
   primary: 'Yeti: Giant of the 20th Century',
@@ -107,7 +106,7 @@ export function returnSearchListingJson(searchTerm: string, currentPage: number,
     "pagination_metadata": {
         "total_programs": 3557,
         "current_programs": 3,
-        "total_pages": 238,
+        "total_pages": ${totalSearchPages},
         "programs_per_page": 3,
         "current_page": ${currentPage},
         "previous_page": ${previousPage},

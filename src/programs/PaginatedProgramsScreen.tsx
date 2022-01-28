@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PaginatedNav } from "../common/PaginatedNav"
-import loadProgramListings from "../services/ProgramSearchService"
+import loadProgramListings, { loadProgramSearchResults } from "../services/ProgramSearchService"
 import { emptyPaginatedData } from "../models/PaginatedData"
 import { ListingDisplay } from "../common/ListingDisplay"
 
@@ -10,9 +10,20 @@ interface PaginatedProgramsScreenProps {
 
 export function PaginatedProgramsScreen(props: PaginatedProgramsScreenProps): JSX.Element {
   const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
-  const loadPage = (page: number) => {
+  const loadUnfilteredResults = (page: number) => {
     loadProgramListings(page)
         .then(result => setPaginatedData(result.paginatedData ?? emptyPaginatedData))
+  }
+  const loadSearchResults = (searchTerm: string, page: number) => {
+    loadProgramSearchResults(searchTerm, page)
+        .then(result => setPaginatedData(result.data ?? emptyPaginatedData))
+  }
+  const loadPage = (page: number) => {
+    if (props.searchTerm) {
+      loadSearchResults(props.searchTerm, page)
+    } else {
+      loadUnfilteredResults(page)
+    }
   }
   const loadNextPage = () => {
     loadPage(paginatedData.paginationMetadata.nextPage)
