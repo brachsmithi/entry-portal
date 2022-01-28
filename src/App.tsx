@@ -5,7 +5,8 @@ import {
     Route,
     Switch,
     useParams,
-    useRouteMatch
+    useRouteMatch,
+    useLocation
 } from "react-router-dom"
 import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen"
 import DetailProgramScreen from "./programs/DetailProgramScreen"
@@ -58,7 +59,8 @@ function Programs() {
 }
 
 function ProgramList() {
-  return <PaginatedProgramsScreen/>
+  const searchTerm = useQuery().get('search') ?? undefined
+  return <PaginatedProgramsScreen searchTerm={searchTerm}/>
 }
 
 function ProgramSearch() {
@@ -70,4 +72,10 @@ function ProgramDetail() {
   const { programId } = useParams()
 
   return <DetailProgramScreen programId={programId}/>
+}
+
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
 }
