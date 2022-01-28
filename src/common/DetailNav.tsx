@@ -1,19 +1,20 @@
 import React from "react"
 import './DetailNav.css'
+import { useHistory } from "react-router-dom"
 
-interface DetailNavProps {
-  backPath: string
-}
-
-export default function DetailNav(props: DetailNavProps) {
+export default function DetailNav() {
+  const history = useHistory()
+  const goBack = () => {
+    history.goBack()
+  }
   return (
       <div className='detailNav'>
-        <a
+        <button
             className='navButton'
-            href={props.backPath}
+            onClick={goBack}
         >
           Back
-        </a>
+        </button>
       </div>
   )
 }

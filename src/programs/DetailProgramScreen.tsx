@@ -17,7 +17,7 @@ export default function DetailProgramScreen(props: DetailProgramScreenProps) {
   }, [props.programId, setProgram])
   return (
       <>
-        <DetailNav backPath='/programs'/>
+        <DetailNav />
         <ProgramDisplay program={program}/>
       </>
   )

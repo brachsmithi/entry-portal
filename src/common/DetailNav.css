@@ -7,7 +7,7 @@
     padding-bottom: .5rem;
 }
 
-.detailNav a {
+.detailNav button {
     background-color: black;
     border: none;
     color: white;

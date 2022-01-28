@@ -7,9 +7,6 @@ export default {
   component: DetailNav
 } as ComponentMeta<typeof DetailNav>
 
-const Template: ComponentStory<typeof DetailNav> = (args) => <DetailNav {...args} />
+const Template: ComponentStory<typeof DetailNav> = (args) => <DetailNav />
 
 export const Default = Template.bind({})
-Default.args = {
-  backPath: ""
-}
