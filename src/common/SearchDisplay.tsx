@@ -19,6 +19,9 @@ export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {
         <div className='search-button'>
           <a href={props.searchStrategy.rootPath.concat('?search=', searchTerm)}>Search</a>
         </div>
+        <div className='clear-button'>
+          <a href={props.searchStrategy.rootPath}>Clear</a>
+        </div>
       </div>
   )
 }

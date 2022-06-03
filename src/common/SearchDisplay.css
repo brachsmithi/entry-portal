@@ -23,4 +23,21 @@
     font-size: small;
     font-weight: bold;
     border-radius: 8rem;
+    text-decoration: none;
  }
+
+.clear-button {
+    margin-left: .5rem;
+}
+
+.clear-button a {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    color: black;
+    border: .15rem solid;
+    padding: .5rem 1rem;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8rem;
+    text-decoration: none;
+}
