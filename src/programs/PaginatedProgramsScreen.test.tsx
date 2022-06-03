@@ -4,9 +4,11 @@ import { PaginatedProgramsScreen } from "./PaginatedProgramsScreen"
 import {
   programListing1,
   programListing2,
-  programListing3, programListing4,
-  returnProgramListingJson, returnSearchListingJson, searchListing1, searchListing2, searchListing3,
-  totalProgramPages, totalSearchPages
+  programListing3,
+  programListing4,
+  totalProgramPages,
+  returnProgramListingJson,
+  returnSearchListingJson
 } from "../testhelpers/ProgramSearchJson"
 import { ListingData } from "../models/ListingData"
 
@@ -21,7 +23,7 @@ describe('PaginatedProgramsScreen', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson())
 
-    render(<PaginatedProgramsScreen />)
+    await render(<PaginatedProgramsScreen />)
 
     await verifyLink(programListing1)
     await verifyLink(programListing2)
@@ -29,42 +31,36 @@ describe('PaginatedProgramsScreen', () => {
     await verifyLink(programListing4)
   })
 
-  describe('with no search term', () => {
+  it('contains search and nav', async () => {
+    // @ts-ignore
+    fetch.mockResponseOnce(returnProgramListingJson())
 
-    it('opens on 1st page of loaded programs', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(returnProgramListingJson())
+    await render(<PaginatedProgramsScreen />)
 
-      render(<PaginatedProgramsScreen />)
-
-      expect(await screen.findByText(`Page 1 of ${ totalProgramPages }`)).toBeInTheDocument()
-      expect(await screen.findByText(programListing1.primary)).toBeInTheDocument()
-      expect(await screen.findByText(programListing2.primary)).toBeInTheDocument()
-      expect(await screen.findByText(programListing3.primary)).toBeInTheDocument()
-      expect(await screen.findByText(programListing4.primary)).toBeInTheDocument()
-    })
-
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(await screen.findByText(`Page 1 of ${ totalProgramPages }`)).toBeInTheDocument()
   })
 
-  describe('with search term', () => {
+  it('with no search term asks for everything',  async () => {
+    // @ts-ignore
+    fetch.mockResponseOnce(returnProgramListingJson())
 
-    it('opens on 1st page of loaded programs', async () => {
-      const searchTerm = "bloop"
-      const currentPage = 1
-      const nextPage = 2
-      const previousPage = 1
-      // @ts-ignore
-      fetch.mockResponseOnce(returnSearchListingJson(searchTerm, currentPage, nextPage, previousPage))
+    await render(<PaginatedProgramsScreen/>)
 
-      render(<PaginatedProgramsScreen searchTerm={searchTerm} />)
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining(''))
+  })
 
-      expect(fetch).toHaveBeenCalledWith(expect.stringContaining('search=bloop'))
-      expect(await screen.findByText(`Page 1 of ${ totalSearchPages }`)).toBeInTheDocument()
-      expect(await screen.findByText(searchListing1.primary)).toBeInTheDocument()
-      expect(await screen.findByText(searchListing2.primary)).toBeInTheDocument()
-      expect(await screen.findByText(searchListing3.primary)).toBeInTheDocument()
-    })
+  it('fetches based on search term', async () => {
+    const searchTerm = "bloop"
+    const currentPage = 1
+    const nextPage = 2
+    const previousPage = 1
+    // @ts-ignore
+    fetch.mockResponseOnce(returnSearchListingJson(searchTerm, currentPage, nextPage, previousPage))
 
+    await render(<PaginatedProgramsScreen searchTerm={searchTerm} />)
+
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining('search=bloop'))
   })
 
   async function verifyLink(listing: ListingData) {
