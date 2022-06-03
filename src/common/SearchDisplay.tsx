@@ -3,7 +3,7 @@ import "./SearchDisplay.css"
 import SearchStrategy from "../models/SearchStrategy"
 import { useState } from "react"
 
-interface SearchDisplayProps {
+export interface SearchDisplayProps {
   searchStrategy: SearchStrategy
 }
 

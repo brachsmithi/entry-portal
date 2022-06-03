@@ -1,7 +1,9 @@
 import React from 'react'
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { PaginatedNav } from "../common/PaginatedNav"
-import { defaultPaginationMetadata } from "../models/PaginationMetadata"
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { PaginatedNav } from '../common/PaginatedNav'
+import { defaultPaginationMetadata } from '../models/PaginationMetadata'
+import SearchTermResponse from '../models/SearchTermResponse'
+import { defaultSearchMetadata } from '../models/SearchMetadata'
 
 export default {
   title: 'PaginatedNav',
@@ -48,4 +50,28 @@ LastOfMany.args = {
   },
   previousAction: () => {},
   nextAction: () => {}
+}
+
+export const WithSearch = Template.bind({})
+WithSearch.args = {
+  metadata: {
+    ...defaultPaginationMetadata,
+    currentPage: 26,
+    totalPages: 50
+  },
+  previousAction: () => {},
+  nextAction: () => {},
+  searchDisplayProps: {
+    searchStrategy: {
+      rootPath: '/demo',
+      searchAction: (_: string) => new Promise(() => new SearchTermResponse({
+        data: {
+          data: [],
+          searchMetadata: defaultSearchMetadata,
+          paginationMetadata: defaultPaginationMetadata
+        },
+      })),
+      loadAction: (_: number) => {}
+    }
+  }
 }

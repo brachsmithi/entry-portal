@@ -1,8 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { PaginatedNav } from './PaginatedNav'
-import { defaultPaginationMetadata } from "../models/PaginationMetadata"
-import userEvent from "@testing-library/user-event"
+import { defaultPaginationMetadata } from '../models/PaginationMetadata'
+import userEvent from '@testing-library/user-event'
+import { SearchDisplayProps } from './SearchDisplay'
+import SearchTermResponse from "../models/SearchTermResponse";
+import { act } from "react-dom/test-utils";
 
 describe('PaginatedNav', () => {
 
@@ -67,6 +70,31 @@ describe('PaginatedNav', () => {
 
     expect(nextFunction).not.toHaveBeenCalled()
     expect(previousFunction).toHaveBeenCalled()
+  })
+
+  it('includes search when search props are provided', async () => {
+    const searchAction = jest.fn()
+    searchAction.mockResolvedValue(new SearchTermResponse({}))
+    const loadAction = jest.fn()
+    const rootPath = '/root_path'
+    const searchTerm = 'atl'
+    const searchProperties: SearchDisplayProps = {
+      searchStrategy: {
+        searchAction: searchAction,
+
+        loadAction: loadAction,
+        rootPath: rootPath
+      }
+    }
+    render(<PaginatedNav
+        metadata={defaultPaginationMetadata}
+        searchDisplayProps={searchProperties}
+        nextAction={jest.fn()}
+        previousAction={jest.fn()}
+    />)
+    const textbox = screen.getByRole('textbox')
+    await act(() => userEvent.type(textbox, searchTerm))
+    expect(searchAction).toHaveBeenCalledWith(searchTerm)
   })
 
 })
