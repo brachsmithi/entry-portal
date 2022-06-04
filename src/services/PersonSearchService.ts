@@ -7,12 +7,20 @@ export async function loadPersonDetails(id: number): Promise<PersonResponse> {
       .then(response => response.json())
 
   const personProgramData = (program: any): PersonProgramData => {
+    const programSeries = (seriesArray: any[]) => {
+      return seriesArray.map((series) => {
+        return {
+          id: series.id,
+          name: series.name
+        }
+      })
+    }
     return {
       id: program.id,
       title: program.title,
       version: program.version,
       year: program.year,
-      series: program.series,
+      series: programSeries(program.series),
       alternateTitles: program.alternate_titles
     }
   }

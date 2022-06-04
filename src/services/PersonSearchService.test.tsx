@@ -1,4 +1,10 @@
-import { personData, personJson, personWithAliasesData, personWithAliasesJson } from '../testhelpers/PersonJson'
+import {
+  personData,
+  personJson,
+  personWithAliasesData,
+  personWithAliasesJson,
+  personWithProgramsInSeriesData, personWithProgramsInSeriesJson
+} from '../testhelpers/PersonJson'
 import { loadPersonDetails } from './PersonSearchService'
 
 describe('PersonSearchService', () => {
@@ -28,6 +34,16 @@ describe('PersonSearchService', () => {
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${personWithAliasesData.id}.json`)
       expect(response.personData).toEqual(personWithAliasesData)
+    })
+
+    it('loads program series for requested person', async () => {
+      // @ts-ignore
+      fetch.mockResponseOnce(personWithProgramsInSeriesJson)
+
+      const response = await loadPersonDetails(personWithProgramsInSeriesData.id)
+
+      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${personWithProgramsInSeriesData.id}.json`)
+      expect(response.personData).toEqual(personWithProgramsInSeriesData)
     })
 
   })

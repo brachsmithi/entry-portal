@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { PersonDisplay } from '../persons/PersonDisplay'
-import { personData, personWithAliasesData, personWithProgramsInSeries } from '../testhelpers/PersonJson'
+import { personData, personWithAliasesData, personWithProgramsInSeriesData } from '../testhelpers/PersonJson'
 
 export default {
   title: 'PersonDisplay',
@@ -21,5 +21,5 @@ WithAliases.args = {
 
 export const WithProgramsInSeries = Template.bind({})
 WithProgramsInSeries.args = {
-  person: personWithProgramsInSeries
+  person: personWithProgramsInSeriesData
 }

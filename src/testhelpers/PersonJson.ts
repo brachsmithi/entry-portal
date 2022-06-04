@@ -552,7 +552,7 @@ export const personWithAliasesJson: string = `
   }
 `
 
-export const personWithProgramsInSeries: PersonData = {
+export const personWithProgramsInSeriesData: PersonData = {
   id: 2190,
   name: 'John Glen',
   aliases: [],
@@ -563,8 +563,14 @@ export const personWithProgramsInSeries: PersonData = {
       year: '1987',
       version: "",
       series: [
-        'James Bond (Eon)',
-        'James Bond (Dalton)'
+        {
+          id: 58,
+          name: 'James Bond (Eon)'
+        },
+        {
+          id: 428,
+          name: 'James Bond (Dalton)'
+        }
       ],
       alternateTitles: [
         'James Bond 007: The Living Daylights',
@@ -578,8 +584,14 @@ export const personWithProgramsInSeries: PersonData = {
       year: '1989',
       version: '',
       series: [
-        'James Bond (Eon)',
-        'James Bond (Dalton)'
+        {
+          id: 58,
+          name: 'James Bond (Eon)'
+        },
+        {
+          id: 428,
+          name: 'James Bond (Dalton)'
+        }
       ],
       alternateTitles: [
         '007: Licence to Kill'

@@ -42,7 +42,10 @@ describe('PersonDisplay', () => {
           year: yearProgram1,
           version: versionProgram1,
           series: [
-            seriesProgram1
+            {
+              id: 1111,
+              name: seriesProgram1
+            }
           ],
           alternateTitles: [
             alternateTitleProgram1
@@ -54,8 +57,14 @@ describe('PersonDisplay', () => {
           year: yearProgram2,
           version: versionProgram2,
           series: [
-            series1Program2,
-            series2Program2
+            {
+              id: 2111,
+              name: series1Program2
+            },
+            {
+              id: 2222,
+              name: series2Program2
+            }
           ],
           alternateTitles: [
             alternateTitle1Program2,

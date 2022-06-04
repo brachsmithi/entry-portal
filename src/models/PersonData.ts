@@ -17,6 +17,11 @@ export interface PersonProgramData {
   title: string,
   year: string,
   version: string,
-  series: string[],
+  series: PersonProgramSeriesData[],
   alternateTitles: string[]
+}
+
+export interface PersonProgramSeriesData {
+  id: number,
+  name: string
 }

@@ -8,6 +8,9 @@ interface PersonDisplayProperties {
 
 export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
   const programsElements = (programArray: PersonProgramData[]) => {
+    const seriesElements = (seriesArray: any[]) => {
+      return seriesArray.map((series) => series.name).join('/')
+    }
     const programElement = (program: PersonProgramData, index: number) => {
       return (
           <div key={index} className='program'>
@@ -27,7 +30,7 @@ export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
                 {program.version}
               </div>
               <div className='series'>
-                {program.series.join('/')}
+                {seriesElements(program.series)}
              </div>
             </div>
           </div>
