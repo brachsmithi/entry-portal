@@ -46,6 +46,7 @@ export const programData2: ProgramData = {
   ],
   people: [
     {
+      id: 128,
       name: 'Mario Bava',
       aliases: [
         {
@@ -57,6 +58,7 @@ export const programData2: ProgramData = {
       ]
     },
     {
+      id: 402,
       name: 'Lamberto Bava',
       aliases: []
     }
@@ -78,6 +80,7 @@ export const programJson2: string = `
     ],
     "people": [
       {
+        "id": 128,
         "name": "Mario Bava",
         "aliases": [
           {
@@ -89,6 +92,7 @@ export const programJson2: string = `
         ]
       },
       {
+        "id": 402,
         "name": "Lamberto Bava",
         "aliases": []
       }
@@ -113,6 +117,7 @@ export const programData3: ProgramData = {
   ],
   people: [
     {
+      id: 660,
       name: 'Lewis Gilbert',
       aliases: []
     }
@@ -137,6 +142,7 @@ export const programJson3: string = `
     ],
     "people": [
       {
+        "id": 660,
         "name":"Lewis Gilbert",
         "aliases": []
       }

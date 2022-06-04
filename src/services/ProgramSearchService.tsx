@@ -85,6 +85,7 @@ export async function loadProgramDetails(id: number): Promise<ProgramResponse> {
 
   function programPerson(person: any): Person {
     return {
+      id: person.id,
       name: person.name,
       aliases: personAliases(person.aliases)
     };
