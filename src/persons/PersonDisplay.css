@@ -29,6 +29,11 @@
     font-weight: bold;
 }
 
+.person-display .programs .program .main .title a {
+    text-decoration: none;
+    color: black;
+}
+
 .person-display .programs .program .main .year {
     font-style: italic;
     margin-left: .5rem;
