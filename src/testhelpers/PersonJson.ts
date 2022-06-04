@@ -1,6 +1,6 @@
 import PersonData from '../models/PersonData'
 
-export const personData1: PersonData = {
+export const personData: PersonData = {
   id: 30,
   name: 'Ib Melchior',
   aliases: [],
@@ -32,7 +32,7 @@ export const personData1: PersonData = {
   ]
 }
 
-export const personJson1: string = `
+export const personJson: string = `
   {
     "id": 30,
     "name": "Ib Melchior",
@@ -66,7 +66,7 @@ export const personJson1: string = `
   }
 `
 
-export const personData2: PersonData = {
+export const personWithAliasesData: PersonData = {
   id: 128,
   name: 'Mario Bava',
   aliases: [
@@ -308,7 +308,7 @@ export const personData2: PersonData = {
   ]
 }
 
-export const personJson2: string = `
+export const personWithAliasesJson: string = `
   {
     "id": 128,
     "name": "Mario Bava",
@@ -546,6 +546,100 @@ export const personJson2: string = `
           "Honeymoon",
           "Blood Brides",
           "Red Wedding Night"
+        ]
+      }
+    ]
+  }
+`
+
+export const personWithProgramsInSeries: PersonData = {
+  id: 2190,
+  name: 'John Glen',
+  aliases: [],
+  programs: [
+    {
+      id: 4482,
+      title: 'The Living Daylights',
+      year: '1987',
+      version: "",
+      series: [
+        'James Bond (Eon)',
+        'James Bond (Dalton)'
+      ],
+      alternateTitles: [
+        'James Bond 007: The Living Daylights',
+        'Bond 15',
+        'The Skin of a Corpse'
+      ]
+    },
+    {
+      id: 4483,
+      title: 'Licence to Kill',
+      year: '1989',
+      version: '',
+      series: [
+        'James Bond (Eon)',
+        'James Bond (Dalton)'
+      ],
+      alternateTitles: [
+        '007: Licence to Kill'
+      ]
+    }
+  ]
+}
+
+export const personWithProgramsInSeriesJson: string = `
+  {
+    "id": 2190,
+    "name": "John Glen",
+    "aliases": [],
+    "programs": [
+      {
+        "id": 4482,
+        "title": "The Living Daylights",
+        "year": "1987",
+        "version": "",
+        "series": [
+          {
+            "id": 58,
+            "name": "James Bond (Eon)",
+            "created_at":"2020-08-28T23:42:07.623Z",
+            "updated_at":"2020-08-28T23:42:07.623Z"
+          },
+          {
+            "id": 428,
+            "name": "James Bond (Dalton)",
+            "created_at": "2021-07-16T22:40:35.625Z",
+            "updated_at":"2021-07-16T22:40:35.625Z"
+          }
+        ],
+        "alternate_titles": [
+          "James Bond 007: The Living Daylights",
+          "Bond 15",
+          "The Skin of a Corpse"
+        ]
+      },
+      {
+        "id": 4483,
+        "title": "Licence to Kill",
+        "year": "1989",
+        "version": "",
+        "series": [
+          {
+            "id": 58,
+            "name": "James Bond (Eon)",
+            "created_at": "2020-08-28T23:42:07.623Z",
+            "updated_at":"2020-08-28T23:42:07.623Z"
+          },
+          {
+            "id": 428,
+            "name": "James Bond (Dalton)",
+            "created_at":"2021-07-16T22:40:35.625Z",
+            "updated_at":"2021-07-16T22:40:35.625Z"
+          }
+        ],
+        "alternate_titles": [
+          "007: Licence to Kill"
         ]
       }
     ]

@@ -1,0 +1,50 @@
+.person-display {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.person-display .header {
+    font-size: x-large;
+}
+
+.person-display .header .name {
+    font-weight: bold;
+}
+
+.person-display .aliases {
+    font-style: italic;
+    font-size: larger;
+}
+
+.person-display .programs {
+    margin-top: 1rem;
+}
+
+.person-display .programs .program {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.person-display .programs .program .main .title {
+    font-weight: bold;
+}
+
+.person-display .programs .program .main .year {
+    font-style: italic;
+    margin-left: .5rem;
+}
+
+.person-display .programs .program .auxiliary {
+    font-size: small;
+}
+
+.person-display .programs .program .auxiliary .alternate-titles {
+    font-style: italic;
+}
+
+.person-display .programs .program .auxiliary .version {
+}
+
+.person-display .programs .program .auxiliary .series {
+    font-weight: bold;
+}

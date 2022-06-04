@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { ProgramDisplay } from "./ProgramDisplay";
-import ProgramData from "../models/ProgramData";
+import { ProgramDisplay } from './ProgramDisplay'
+import ProgramData from '../models/ProgramData'
 
 describe('ProgramDisplay', () => {
 
@@ -14,6 +14,7 @@ describe('ProgramDisplay', () => {
       lengthInMinutes: 87,
       people: [
         {
+          id: 111,
           name: 'Director One',
           aliases: [
             {
@@ -25,6 +26,7 @@ describe('ProgramDisplay', () => {
           ]
         },
         {
+          id: 222,
           name: 'Director Two',
           aliases: [
             {

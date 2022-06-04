@@ -1,11 +1,11 @@
 import PersonData, { emptyPersonData } from './PersonData'
-import { personData2 } from '../testhelpers/PersonJson'
+import { personWithAliasesData } from '../testhelpers/PersonJson'
 import PersonResponse from './PersonResponse'
 
 describe('PersonResponse', () => {
 
   it ('holds person data', () => {
-    const person: PersonData = personData2
+    const person: PersonData = personWithAliasesData
     const response = new PersonResponse({data: person})
     expect(response.isError()).toBeFalsy()
     expect(response?.personData).toEqual(person)
