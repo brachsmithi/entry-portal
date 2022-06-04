@@ -13,7 +13,7 @@ export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
           <div key={index} className='program'>
             <div className='main'>
               <span className='title'>
-                {program.title}
+                <a href={`/programs/${program.id}`}>{program.title}</a>
               </span>
               <span className='year'>
                 {program.year}
