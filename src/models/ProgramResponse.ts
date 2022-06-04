@@ -1,4 +1,4 @@
-import ProgramData, { emptyProgramData } from "./ProgramData";
+import ProgramData, { emptyProgramData } from './ProgramData'
 
 export default class ProgramResponse {
   programData: ProgramData
