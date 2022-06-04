@@ -7,11 +7,12 @@ import {
     useParams,
     useRouteMatch,
     useLocation
-} from "react-router-dom"
-import { PaginatedProgramsScreen } from "./programs/PaginatedProgramsScreen"
-import DetailProgramScreen from "./programs/DetailProgramScreen"
-import SearchDisplay from "./common/SearchDisplay"
-import ProgramSearchStrategy from "./programs/ProgramSearchStrategy"
+} from 'react-router-dom'
+import { PaginatedProgramsScreen } from './programs/PaginatedProgramsScreen'
+import DetailProgramScreen from './programs/DetailProgramScreen'
+import SearchDisplay from './common/SearchDisplay'
+import ProgramSearchStrategy from './programs/ProgramSearchStrategy'
+import DetailPersonScreen from './persons/DetailPersonScreen'
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         <Switch>
           <Route path='/programs'>
             <Programs/>
+          </Route>
+          <Route path='/persons'>
+            <Persons/>
           </Route>
           <Route path='/search'>
             <Search/>
@@ -72,6 +76,27 @@ function ProgramDetail() {
   const { programId } = useParams()
 
   return <DetailProgramScreen programId={programId}/>
+}
+
+function Persons() {
+  let match = useRouteMatch()
+  return (
+      <Switch>
+        <Route path={`${match.path}/:personId`}>
+          <PersonDetail/>
+        </Route>
+        <Route path={match.path}>
+          <ProgramList/>
+        </Route>
+      </Switch>
+  )
+}
+
+function PersonDetail() {
+  // @ts-ignore
+  const { personId } = useParams()
+
+  return <DetailPersonScreen personId={personId}/>
 }
 
 function useQuery() {

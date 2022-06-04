@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import App from '../App'
-import { returnProgramListingJson, returnSearchListingJson } from "../testhelpers/ProgramSearchJson"
-import userEvent from "@testing-library/user-event"
-import { programData2, programJson2 } from "../testhelpers/ProgramJson"
+import { returnProgramListingJson, returnSearchListingJson } from '../testhelpers/ProgramSearchJson'
+import userEvent from '@testing-library/user-event'
+import { programData2, programJson2 } from '../testhelpers/ProgramJson'
 
 describe('Program Integration', () => {
 
