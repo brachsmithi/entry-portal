@@ -2,14 +2,13 @@ import PersonData from '../models/PersonData'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { PersonDisplay } from './PersonDisplay'
+import { expectDetailLink } from '../testhelpers/ElementExpectations'
 
 describe('PersonDisplay', () => {
 
   it('shows details of fully filled person', () => {
     const expectProgramLink = (id: number, title: string) => {
-      const element = screen.queryByText(title)
-      expect(element).not.toBeNull()
-      expect(element?.getAttribute('href')).toEqual(`/programs/${id}`)
+      expectDetailLink(id, title, '/programs')
     }
     const name = 'Percy McGee'
     const alias1 = 'Percival McGee'
