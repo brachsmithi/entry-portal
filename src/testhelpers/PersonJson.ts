@@ -614,15 +614,11 @@ export const personWithProgramsInSeriesJson: string = `
         "series": [
           {
             "id": 58,
-            "name": "James Bond (Eon)",
-            "created_at":"2020-08-28T23:42:07.623Z",
-            "updated_at":"2020-08-28T23:42:07.623Z"
+            "name": "James Bond (Eon)"
           },
           {
             "id": 428,
-            "name": "James Bond (Dalton)",
-            "created_at": "2021-07-16T22:40:35.625Z",
-            "updated_at":"2021-07-16T22:40:35.625Z"
+            "name": "James Bond (Dalton)"
           }
         ],
         "alternate_titles": [
@@ -639,15 +635,11 @@ export const personWithProgramsInSeriesJson: string = `
         "series": [
           {
             "id": 58,
-            "name": "James Bond (Eon)",
-            "created_at": "2020-08-28T23:42:07.623Z",
-            "updated_at":"2020-08-28T23:42:07.623Z"
+            "name": "James Bond (Eon)"
           },
           {
             "id": 428,
-            "name": "James Bond (Dalton)",
-            "created_at":"2021-07-16T22:40:35.625Z",
-            "updated_at":"2021-07-16T22:40:35.625Z"
+            "name": "James Bond (Dalton)"
           }
         ],
         "alternate_titles": [
