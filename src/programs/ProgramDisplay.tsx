@@ -16,7 +16,7 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
       return (
           <div key={index} className='person'>
             <span className='main'>
-              {person.name}
+              <a href={ `/persons/${person.id}` }>{person.name}</a>
             </span>
             <span className='alias'>
               {person.aliases.map((alias: Alias) => alias.name).join('/')}

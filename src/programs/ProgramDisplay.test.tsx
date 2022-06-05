@@ -2,67 +2,86 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { ProgramDisplay } from './ProgramDisplay'
 import ProgramData from '../models/ProgramData'
+import { expectDetailLink } from "../testhelpers/ElementExpectations";
 
 describe('ProgramDisplay', () => {
 
   it('shows details of fully filled program', () => {
+    const expectPersonLink = (id: number, title: string) => {
+      expectDetailLink(id, title, '/persons')
+    }
+    const idPerson1 = 111;
+    const namePerson1 = 'Director One'
+    const alias1Person1 = 'D. One'
+    const alias2Person1 = 'Director Uno'
+    const idPerson2 = 222
+    const namePerson2 = 'Director Two'
+    const alias1Person2 = 'D. Two'
+    const alias2Person2 = 'Director Dos'
+    const title = 'The Film\'s Title'
+    const year = '2021'
+    const version = 'TV Edit'
+    const series1 = 'The Film Series';
+    const series2 = 'The Unofficial Film Series';
+    const alternateTitle1 = 'The Title of the Film';
+    const alternateTitle2 = 'Title: The Film';
     const program: ProgramData = {
       id: 223,
-      title: 'The Film\'s Title',
-      year: '2021',
-      version: 'TV Edit',
+      title: title,
+      year: year,
+      version: version,
       lengthInMinutes: 87,
       people: [
         {
-          id: 111,
-          name: 'Director One',
+          id: idPerson1,
+          name: namePerson1,
           aliases: [
             {
-              name: 'D. One'
+              name: alias1Person1
             },
             {
-              name: 'Director Uno'
+              name: alias2Person1
             }
           ]
         },
         {
-          id: 222,
-          name: 'Director Two',
+          id: idPerson2,
+          name: namePerson2,
           aliases: [
             {
-              name: 'D. Two'
+              name: alias1Person2
             },
             {
-              name: 'Director Dos'
+              name: alias2Person2
             }
           ]
         }
       ],
       series: [
-        'The Film Series',
-        'The Unofficial Film Series'
+        series1,
+        series2
       ],
       alternateTitles: [
         {
-          name: 'The Title of the Film'
+          name: alternateTitle1
         },
         {
-          name: 'Title: The Film'
+          name: alternateTitle2
         }
       ]
     }
     render(<ProgramDisplay program={program}/>)
 
-    expect(screen.queryByText('The Film\'s Title')).toBeInTheDocument()
-    expect(screen.queryByText('2021')).toBeInTheDocument()
-    expect(screen.queryByText('TV Edit')).toBeInTheDocument()
+    expect(screen.queryByText(title)).toBeInTheDocument()
+    expect(screen.queryByText(year)).toBeInTheDocument()
+    expect(screen.queryByText(version)).toBeInTheDocument()
     expect(screen.queryByText('1:27')).toBeInTheDocument()
-    expect(screen.queryByText('Director One')).toBeInTheDocument()
-    expect(screen.queryByText('D. One/Director Uno')).toBeInTheDocument()
-    expect(screen.queryByText('Director Two')).toBeInTheDocument()
-    expect(screen.queryByText('D. Two/Director Dos')).toBeInTheDocument()
-    expect(screen.queryByText('The Film Series/The Unofficial Film Series')).toBeInTheDocument()
-    expect(screen.queryByText('The Title of the Film/Title: The Film')).toBeInTheDocument()
+    expectPersonLink(idPerson1, namePerson1)
+    expect(screen.queryByText(`${alias1Person1}/${alias2Person1}`)).toBeInTheDocument()
+    expectPersonLink(idPerson2, namePerson2)
+    expect(screen.queryByText(`${alias1Person2}/${alias2Person2}`)).toBeInTheDocument()
+    expect(screen.queryByText(`${series1}/${series2}`)).toBeInTheDocument()
+    expect(screen.queryByText(`${alternateTitle1}/${alternateTitle2}`)).toBeInTheDocument()
   })
 
 })
