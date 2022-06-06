@@ -5,11 +5,16 @@ import {
   programListing1,
   programListing2,
   programListing3,
-  programListing4, returnSearchListingJson, searchListing1, searchListing2, searchListing3
-} from "../testhelpers/ProgramSearchJson"
-import PaginatedData from "../models/PaginatedData"
-import { programData2, programData3, programJson2, programJson3 } from "../testhelpers/ProgramJson"
-import SearchData from "../models/SearchData"
+  programListing4,
+  returnSearchListingJson,
+  searchListing1,
+  searchListing2,
+  searchListing3
+} from '../testhelpers/ProgramSearchJson'
+import PaginatedData from '../models/PaginatedData'
+import { programData2, programData3, programJson2, programJson3 } from '../testhelpers/ProgramJson'
+import SearchData from '../models/SearchData'
+import ProgramData from '../models/ProgramData'
 
 describe('ProgramSearchService', () => {
 
@@ -86,24 +91,22 @@ describe('ProgramSearchService', () => {
     })
 
     it('loads the requested program from local service', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(programJson2)
-
-      const response = await loadProgramDetails(programData2.id)
-
-      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${programData2.id}.json`)
-      expect(response.programData).toEqual(programData2)
+      await expectLoadProgramDetailsToLoad(programJson2, programData2)
     })
 
     it('loads series for requested program', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(programJson3)
-
-      const response = await loadProgramDetails(programData3.id)
-
-      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${programData3.id}.json`)
-      expect(response.programData).toEqual(programData3)
+      await expectLoadProgramDetailsToLoad(programJson3, programData3)
     })
+
+    async function expectLoadProgramDetailsToLoad(json: string, expectedData: ProgramData) {
+      // @ts-ignore
+      fetch.mockResponseOnce(json)
+
+      const response = await loadProgramDetails(expectedData.id)
+
+      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${ expectedData.id }.json`)
+      expect(response.programData).toEqual(expectedData)
+    }
 
   })
 

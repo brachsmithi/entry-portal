@@ -6,6 +6,7 @@ import {
   personWithProgramsInSeriesData, personWithProgramsInSeriesJson
 } from '../testhelpers/PersonJson'
 import { loadPersonDetails } from './PersonSearchService'
+import PersonData from '../models/PersonData'
 
 describe('PersonSearchService', () => {
 
@@ -16,35 +17,27 @@ describe('PersonSearchService', () => {
       fetch.resetMocks()
     })
 
-    it('loads the requested person from local service', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(personJson)
-
-      const response = await loadPersonDetails(personData.id)
-
-      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${personData.id}.json`)
-      expect(response.personData).toEqual(personData)
+    it('correctly loads person', async () => {
+      await expectLoadPersonDetailsToLoad(personJson, personData)
     })
 
-    it('loads aliases for requested person', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(personWithAliasesJson)
-
-      const response = await loadPersonDetails(personWithAliasesData.id)
-
-      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${personWithAliasesData.id}.json`)
-      expect(response.personData).toEqual(personWithAliasesData)
+    it('correctly loads person with aliases', async () => {
+      await expectLoadPersonDetailsToLoad(personWithAliasesJson, personWithAliasesData)
     })
 
-    it('loads program series for requested person', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(personWithProgramsInSeriesJson)
-
-      const response = await loadPersonDetails(personWithProgramsInSeriesData.id)
-
-      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${personWithProgramsInSeriesData.id}.json`)
-      expect(response.personData).toEqual(personWithProgramsInSeriesData)
+    it('correctly loads person with program series', async () => {
+      await expectLoadPersonDetailsToLoad(personWithProgramsInSeriesJson, personWithProgramsInSeriesData)
     })
+
+    async function expectLoadPersonDetailsToLoad(json: string, expectedData: PersonData) {
+      // @ts-ignore
+      fetch.mockResponseOnce(json)
+
+      const response = await loadPersonDetails(expectedData.id)
+
+      expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${ expectedData.id }.json`)
+      expect(response.personData).toEqual(expectedData)
+    }
 
   })
 
