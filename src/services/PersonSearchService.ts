@@ -1,5 +1,5 @@
 import PersonResponse from '../models/PersonResponse'
-import { PersonProgramData } from "../models/PersonData";
+import { PersonProgramData } from '../models/PersonData'
 
 export async function loadPersonDetails(id: number): Promise<PersonResponse> {
   let url = `http://localhost:3000/persons/${id}.json`
