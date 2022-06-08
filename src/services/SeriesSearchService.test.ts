@@ -4,8 +4,8 @@ import {
   seriesWithProgramsData,
   seriesWithProgramsJson
 } from '../testhelpers/SeriesJson'
-import { loadSeriesDetails } from "./SeriesSearchService";
-import SeriesData from "../models/SeriesData";
+import { loadSeriesDetails } from './SeriesSearchService'
+import SeriesData from '../models/SeriesData'
 
 describe('SeriesSearchService', () => {
 

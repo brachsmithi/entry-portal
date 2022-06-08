@@ -1,5 +1,5 @@
 import SeriesResponse from '../models/SeriesResponse'
-import { SeriesProgramData } from "../models/SeriesData";
+import { SeriesProgramData } from '../models/SeriesData'
 
 export async function loadSeriesDetails(id: number): Promise<SeriesResponse> {
   let url = `http://localhost:3000/series/${id}.json`
