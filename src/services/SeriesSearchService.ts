@@ -6,7 +6,7 @@ export async function loadSeriesDetails(id: number): Promise<SeriesResponse> {
   const response = await fetch(url)
       .then(response => response.json())
 
-  function seriesProgamData(program: any): SeriesProgramData {
+  function seriesProgramData(program: any): SeriesProgramData {
     return {
       id: program.id,
       name: program.name,
@@ -18,7 +18,7 @@ export async function loadSeriesDetails(id: number): Promise<SeriesResponse> {
   }
 
   const programs = (programs: any[]): SeriesProgramData[] => {
-    return programs.map((program) => seriesProgamData(program));
+    return programs.map((program) => seriesProgramData(program));
   }
 
   return new SeriesResponse(
