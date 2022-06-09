@@ -2,6 +2,7 @@ import { act, render } from "@testing-library/react"
 import SearchField from "./SearchField"
 import userEvent from "@testing-library/user-event"
 import SearchTermResponse from "../models/SearchTermResponse"
+import { defaultPaginationMetadata } from "../models/PaginationMetadata";
 
 describe('SearchField', () => {
 
@@ -43,6 +44,7 @@ describe('SearchField', () => {
     const searchTerm = 'disco'
     const response = new SearchTermResponse({
       data: {
+        paginationMetadata: defaultPaginationMetadata,
         data: [
           {
             id: 5463,
@@ -82,6 +84,7 @@ describe('SearchField', () => {
     const searchTerm = 'sheen'
     const response = new SearchTermResponse({
       data: {
+        paginationMetadata: defaultPaginationMetadata,
         data: [
           {
             id: 1797,

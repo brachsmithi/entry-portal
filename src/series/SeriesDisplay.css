@@ -1,0 +1,66 @@
+.series-display {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.series-display .header {
+    font-size: x-large;
+}
+
+.series-display .header .name {
+    font-weight: bold;
+}
+
+.series-display .sequenced-contents {
+    margin-top: 1rem;
+}
+
+.series-display .sequenced-contents .sequenced-item {
+    display: flex;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.series-display .sequenced-contents .sequenced-item .sequence {
+    font-weight: bold;
+    font-size: large;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+.series-display .sequenced-contents .sequenced-item .program {
+    display: flex;
+    flex-direction: column;
+}
+
+.series-display .sequenced-contents .sequenced-item .program .main .title {
+    font-weight: bold;
+}
+
+.series-display .sequenced-contents .sequenced-item .program .main .title a {
+    text-decoration: none;
+    color: black;
+}
+
+.series-display .sequenced-contents .sequenced-item .program .main .year {
+    font-style: italic;
+    margin-left: .5rem;
+}
+
+.series-display .sequenced-contents .sequenced-item .program .auxiliary {
+    font-size: small;
+}
+
+.series-display .sequenced-contents .sequenced-item .program .auxiliary .alternate-titles {
+    font-style: italic;
+}
+
+.series-display .sequenced-contents .sequenced-item .program .auxiliary .version {
+}
+
+.series-display .sequenced-contents .sequenced-item .package .name {
+    font-weight: bold;
+}
+
+.series-display .sequenced-contents .sequenced-item .disc .name {
+    font-weight: bold;
+}

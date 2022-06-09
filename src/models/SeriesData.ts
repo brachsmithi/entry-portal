@@ -19,7 +19,12 @@ export default interface SeriesData {
 }
 
 export interface SeriesProgramData {
-
+  id: number,
+  title: string,
+  year: string,
+  version: string,
+  alternateTitles: string[],
+  sequence: number
 }
 
 export interface SeriesDiscData {
@@ -29,7 +34,9 @@ export interface SeriesDiscData {
 }
 
 export interface SeriesPackageData {
-
+  id: number,
+  name: string,
+  sequence: number
 }
 
 export interface SeriesContainedSeries {

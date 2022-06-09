@@ -6,7 +6,7 @@ export const seriesWithProgramsData: SeriesData = {
   programs: [
     {
       id: 3190,
-      name: 'Alien',
+      title: 'Alien',
       year: '1979',
       version: '',
       alternateTitles: [],
@@ -14,7 +14,7 @@ export const seriesWithProgramsData: SeriesData = {
     },
     {
       id: 3191,
-      name: 'Aliens',
+      title: 'Aliens',
       year: '1986',
       version: '',
       alternateTitles: [
@@ -24,7 +24,7 @@ export const seriesWithProgramsData: SeriesData = {
     },
     {
       id: 3192,
-      name: 'Alien 3',
+      title: 'Alien 3',
       year: '1992',
       version: '',
       alternateTitles: [],
@@ -32,7 +32,7 @@ export const seriesWithProgramsData: SeriesData = {
     },
     {
       id: 3193,
-      name: 'Alien: Resurrection',
+      title: 'Alien: Resurrection',
       year: '1997',
       version: '',
       alternateTitles: [

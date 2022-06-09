@@ -9,7 +9,7 @@ export async function loadSeriesDetails(id: number): Promise<SeriesResponse> {
   function seriesProgramData(program: any): SeriesProgramData {
     return {
       id: program.id,
-      name: program.name,
+      title: program.name,
       year: program.year,
       version: program.version,
       alternateTitles: program.alternate_titles,
