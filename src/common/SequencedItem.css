@@ -1,0 +1,16 @@
+.sequenced-item {
+    display: flex;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.sequenced-item .sequence {
+    font-weight: bold;
+    font-size: large;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.sequenced-item .sequenced-content {
+
+}
