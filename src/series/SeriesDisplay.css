@@ -15,52 +15,63 @@
     margin-top: 1rem;
 }
 
-.series-display .sequenced-contents .sequenced-item {
-    display: flex;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-}
-
-.series-display .sequenced-contents .sequenced-item .sequence {
-    font-weight: bold;
-    font-size: large;
-    padding-left: .5rem;
-    padding-right: .5rem;
-}
-.series-display .sequenced-contents .sequenced-item .program {
+.series-display .sequenced-contents .program {
     display: flex;
     flex-direction: column;
 }
 
-.series-display .sequenced-contents .sequenced-item .program .main .title {
+.series-display .sequenced-contents .program .main .title {
     font-weight: bold;
 }
 
-.series-display .sequenced-contents .sequenced-item .program .main .title a {
+.series-display .sequenced-contents .program .main .title a {
     text-decoration: none;
     color: black;
 }
 
-.series-display .sequenced-contents .sequenced-item .program .main .year {
+.series-display .sequenced-contents .program .main .year {
     font-style: italic;
     margin-left: .5rem;
 }
 
-.series-display .sequenced-contents .sequenced-item .program .auxiliary {
+.series-display .sequenced-contents .program .auxiliary {
     font-size: small;
 }
 
-.series-display .sequenced-contents .sequenced-item .program .auxiliary .alternate-titles {
+.series-display .sequenced-contents .program .auxiliary .alternate-titles {
     font-style: italic;
 }
 
-.series-display .sequenced-contents .sequenced-item .program .auxiliary .version {
+.series-display .sequenced-contents .program .auxiliary .version {
 }
 
-.series-display .sequenced-contents .sequenced-item .package .name {
+.series-display .sequenced-contents .package .name {
     font-weight: bold;
 }
 
-.series-display .sequenced-contents .sequenced-item .disc .name {
+.series-display .sequenced-contents .disc .name {
     font-weight: bold;
+}
+
+.series-display .sequenced-contents .contained-series .name {
+    font-weight: bold;
+}
+
+.series-display .sequenced-contents .contained-series .name a {
+    color: black;
+    text-decoration: none;
+}
+
+.series-display .wrapper-series-display {
+    margin-top: 1rem;
+    padding-left: .5rem;
+}
+
+.series-display .wrapper-series-display .wrapper-series {
+    font-weight: bold;
+}
+
+.series-display .wrapper-series-display .wrapper-series a {
+    color: black;
+    text-decoration: none;
 }
