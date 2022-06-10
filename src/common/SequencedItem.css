@@ -1,5 +1,6 @@
 .sequenced-item {
     display: flex;
+    flex-direction: row;
     padding-top: .5rem;
     padding-bottom: .5rem;
 }
@@ -12,5 +13,6 @@
 }
 
 .sequenced-item .sequenced-content {
-
+    display: flex;
+    flex-direction: column;
 }

@@ -16,8 +16,6 @@
 }
 
 .series-display .sequenced-contents .program {
-    display: flex;
-    flex-direction: column;
 }
 
 .series-display .sequenced-contents .program .main .title {
