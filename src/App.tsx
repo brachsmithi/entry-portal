@@ -13,6 +13,7 @@ import DetailProgramScreen from './programs/DetailProgramScreen'
 import SearchDisplay from './common/SearchDisplay'
 import ProgramSearchStrategy from './programs/ProgramSearchStrategy'
 import DetailPersonScreen from './persons/DetailPersonScreen'
+import DetailSeriesScreen from './series/DetailSeriesScreen'
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path='/persons'>
             <Persons/>
+          </Route>
+          <Route path='/series'>
+            <Series/>
           </Route>
           <Route path='/search'>
             <Search/>
@@ -97,6 +101,27 @@ function PersonDetail() {
   const { personId } = useParams()
 
   return <DetailPersonScreen personId={personId}/>
+}
+
+function Series() {
+  let match = useRouteMatch()
+  return (
+      <Switch>
+        <Route path={`${match.path}/:seriesId`}>
+          <SeriesDetail/>
+        </Route>
+        <Route path={match.path}>
+          <ProgramList/>
+        </Route>
+      </Switch>
+  )
+}
+
+function SeriesDetail() {
+  // @ts-ignore
+  const { seriesId } = useParams()
+
+  return <DetailSeriesScreen seriesId={seriesId}/>
 }
 
 function useQuery() {
