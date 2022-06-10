@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { SeriesDisplay } from '../series/SeriesDisplay'
 import {
-  seriesWithContainedSeriesData,
+  seriesWithContainedSeriesData, seriesWithIntermixedContentsData,
   seriesWithPackagesData,
   seriesWithProgramsData,
   seriesWithWrapperAndDiscsData
@@ -33,4 +33,9 @@ WithWrapperAndDiscs.args = {
 export const WithContainedSeries = Template.bind({})
 WithContainedSeries.args = {
   series: seriesWithContainedSeriesData
+}
+
+export const WithIntermixedContents = Template.bind({})
+WithIntermixedContents.args = {
+  series: seriesWithIntermixedContentsData
 }

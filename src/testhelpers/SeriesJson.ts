@@ -277,3 +277,129 @@ export const seriesWithPackagesJson = `
     "wrapper_series": []
   }
 `
+
+export const seriesWithIntermixedContentsData: SeriesData =   {
+  id: 213,
+  name: 'The X-Files',
+  programs: [
+    {
+      id: 2056,
+      title: 'The X Files',
+      year: '1998',
+      version: '',
+      alternateTitles: [
+        'The X-Files: Fight the Future'
+      ],
+      sequence: 6
+    }
+  ],
+  discs: [],
+  packages: [],
+  containedSeries: [
+    {
+      id: 492,
+      name: 'The X Files: Season 1',
+      sequence: 1
+    },
+    {
+      id: 493,
+      name: 'The X Files: Season 2',
+      sequence: 2
+    },
+    {
+      id: 507,
+      name: 'The X Files: Season 4',
+      sequence: 4
+    },
+    {
+      id: 499,
+      name: 'The X Files: Season 3',
+      sequence: 3
+    },
+    {
+      id: 508,
+      name: 'The X Files: Season 5',
+      sequence: 5
+    },
+    {
+      id: 509,
+      name: 'The X Files: Season 6',
+      sequence: 7
+    },
+    {
+      id: 514,
+      name: 'The X Files: Season 8',
+      sequence: 8
+    },
+    {
+      id: 515,
+      name: 'The X Files: Season 9',
+      sequence: 9
+    }
+  ],
+  wrapperSeries:[]
+}
+
+export const seriesWithIntermixedContentsJson = `
+  {
+    "id": 213,
+    "name": "The X-Files",
+    "programs": [
+      {
+        "id": 2056,
+        "name": "The X Files",
+        "year": "1998",
+        "version": "",
+        "alternate_titles": [
+          "The X-Files: Fight the Future"
+        ],
+        "sequence": 6
+      }
+    ],
+    "discs": [],
+    "packages": [],
+    "contained_series": [
+      {
+        "id": 492,
+        "name": "The X Files: Season 1",
+        "sequence": 1
+      },
+      {
+        "id": 493,
+        "name": "The X Files: Season 2",
+        "sequence": 2
+      },
+      {
+        "id": 507,
+        "name": "The X Files: Season 4",
+        "sequence": 4
+      },
+      {
+        "id": 499,
+        "name": "The X Files: Season 3",
+        "sequence": 3
+      },
+      {
+        "id": 508,
+        "name": "The X Files: Season 5",
+        "sequence": 5
+      },
+      {
+        "id": 509,
+        "name": "The X Files: Season 6",
+        "sequence": 7
+      },
+      {
+        "id": 514,
+        "name": "The X Files: Season 8",
+        "sequence": 8
+      },
+      {
+        "id": 515,
+        "name": "The X Files: Season 9",
+        "sequence": 9
+      }
+    ],
+    "wrapper_series":[]
+  }
+`
