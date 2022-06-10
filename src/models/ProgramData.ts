@@ -1,5 +1,6 @@
 import AlternateTitle from "./AlternateTitle"
 import Person from "./Person"
+import Series from "./Series";
 
 export const emptyProgramData: ProgramData = {
   alternateTitles: [],
@@ -18,7 +19,7 @@ export default interface ProgramData {
   year: string,
   version: string,
   lengthInMinutes: number,
-  series: string[],
+  series: Series[],
   alternateTitles: AlternateTitle[],
   people: Person[]
 

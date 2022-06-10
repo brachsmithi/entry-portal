@@ -106,8 +106,14 @@ export const programData3: ProgramData = {
   year: '1967',
   version: '',
   series: [
-      'James Bond (Eon)',
-      'James Bond (Connery)'
+    {
+      id: 58,
+      name: 'James Bond (Eon)'
+    },
+    {
+      id: 217,
+      name: 'James Bond (Connery)'
+    }
   ],
   lengthInMinutes: 97,
   alternateTitles: [
@@ -131,8 +137,14 @@ export const programJson3: string = `
     "year": "1967",
     "version": "",
     "series": [
-      "James Bond (Eon)",
-      "James Bond (Connery)"
+      {
+        "id": 58,
+        "name": "James Bond (Eon)"
+      },
+      {
+        "id": 217,
+        "name": "James Bond (Connery)"
+      }
     ],
     "length_in_minutes": 97,
     "alternate_titles": [
