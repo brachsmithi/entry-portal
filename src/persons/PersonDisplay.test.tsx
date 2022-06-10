@@ -10,6 +10,9 @@ describe('PersonDisplay', () => {
     const expectProgramLink = (id: number, title: string) => {
       expectDetailLink(id, title, '/programs')
     }
+    const expectSeriesLink = (id: number, name: string) => {
+      expectDetailLink(id, name, '/series')
+    }
     const name = 'Percy McGee'
     const alias1 = 'Percival McGee'
     const alias2 = 'Percy MacGee'
@@ -22,11 +25,14 @@ describe('PersonDisplay', () => {
     const yearProgram2 = '2001';
     const versionProgram1 = 'restored'
     const versionProgram2 = 'theatrical cut'
-    const seriesProgram1 = 'The Foibles of Francis'
-    const series1Program2 = 'Franchise'
-    const series2Program2 = 'Sub-Franchise'
+    const nameSeriesProgram1 = 'The Foibles of Francis'
+    const nameSeries1Program2 = 'Franchise'
+    const nameSeries2Program2 = 'Sub-Franchise'
     const idProgram1 = 111;
     const idProgram2 = 222;
+    let idSeries1Program2 = 2111;
+    let idSeries2Program2 = 2222;
+    let idSeriesProgram1 = 1111;
     const person: PersonData = {
       id: 123,
       name: name,
@@ -42,8 +48,8 @@ describe('PersonDisplay', () => {
           version: versionProgram1,
           series: [
             {
-              id: 1111,
-              name: seriesProgram1
+              id: idSeriesProgram1,
+              name: nameSeriesProgram1
             }
           ],
           alternateTitles: [
@@ -57,12 +63,12 @@ describe('PersonDisplay', () => {
           version: versionProgram2,
           series: [
             {
-              id: 2111,
-              name: series1Program2
+              id: idSeries1Program2,
+              name: nameSeries1Program2
             },
             {
-              id: 2222,
-              name: series2Program2
+              id: idSeries2Program2,
+              name: nameSeries2Program2
             }
           ],
           alternateTitles: [
@@ -80,12 +86,13 @@ describe('PersonDisplay', () => {
     expect(screen.queryByText(yearProgram1)).toBeInTheDocument()
     expect(screen.queryByText(alternateTitleProgram1)).toBeInTheDocument()
     expect(screen.queryByText(versionProgram1)).toBeInTheDocument()
-    expect(screen.queryByText(seriesProgram1)).toBeInTheDocument()
+    expectSeriesLink(idSeriesProgram1, nameSeriesProgram1)
     expectProgramLink(idProgram2, titleProgram2)
     expect(screen.queryByText(yearProgram2)).toBeInTheDocument()
     expect(screen.queryByText(`${alternateTitle1Program2}/${alternateTitle2Program2}`)).toBeInTheDocument()
     expect(screen.queryByText(versionProgram2)).toBeInTheDocument()
-    expect(screen.queryByText(`${series1Program2}/${series2Program2}`)).toBeInTheDocument()
+    expectSeriesLink(idSeries1Program2, nameSeries1Program2)
+    expectSeriesLink(idSeries2Program2, nameSeries2Program2)
   })
 
 })

@@ -1,6 +1,7 @@
 import PersonData, { PersonProgramData } from '../models/PersonData'
 import React from 'react'
 import './PersonDisplay.css'
+import Series from "../models/Series";
 
 interface PersonDisplayProperties {
   person: PersonData
@@ -8,8 +9,23 @@ interface PersonDisplayProperties {
 
 export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
   const programsElements = (programArray: PersonProgramData[]) => {
-    const seriesElements = (seriesArray: any[]) => {
-      return seriesArray.map((series) => series.name).join('/')
+    const seriesElements = (seriesArray: Series[]) => {
+      const seriesElement = (series: Series, index: number) => {
+        return (
+            <>
+              {
+                index > 0 &&
+                <span className='series-separator'>/</span>
+              }
+              <span className='series'>
+                <a href={`/series/${series.id}`}>{series.name}</a>
+              </span>
+            </>
+        )
+      }
+      return (
+          <>{ seriesArray.map((series, index) => seriesElement(series, index)) }</>
+      )
     }
     const programElement = (program: PersonProgramData, index: number) => {
       return (
@@ -29,7 +45,7 @@ export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
               <div className='version'>
                 {program.version}
               </div>
-              <div className='series'>
+              <div className='series-list'>
                 {seriesElements(program.series)}
              </div>
             </div>

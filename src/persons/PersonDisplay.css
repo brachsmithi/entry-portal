@@ -50,6 +50,15 @@
 .person-display .programs .program .auxiliary .version {
 }
 
-.person-display .programs .program .auxiliary .series {
+.person-display .programs .program .auxiliary .series-list {
     font-weight: bold;
+}
+.person-display .programs .program .auxiliary .series-list .series-separator {
+    margin-left: .25rem;
+    margin-right: .25rem;
+}
+
+.person-display .programs .program .auxiliary .series-list .series a {
+    text-decoration: none;
+    color: black;
 }
