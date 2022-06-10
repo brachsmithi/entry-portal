@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { ProgramDisplay } from './ProgramDisplay'
 import ProgramData from '../models/ProgramData'
-import { expectDetailLink } from "../testhelpers/ElementExpectations";
+import { expectDetailLink } from '../testhelpers/ElementExpectations'
 
 describe('ProgramDisplay', () => {
 
@@ -21,10 +21,12 @@ describe('ProgramDisplay', () => {
     const title = 'The Film\'s Title'
     const year = '2021'
     const version = 'TV Edit'
-    const series1 = 'The Film Series';
-    const series2 = 'The Unofficial Film Series';
-    const alternateTitle1 = 'The Title of the Film';
-    const alternateTitle2 = 'Title: The Film';
+    const idSeries1 = 3111
+    const nameSeries1 = 'The Film Series'
+    const idSeries2 = 4111
+    const nameSeries2 = 'The Unofficial Film Series'
+    const alternateTitle1 = 'The Title of the Film'
+    const alternateTitle2 = 'Title: The Film'
     const program: ProgramData = {
       id: 223,
       title: title,
@@ -58,8 +60,14 @@ describe('ProgramDisplay', () => {
         }
       ],
       series: [
-        series1,
-        series2
+        {
+          id: idSeries1,
+          name: nameSeries1
+        },
+        {
+          id: idSeries2,
+          name: nameSeries2
+        }
       ],
       alternateTitles: [
         {
@@ -80,7 +88,7 @@ describe('ProgramDisplay', () => {
     expect(screen.queryByText(`${alias1Person1}/${alias2Person1}`)).toBeInTheDocument()
     expectPersonLink(idPerson2, namePerson2)
     expect(screen.queryByText(`${alias1Person2}/${alias2Person2}`)).toBeInTheDocument()
-    expect(screen.queryByText(`${series1}/${series2}`)).toBeInTheDocument()
+    expect(screen.queryByText(`${nameSeries1}/${nameSeries2}`)).toBeInTheDocument()
     expect(screen.queryByText(`${alternateTitle1}/${alternateTitle2}`)).toBeInTheDocument()
   })
 

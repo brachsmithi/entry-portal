@@ -5,6 +5,7 @@ import { formatDuration } from "../common/DisplayFormatters"
 import Person from "../models/Person"
 import Alias from "../models/Alias"
 import AlternateTitle from "../models/AlternateTitle"
+import Series from "../models/Series";
 
 export interface ProgramDisplayProperties {
   program: ProgramData
@@ -30,8 +31,8 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
     })
   }
 
-  const seriesElements = (seriesArray: Array<string>) => {
-    return seriesArray.join('/')
+  const seriesElements = (seriesArray: Series[]) => {
+    return seriesArray.map((series) => series.name).join('/')
   }
 
   const alternateTitlesElements = (alternateTitlesArray: Array<AlternateTitle>) => {
