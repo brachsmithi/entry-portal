@@ -12,7 +12,7 @@ export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
     const seriesElements = (seriesArray: Series[]) => {
       const seriesElement = (series: Series, index: number) => {
         return (
-            <>
+            <div key={index}>
               {
                 index > 0 &&
                 <span className='series-separator'>/</span>
@@ -20,7 +20,7 @@ export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
               <span className='series'>
                 <a href={`/series/${series.id}`}>{series.name}</a>
               </span>
-            </>
+            </div>
         )
       }
       return (

@@ -22,17 +22,17 @@ describe('PersonDisplay', () => {
     const alternateTitle1Program2 = 'Sub-Franchise 2'
     const alternateTitle2Program2 = 'Franchise: Second Program'
     const yearProgram1 = '1901'
-    const yearProgram2 = '2001';
+    const yearProgram2 = '2001'
     const versionProgram1 = 'restored'
     const versionProgram2 = 'theatrical cut'
     const nameSeriesProgram1 = 'The Foibles of Francis'
     const nameSeries1Program2 = 'Franchise'
     const nameSeries2Program2 = 'Sub-Franchise'
-    const idProgram1 = 111;
-    const idProgram2 = 222;
-    let idSeries1Program2 = 2111;
-    let idSeries2Program2 = 2222;
-    let idSeriesProgram1 = 1111;
+    const idProgram1 = 111
+    const idProgram2 = 22
+    let idSeries1Program2 = 2111
+    let idSeries2Program2 = 2222
+    let idSeriesProgram1 = 1111
     const person: PersonData = {
       id: 123,
       name: name,
