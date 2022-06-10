@@ -7,10 +7,13 @@ import { expectDetailLink } from '../testhelpers/ElementExpectations'
 describe('ProgramDisplay', () => {
 
   it('shows details of fully filled program', () => {
-    const expectPersonLink = (id: number, title: string) => {
-      expectDetailLink(id, title, '/persons')
+    const expectPersonLink = (id: number, name: string) => {
+      expectDetailLink(id, name, '/persons')
     }
-    const idPerson1 = 111;
+    const expectSeriesLink = (id: number, name: string) => {
+      expectDetailLink(id, name, '/series')
+    }
+    const idPerson1 = 111
     const namePerson1 = 'Director One'
     const alias1Person1 = 'D. One'
     const alias2Person1 = 'Director Uno'
@@ -88,7 +91,8 @@ describe('ProgramDisplay', () => {
     expect(screen.queryByText(`${alias1Person1}/${alias2Person1}`)).toBeInTheDocument()
     expectPersonLink(idPerson2, namePerson2)
     expect(screen.queryByText(`${alias1Person2}/${alias2Person2}`)).toBeInTheDocument()
-    expect(screen.queryByText(`${nameSeries1}/${nameSeries2}`)).toBeInTheDocument()
+    expectSeriesLink(idSeries1, nameSeries1)
+    expectSeriesLink(idSeries2, nameSeries2)
     expect(screen.queryByText(`${alternateTitle1}/${alternateTitle2}`)).toBeInTheDocument()
   })
 

@@ -5,15 +5,15 @@ import { formatDuration } from "../common/DisplayFormatters"
 import Person from "../models/Person"
 import Alias from "../models/Alias"
 import AlternateTitle from "../models/AlternateTitle"
-import Series from "../models/Series";
+import Series from '../models/Series'
 
 export interface ProgramDisplayProperties {
   program: ProgramData
 }
 
 export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
-  const peopleElements = (personArray: Array<Person>) => {
-    function personElement(person: any, index: number) {
+  const peopleElements = (personArray: Person[]) => {
+    function personElement(person: Person, index: number) {
       return (
           <div key={index} className='person'>
             <span className='main'>
@@ -32,7 +32,16 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
   }
 
   const seriesElements = (seriesArray: Series[]) => {
-    return seriesArray.map((series) => series.name).join('/')
+    const seriesElement = (series: Series, index: number) => {
+      return (
+          <div key={index} className='series'>
+            <a href={ `/series/${series.id}` }>{series.name}</a>
+          </div>
+      )
+    }
+    return seriesArray.map((series, index) => {
+      return seriesElement(series, index)
+    })
   }
 
   const alternateTitlesElements = (alternateTitlesArray: Array<AlternateTitle>) => {
@@ -52,7 +61,7 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
 
         <div className='duration'>{formatDuration(props.program.lengthInMinutes)}</div>
         <div className='people'>{peopleElements(props.program.people)}</div>
-        <div className='series'>{seriesElements(props.program.series)}</div>
+        <div className='series-list'>{seriesElements(props.program.series)}</div>
       </div>
   )
 }

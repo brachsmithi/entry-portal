@@ -45,8 +45,17 @@
     margin-left: .5rem;
 }
 
-.program-display .series {
+.program-display .series-list {
     margin-top: .5rem;
+}
+
+.program-display .series-list .series {
+    font-weight: bold;
+}
+
+.program-display .series-list .series a {
+    text-decoration: none;
+    color: black;
 }
 
 .program-display .alternate-titles {
