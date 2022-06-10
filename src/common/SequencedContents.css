@@ -1,3 +1,5 @@
 .series-display .sequenced-contents {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
 }

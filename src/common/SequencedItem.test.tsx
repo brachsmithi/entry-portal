@@ -8,7 +8,7 @@ describe('SequencedItem', () => {
     const {getByText} = render(<SequencedItem sequence={sequence}/>)
     let sequenceElement = getByText(sequence);
     expect(sequenceElement).toBeInTheDocument()
-    expect(sequenceElement.parentElement).toHaveAttribute('data-sequence', `${sequence}`)
+    expect(sequenceElement.parentElement).toHaveAttribute('style', `order: ${sequence};`)
     expect(sequenceElement.parentElement).toHaveAttribute('class', 'sequenced-item')
   })
 
