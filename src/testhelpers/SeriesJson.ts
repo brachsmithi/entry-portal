@@ -161,7 +161,7 @@ export const seriesWithContainedSeriesData: SeriesData = {
   wrapperSeries: []
 }
 
-export const seriesWithContainedSeriesJson = `
+export const seriesWithContainedSeriesJson: string = `
   {
     "id": 334,
     "name": "3x3 Eyes",
@@ -230,7 +230,7 @@ export const seriesWithPackagesData: SeriesData = {
   wrapperSeries: []
 }
 
-export const seriesWithPackagesJson = `
+export const seriesWithPackagesJson: string = `
   {
     "id": 554,
     "name": "Quincy M.E.: Complete Season Collections",
@@ -340,7 +340,7 @@ export const seriesWithIntermixedContentsData: SeriesData =   {
   wrapperSeries:[]
 }
 
-export const seriesWithIntermixedContentsJson = `
+export const seriesWithIntermixedContentsJson: string = `
   {
     "id": 213,
     "name": "The X-Files",

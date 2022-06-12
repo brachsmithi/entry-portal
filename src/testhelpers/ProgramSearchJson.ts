@@ -1,4 +1,4 @@
-import { ListingData } from "../models/ListingData";
+import { ListingData } from '../models/ListingData'
 
 export const totalProgramPages = 346
 export const totalSearchPages = 238
