@@ -7,6 +7,7 @@ describe('SearchDisplay', () => {
 
   it('contains a field and a search link and a clear link', async () => {
     const strategy: SearchStrategy = {
+      filterAction: jest.fn(),
       searchAction: jest.fn(),
       loadAction: jest.fn(),
       rootPath: '/category'
