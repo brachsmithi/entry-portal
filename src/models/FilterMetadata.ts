@@ -1,11 +1,13 @@
+import { FilterType } from '../services/FilterType'
+
 export default interface FilterMetadata {
-  key: String,
+  key: FilterType,
   id: number,
   resultCount: number
 }
 
 export const defaultFilterMetadata: FilterMetadata = {
-  key: '',
+  key: FilterType.None,
   id: 0,
   resultCount: 0
 }

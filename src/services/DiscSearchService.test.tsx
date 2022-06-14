@@ -1,10 +1,13 @@
 import {
-  discListingForProgramIdJson,
   discListingForProgramIdData1,
-  discListingForProgramIdData2, discListingForProgramIdWithNoPackageJson, discListingForProgramIdWithNoPackageData
+  discListingForProgramIdData2,
+  discListingForProgramIdJson,
+  discListingForProgramIdWithNoPackageData,
+  discListingForProgramIdWithNoPackageJson
 } from '../testhelpers/DiscSearchJson'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import { loadFilteredDiscListings } from './DiscSearchService'
+import { FilterType } from './FilterType'
 
 describe('DiscSearchService', () => {
 
@@ -17,13 +20,13 @@ describe('DiscSearchService', () => {
 
     describe('with program', () => {
 
-      const key = 'program'
+      const key = FilterType.Program
 
       it('loads paginated results from backend', async () => {
         // @ts-ignore
         fetch.mockResponseOnce(discListingForProgramIdJson)
 
-        const response = await loadFilteredDiscListings(key, 3)
+        const response = await loadFilteredDiscListings(FilterType.Program, 3)
 
         expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/3.json')
         expect(response.data).toEqual({
@@ -65,9 +68,9 @@ describe('DiscSearchService', () => {
     describe('with unhandled key', () => {
 
       it('returns an error', async () => {
-        const returnVal = await loadFilteredDiscListings('foo', 3)
+        const returnVal = await loadFilteredDiscListings(FilterType.None, 3)
         expect(returnVal.isError()).toBeTruthy()
-        expect(returnVal.error).toEqual('No known filter for key: foo')
+        expect(returnVal.error).toEqual('No known filter for key: NONE')
       })
 
     })

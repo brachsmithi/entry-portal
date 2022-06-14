@@ -2,9 +2,10 @@ import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import { ListingData } from '../models/ListingData'
 import { Disc } from '../models/Disc'
 import FilterResponse from '../models/FilterResponse'
+import { FilterType } from './FilterType'
 
-export async function loadFilteredDiscListings(key: string, id: number): Promise<FilterResponse> {
-  if (key === 'program') return loadDiscListingsForProgram(id)
+export async function loadFilteredDiscListings(key: FilterType, id: number): Promise<FilterResponse> {
+  if (key === FilterType.Program) return loadDiscListingsForProgram(id)
   return new FilterResponse({error: `No known filter for key: ${key}`})
 }
 
@@ -43,7 +44,7 @@ async function loadDiscListingsForProgram(programId: number): Promise<FilterResp
       data: discListings(response.discs),
       paginationMetadata: defaultPaginationMetadata,
       filterMetadata: {
-        key: 'program',
+        key: FilterType.Program,
         id: programId,
         resultCount: response.discs.length
       }
