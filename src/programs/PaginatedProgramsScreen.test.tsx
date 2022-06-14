@@ -1,6 +1,6 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import { PaginatedProgramsScreen } from "./PaginatedProgramsScreen"
+import { render, screen, waitFor } from '@testing-library/react'
+import { PaginatedProgramsScreen } from './PaginatedProgramsScreen'
 import {
   programListing1,
   programListing2,
@@ -9,8 +9,8 @@ import {
   totalProgramPages,
   returnProgramListingJson,
   returnSearchListingJson
-} from "../testhelpers/ProgramSearchJson"
-import { ListingData } from "../models/ListingData"
+} from '../testhelpers/ProgramSearchJson'
+import { ListingData } from '../models/ListingData'
 
 describe('PaginatedProgramsScreen', () => {
 
@@ -23,7 +23,7 @@ describe('PaginatedProgramsScreen', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson())
 
-    await render(<PaginatedProgramsScreen />)
+    await waitFor(() => render(<PaginatedProgramsScreen/>))
 
     await verifyLink(programListing1)
     await verifyLink(programListing2)
@@ -35,7 +35,7 @@ describe('PaginatedProgramsScreen', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson())
 
-    await render(<PaginatedProgramsScreen />)
+    await waitFor(() => render(<PaginatedProgramsScreen/>))
 
     expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(await screen.findByText(`Page 1 of ${ totalProgramPages }`)).toBeInTheDocument()
@@ -45,7 +45,7 @@ describe('PaginatedProgramsScreen', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson())
 
-    await render(<PaginatedProgramsScreen/>)
+    await waitFor(() => render(<PaginatedProgramsScreen/>))
 
     expect(fetch).toHaveBeenCalledWith(expect.stringContaining(''))
   })
@@ -58,7 +58,7 @@ describe('PaginatedProgramsScreen', () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnSearchListingJson(searchTerm, currentPage, nextPage, previousPage))
 
-    await render(<PaginatedProgramsScreen searchTerm={searchTerm} />)
+    await waitFor(() => render(<PaginatedProgramsScreen searchTerm={ searchTerm }/>))
 
     expect(fetch).toHaveBeenCalledWith(expect.stringContaining('search=bloop'))
   })

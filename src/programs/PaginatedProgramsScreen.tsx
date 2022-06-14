@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { PaginatedNav } from "../common/PaginatedNav"
-import loadProgramListings, { loadProgramSearchResults } from "../services/ProgramSearchService"
-import { emptyPaginatedData } from "../models/PaginatedData"
-import { ListingDisplay } from "../common/ListingDisplay"
-import ProgramSearchStrategy from "./ProgramSearchStrategy";
+import { PaginatedNav } from '../common/PaginatedNav'
+import loadProgramListings, { loadProgramSearchResults } from '../services/ProgramSearchService'
+import { emptyPaginatedData } from '../models/PaginatedData'
+import { ListingDisplay } from '../common/ListingDisplay'
+import ProgramSearchStrategy from './ProgramSearchStrategy'
 
 interface PaginatedProgramsScreenProps {
   searchTerm?: string
