@@ -1,6 +1,7 @@
 import SearchStrategy from '../models/SearchStrategy'
 import { loadProgramSearchResults } from '../services/ProgramSearchService'
 import FilterResponse from '../models/FilterResponse'
+import { FilterType } from '../services/FilterType'
 
 export default function ProgramSearchStrategy(): SearchStrategy {
   const path = '/programs'
@@ -8,7 +9,7 @@ export default function ProgramSearchStrategy(): SearchStrategy {
     searchAction: (searchTerm: string) => {
       return loadProgramSearchResults(searchTerm)
     },
-    filterAction: (_: string, __: number) => {
+    filterAction: (_: FilterType, __: number) => {
       return Promise.resolve(new FilterResponse({
         error: 'This has not been implemented yet!'
       }))
