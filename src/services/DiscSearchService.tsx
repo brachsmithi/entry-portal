@@ -3,7 +3,12 @@ import { ListingData } from '../models/ListingData'
 import { Disc } from '../models/Disc'
 import FilterResponse from '../models/FilterResponse'
 
-export async function loadDiscListingsForProgram(programId: number): Promise<FilterResponse> {
+export async function loadFilteredDiscListings(key: string, id: number): Promise<FilterResponse> {
+  if (key === 'program') return loadDiscListingsForProgram(id)
+  return new FilterResponse({error: `No known filter for key: ${key}`})
+}
+
+async function loadDiscListingsForProgram(programId: number): Promise<FilterResponse> {
   let url = `http://localhost:3000/discs/with_program/${programId}.json`
   const response = await fetch(url)
       .then(response => response.json())

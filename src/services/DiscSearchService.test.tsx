@@ -4,56 +4,72 @@ import {
   discListingForProgramIdData2, discListingForProgramIdWithNoPackageJson, discListingForProgramIdWithNoPackageData
 } from '../testhelpers/DiscSearchJson'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
-import { loadDiscListingsForProgram } from './DiscSearchService'
+import { loadFilteredDiscListings } from './DiscSearchService'
 
 describe('DiscSearchService', () => {
 
-  describe('loadDiscListingsForProgram', () => {
+  describe('loadFilteredDiscListings', () => {
 
     beforeEach(() => {
       // @ts-ignore
       fetch.resetMocks()
     })
 
-    it('loads paginated results from backend', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(discListingForProgramIdJson)
+    describe('with program', () => {
 
-      const response = await loadDiscListingsForProgram(3)
+      const key = 'program'
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/3.json')
-      expect(response.data).toEqual({
-        data: [
-          discListingForProgramIdData1,
-          discListingForProgramIdData2
-        ],
-        paginationMetadata: defaultPaginationMetadata,
-        filterMetadata: {
-          key: 'program',
-          id: 3,
-          resultCount: 2
-        }
+      it('loads paginated results from backend', async () => {
+        // @ts-ignore
+        fetch.mockResponseOnce(discListingForProgramIdJson)
+
+        const response = await loadFilteredDiscListings(key, 3)
+
+        expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/3.json')
+        expect(response.data).toEqual({
+          data: [
+            discListingForProgramIdData1,
+            discListingForProgramIdData2
+          ],
+          paginationMetadata: defaultPaginationMetadata,
+          filterMetadata: {
+            key: key,
+            id: 3,
+            resultCount: 2
+          }
+        })
       })
+
+      it('handles missing package data', async () => {
+        // @ts-ignore
+        fetch.mockResponseOnce(discListingForProgramIdWithNoPackageJson)
+
+        const response = await loadFilteredDiscListings(key, 1)
+
+        expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/1.json')
+        expect(response.data).toEqual({
+          data: [
+            discListingForProgramIdWithNoPackageData,
+          ],
+          paginationMetadata: defaultPaginationMetadata,
+          filterMetadata: {
+            key: key,
+            id: 1,
+            resultCount: 1
+          }
+        })
+      })
+
     })
 
-    it('handles missing package data', async () => {
-      // @ts-ignore
-      fetch.mockResponseOnce(discListingForProgramIdWithNoPackageJson)
+    describe('with unhandled key', () => {
 
-      const response = await loadDiscListingsForProgram(1)
-
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/1.json')
-      expect(response.data).toEqual({
-        data: [
-          discListingForProgramIdWithNoPackageData,
-        ],
-        paginationMetadata: defaultPaginationMetadata,
-        filterMetadata: {
-          key: 'program',
-          id: 1,
-          resultCount: 1
-        }
+      it('returns an error', async () => {
+        const returnVal = await loadFilteredDiscListings('foo', 3)
+        expect(returnVal.isError()).toBeTruthy()
+        expect(returnVal.error).toEqual('No known filter for key: foo')
       })
+
     })
 
   })
