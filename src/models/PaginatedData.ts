@@ -2,7 +2,7 @@ import PaginationMetadata, { defaultPaginationMetadata } from "./PaginationMetad
 import { ListingData } from "./ListingData"
 
 export default interface PaginatedData {
-  data: Array<ListingData>
+  data: ListingData[]
   paginationMetadata: PaginationMetadata
 }
 

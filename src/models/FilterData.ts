@@ -4,12 +4,12 @@ import FilterMetadata, { defaultFilterMetadata } from './FilterMetadata'
 
 export default interface FilterData {
   data: Array<ListingData>
-  searchMetadata: FilterMetadata
+  filterMetadata: FilterMetadata
   paginationMetadata: PaginationMetadata
 }
 
 export const emptyFilterData: FilterData = {
   data: [],
-  searchMetadata: defaultFilterMetadata,
+  filterMetadata: defaultFilterMetadata,
   paginationMetadata: defaultPaginationMetadata
 }

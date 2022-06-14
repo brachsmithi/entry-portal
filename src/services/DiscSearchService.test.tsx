@@ -22,12 +22,17 @@ describe('DiscSearchService', () => {
       const response = await loadDiscListingsForProgram(3)
 
       expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/3.json')
-      expect(response.paginatedData).toEqual({
+      expect(response.data).toEqual({
         data: [
           discListingForProgramIdData1,
           discListingForProgramIdData2
         ],
-        paginationMetadata: defaultPaginationMetadata
+        paginationMetadata: defaultPaginationMetadata,
+        filterMetadata: {
+          key: 'program',
+          id: 3,
+          resultCount: 2
+        }
       })
     })
 
@@ -38,11 +43,16 @@ describe('DiscSearchService', () => {
       const response = await loadDiscListingsForProgram(1)
 
       expect(fetch).toHaveBeenCalledWith('http://localhost:3000/discs/with_program/1.json')
-      expect(response.paginatedData).toEqual({
+      expect(response.data).toEqual({
         data: [
           discListingForProgramIdWithNoPackageData,
         ],
-        paginationMetadata: defaultPaginationMetadata
+        paginationMetadata: defaultPaginationMetadata,
+        filterMetadata: {
+          key: 'program',
+          id: 1,
+          resultCount: 1
+        }
       })
     })
 

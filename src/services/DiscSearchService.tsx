@@ -1,9 +1,9 @@
-import PaginatedSearchResponse from "../models/PaginatedSearchResponse"
-import { defaultPaginationMetadata } from "../models/PaginationMetadata"
-import { ListingData } from "../models/ListingData"
-import { Disc } from "../models/Disc";
+import { defaultPaginationMetadata } from '../models/PaginationMetadata'
+import { ListingData } from '../models/ListingData'
+import { Disc } from '../models/Disc'
+import FilterResponse from '../models/FilterResponse'
 
-export async function loadDiscListingsForProgram(programId: number): Promise<PaginatedSearchResponse> {
+export async function loadDiscListingsForProgram(programId: number): Promise<FilterResponse> {
   let url = `http://localhost:3000/discs/with_program/${programId}.json`
   const response = await fetch(url)
       .then(response => response.json())
@@ -30,13 +30,19 @@ export async function loadDiscListingsForProgram(programId: number): Promise<Pag
         tertiary: tertiaryData(disc)
       }
     }
-    return discs.map(disc => listing(disc));
+    return discs.map(disc => listing(disc))
   }
 
-  return new PaginatedSearchResponse({
+  return new FilterResponse({
     data: {
       data: discListings(response.discs),
-      paginationMetadata: defaultPaginationMetadata
+      paginationMetadata: defaultPaginationMetadata,
+      filterMetadata: {
+        key: 'program',
+        id: programId,
+        resultCount: response.discs.length
+      }
     }
   })
+
 }
