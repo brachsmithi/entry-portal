@@ -2,17 +2,19 @@ import { render } from "@testing-library/react"
 import SearchDisplay from "./SearchDisplay"
 import SearchStrategy from "../models/SearchStrategy"
 import userEvent from "@testing-library/user-event"
+import { DetailLinkAction } from "./DetailLinkAction";
 
 describe('SearchDisplay', () => {
 
   it('contains a field and a search link and a clear link', async () => {
     const strategy: SearchStrategy = {
-      filterAction: jest.fn(),
-      searchAction: jest.fn(),
+      searchAction: jest.fn()
+    }
+    const action: DetailLinkAction = {
       loadAction: jest.fn(),
       rootPath: '/category'
     }
-    const { getByRole, getAllByRole } = render(<SearchDisplay searchStrategy={strategy}/>)
+    const { getByRole, getAllByRole } = render(<SearchDisplay searchStrategy={strategy} linkAction={action}/>)
     const textbox = getByRole('textbox')
     userEvent.type(textbox, 'mu')
     const anchors = getAllByRole('link')

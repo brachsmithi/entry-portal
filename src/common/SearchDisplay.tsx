@@ -1,10 +1,12 @@
-import SearchField from "./SearchField"
-import "./SearchDisplay.css"
-import SearchStrategy from "../models/SearchStrategy"
-import { useState } from "react"
+import './SearchDisplay.css'
+import SearchField from './SearchField'
+import SearchStrategy from '../models/SearchStrategy'
+import { useState } from 'react'
+import { DetailLinkAction } from './DetailLinkAction'
 
 export interface SearchDisplayProps {
-  searchStrategy: SearchStrategy
+  searchStrategy: SearchStrategy,
+  linkAction: DetailLinkAction
 }
 
 export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {
@@ -13,14 +15,14 @@ export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {
       <div className='search'>
         <SearchField
             searchAction={props.searchStrategy.searchAction}
-            loadAction={props.searchStrategy.loadAction}
+            loadAction={props.linkAction.loadAction}
             setSearchTerm={setSearchTerm}
         />
         <div className='search-button'>
-          <a href={props.searchStrategy.rootPath.concat('?search=', searchTerm)}>Search</a>
+          <a href={props.linkAction.rootPath.concat('?search=', searchTerm)}>Search</a>
         </div>
         <div className='clear-button'>
-          <a href={props.searchStrategy.rootPath}>Clear</a>
+          <a href={props.linkAction.rootPath}>Clear</a>
         </div>
       </div>
   )

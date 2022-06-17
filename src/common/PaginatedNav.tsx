@@ -16,7 +16,10 @@ export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   return (
       <>
         { props.searchDisplayProps?.searchStrategy &&
-              <SearchDisplay searchStrategy={props.searchDisplayProps?.searchStrategy!}/>}
+              <SearchDisplay
+                  searchStrategy={props.searchDisplayProps?.searchStrategy!}
+                  linkAction={props.searchDisplayProps?.linkAction!}
+              />}
         <div className='paginatedNav'>
           <div className='navButton'>
             <button

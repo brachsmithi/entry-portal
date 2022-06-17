@@ -14,6 +14,7 @@ import SearchDisplay from './common/SearchDisplay'
 import ProgramSearchStrategy from './programs/ProgramSearchStrategy'
 import DetailPersonScreen from './persons/DetailPersonScreen'
 import DetailSeriesScreen from './series/DetailSeriesScreen'
+import { makeActionForRoot } from "./common/DetailLinkAction";
 
 function App() {
   return (
@@ -72,7 +73,10 @@ function ProgramList() {
 }
 
 function ProgramSearch() {
-  return <SearchDisplay searchStrategy={ProgramSearchStrategy()}/>
+  return <SearchDisplay
+      searchStrategy={ProgramSearchStrategy()}
+      linkAction={makeActionForRoot('/program')}
+  />
 }
 
 function ProgramDetail() {

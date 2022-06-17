@@ -80,8 +80,9 @@ describe('PaginatedNav', () => {
     const searchTerm = 'atl'
     const searchProperties: SearchDisplayProps = {
       searchStrategy: {
-        searchAction: searchAction,
-
+        searchAction: searchAction
+      },
+      linkAction: {
         loadAction: loadAction,
         rootPath: rootPath
       }

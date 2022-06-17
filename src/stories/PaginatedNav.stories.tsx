@@ -63,15 +63,17 @@ WithSearch.args = {
   nextAction: () => {},
   searchDisplayProps: {
     searchStrategy: {
-      rootPath: '/demo',
       searchAction: (_: string) => new Promise(() => new SearchTermResponse({
         data: {
           data: [],
           searchMetadata: defaultSearchMetadata,
           paginationMetadata: defaultPaginationMetadata
         },
-      })),
-      loadAction: (_: number) => {}
+      }))
+    },
+    linkAction: {
+      loadAction: (_: number) => {},
+      rootPath: '/demo'
     }
   }
 }
