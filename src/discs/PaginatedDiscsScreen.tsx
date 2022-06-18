@@ -5,6 +5,7 @@ import { ListingDisplay } from '../common/ListingDisplay'
 import DiscFilterStrategy from './DiscFilterStrategy'
 import { loadFilteredDiscListings } from '../services/DiscSearchService'
 import { FilterType } from '../services/FilterType'
+import { makeActionForRoot } from "../common/DetailLinkAction";
 
 interface PaginatedDiscsScreenProps {
   programId?: string
@@ -31,7 +32,13 @@ export function PaginatedDiscsScreen(props: PaginatedDiscsScreenProps): JSX.Elem
       <>
         <PaginatedNav
             metadata={ paginatedData.paginationMetadata }
-            filterDisplayProps={{filterStrategy: DiscFilterStrategy()}}
+            filterDisplayProps={
+              {
+                filterStrategy: DiscFilterStrategy(),
+                filterType: FilterType.Program,
+                linkAction: makeActionForRoot('/discs')
+              }
+            }
             nextAction={loadNextPage}
             previousAction={loadPreviousPage}
         />
