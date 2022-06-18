@@ -2,7 +2,7 @@ import React from 'react'
 import './PaginatedNav.css'
 import PaginationMetadata from '../models/PaginationMetadata'
 import SearchDisplay, { SearchDisplayProps } from './SearchDisplay'
-import { FilterDisplayProps } from './FilterDisplay'
+import FilterDisplay, { FilterDisplayProps } from './FilterDisplay'
 
 interface PaginatedNavProps {
   metadata: PaginationMetadata,
@@ -21,6 +21,12 @@ export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
               <SearchDisplay
                   searchStrategy={props.searchDisplayProps?.searchStrategy!}
                   linkAction={props.searchDisplayProps?.linkAction!}
+              />}
+        { props.filterDisplayProps?.filterStrategy &&
+              <FilterDisplay
+                  filterStrategy={props.filterDisplayProps.filterStrategy}
+                  linkAction={props.filterDisplayProps.linkAction}
+                  filterType={props.filterDisplayProps.filterType}
               />}
         <div className='paginatedNav'>
           <div className='navButton'>

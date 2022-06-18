@@ -4,6 +4,8 @@ import { PaginatedNav } from '../common/PaginatedNav'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import SearchTermResponse from '../models/SearchTermResponse'
 import { defaultSearchMetadata } from '../models/SearchMetadata'
+import { FilterType } from '../services/FilterType'
+import FilterResponse from '../models/FilterResponse'
 
 export default {
   title: 'PaginatedNav',
@@ -70,6 +72,23 @@ WithSearch.args = {
           paginationMetadata: defaultPaginationMetadata
         },
       }))
+    },
+    linkAction: {
+      loadAction: (_: number) => {},
+      rootPath: '/demo'
+    }
+  }
+}
+
+export const WithFilter = Template.bind({})
+WithFilter.args = {
+  metadata: defaultPaginationMetadata,
+  previousAction: () => {},
+  nextAction: () => {},
+  filterDisplayProps: {
+    filterType: FilterType.Program,
+    filterStrategy: {
+      filterAction: (_, __) => {return Promise.resolve(new FilterResponse({}))}
     },
     linkAction: {
       loadAction: (_: number) => {},

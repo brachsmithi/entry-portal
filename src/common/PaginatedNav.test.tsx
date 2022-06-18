@@ -4,8 +4,11 @@ import { PaginatedNav } from './PaginatedNav'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import userEvent from '@testing-library/user-event'
 import { SearchDisplayProps } from './SearchDisplay'
-import SearchTermResponse from "../models/SearchTermResponse";
-import { act } from "react-dom/test-utils";
+import SearchTermResponse from '../models/SearchTermResponse'
+import { act } from 'react-dom/test-utils'
+import FilterResponse from '../models/FilterResponse'
+import { FilterDisplayProps } from './FilterDisplay'
+import { FilterType } from '../services/FilterType'
 
 describe('PaginatedNav', () => {
 
@@ -96,6 +99,30 @@ describe('PaginatedNav', () => {
     const textbox = screen.getByRole('textbox')
     await act(() => userEvent.type(textbox, searchTerm))
     expect(searchAction).toHaveBeenCalledWith(searchTerm)
+  })
+
+  it('includes filter when filter props are provided', async () => {
+    const filterAction = jest.fn()
+    filterAction.mockResolvedValue(new FilterResponse({}))
+    const loadAction = jest.fn()
+    const rootPath = '/root_path'
+    const filterProperties: FilterDisplayProps = {
+      filterStrategy: {
+        filterAction: filterAction
+      },
+      filterType: FilterType.Program,
+      linkAction: {
+        loadAction: loadAction,
+        rootPath: rootPath
+      }
+    }
+    render(<PaginatedNav
+        metadata={defaultPaginationMetadata}
+        filterDisplayProps={filterProperties}
+        nextAction={jest.fn()}
+        previousAction={jest.fn()}
+    />)
+    expect(screen.getByText('Filter on program')).toBeInTheDocument()
   })
 
 })
