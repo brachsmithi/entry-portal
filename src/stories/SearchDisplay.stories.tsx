@@ -13,7 +13,6 @@ const Template: ComponentStory<typeof SearchDisplay> = (args) => <SearchDisplay 
 export const ProgramSearch = Template.bind({})
 ProgramSearch.args = {
   searchStrategy: {
-    rootPath: '/programs',
     searchAction: (term: string) => {
       return Promise.resolve(new SearchTermResponse({
         data: {
@@ -49,7 +48,10 @@ ProgramSearch.args = {
           }
         }
       }))
-    },
-    loadAction: (_: number) => {}
+    }
+  },
+  linkAction: {
+    loadAction: (_: number) => {},
+    rootPath: '/programs'
   }
 }
