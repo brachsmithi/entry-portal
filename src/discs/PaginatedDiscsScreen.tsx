@@ -5,7 +5,7 @@ import { ListingDisplay } from '../common/ListingDisplay'
 import DiscFilterStrategy from './DiscFilterStrategy'
 import { loadFilteredDiscListings } from '../services/DiscSearchService'
 import { FilterType } from '../services/FilterType'
-import { makeActionForRoot } from "../common/DetailLinkAction";
+import { makeActionForRoot } from '../common/DetailLinkAction'
 
 interface PaginatedDiscsScreenProps {
   programId?: string
@@ -15,7 +15,9 @@ export function PaginatedDiscsScreen(props: PaginatedDiscsScreenProps): JSX.Elem
   const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
   const loadFilteredResults = (programId: number) => {
     loadFilteredDiscListings(FilterType.Program, programId)
-        .then(result => setPaginatedData(result.data ?? emptyPaginatedData))
+        .then(result => {
+          setPaginatedData(result.data ?? emptyPaginatedData)
+        })
   }
   const loadPage = useCallback(() => {
     if (props.programId) {
@@ -36,7 +38,8 @@ export function PaginatedDiscsScreen(props: PaginatedDiscsScreenProps): JSX.Elem
               {
                 filterStrategy: DiscFilterStrategy(),
                 filterType: FilterType.Program,
-                linkAction: makeActionForRoot('/discs')
+                linkAction: makeActionForRoot('/discs'),
+                id: +props.programId!
               }
             }
             nextAction={loadNextPage}

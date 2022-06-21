@@ -93,6 +93,7 @@ WithFilter.args = {
     linkAction: {
       loadAction: (_: number) => {},
       rootPath: '/demo'
-    }
+    },
+    id: 3
   }
 }

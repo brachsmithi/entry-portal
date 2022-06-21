@@ -27,6 +27,7 @@ export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
                   filterStrategy={props.filterDisplayProps.filterStrategy}
                   linkAction={props.filterDisplayProps.linkAction}
                   filterType={props.filterDisplayProps.filterType}
+                  id={props.filterDisplayProps.id}
               />}
         <div className='paginatedNav'>
           <div className='navButton'>

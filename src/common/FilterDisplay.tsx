@@ -7,6 +7,7 @@ export interface FilterDisplayProps {
   filterStrategy: FilterStrategy
   linkAction: DetailLinkAction
   filterType: FilterType
+  id: number
 }
 
 export default function FilterDisplay(props: FilterDisplayProps) {
