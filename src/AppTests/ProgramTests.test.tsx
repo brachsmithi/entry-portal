@@ -3,26 +3,12 @@ import { render, screen } from '@testing-library/react'
 import App from '../App'
 import { returnSearchListingJson } from '../testhelpers/ProgramSearchJson'
 import userEvent from '@testing-library/user-event'
-import { programData2, programJson2 } from '../testhelpers/ProgramJson'
 
 describe('Program Integration', () => {
 
   beforeEach(() => {
     // @ts-ignore
     fetch.resetMocks()
-  })
-
-  it('loads program from link', async () => {
-    // @ts-ignore
-    fetch.mockResponseOnce(programJson2)
-    window.history.pushState({}, '', `/programs/${programData2.id}`)
-    render(
-          <App />
-    )
-
-    expect(await screen.findByText(programData2.title)).toBeInTheDocument()
-    expect(await screen.findByText(programData2.version)).toBeInTheDocument()
-    expect(await screen.findByText(programData2.alternateTitles[0].name)).toBeInTheDocument()
   })
 
   it('performs search', async () => {
