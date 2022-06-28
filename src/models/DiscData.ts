@@ -1,6 +1,6 @@
 import { Location } from './Location'
 
-interface DiscProgram {
+export interface DiscProgram {
   id: number,
   title: string,
   year: string,
