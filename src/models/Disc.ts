@@ -1,5 +1,5 @@
 import { Location } from './Location'
-import { Package } from "./Package";
+import { Package } from './Package'
 
 export interface Disc {
   id: number,

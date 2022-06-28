@@ -9,6 +9,7 @@ import DetailPersonScreen from './persons/DetailPersonScreen'
 import DetailSeriesScreen from './series/DetailSeriesScreen'
 import { makeActionForRoot } from './common/DetailLinkAction'
 import { PaginatedDiscsScreen } from './discs/PaginatedDiscsScreen'
+import DetailDiscScreen from './discs/DetailDiscScreen'
 
 function App() {
   return (
@@ -104,6 +105,9 @@ function Discs() {
         <Route path={`${match.path}/program`}>
           <DiscListFilteredByProgram/>
         </Route>
+        <Route path={`${match.path}/:discId`}>
+          <DiscDetail/>
+        </Route>
         <Route path={match.path}>
           <ProgramList/>
         </Route>
@@ -117,6 +121,13 @@ function DiscListFilteredByProgram() {
   return <PaginatedDiscsScreen
       programId={programId}
   />
+}
+
+function DiscDetail() {
+  // @ts-ignore
+  const { discId } = useParams()
+
+  return <DetailDiscScreen discId={discId}/>
 }
 
 function PersonDetail() {
