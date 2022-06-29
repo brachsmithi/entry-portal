@@ -3,7 +3,7 @@ import { PaginatedNav } from '../common/PaginatedNav'
 import { emptyPaginatedData } from '../models/PaginatedData'
 import { ListingDisplay } from '../common/ListingDisplay'
 import DiscFilterStrategy from './DiscFilterStrategy'
-import { loadFilteredDiscListings } from '../services/DiscSearchService'
+import { loadDiscListings, loadFilteredDiscListings } from '../services/DiscSearchService'
 import { FilterType } from '../services/FilterType'
 import { makeActionForRoot } from '../common/DetailLinkAction'
 
@@ -19,13 +19,25 @@ export function PaginatedDiscsScreen(props: PaginatedDiscsScreenProps): JSX.Elem
           setPaginatedData(result.data ?? emptyPaginatedData)
         })
   }
+  const loadPaginatedResults = (page: number) => {
+    loadDiscListings(page)
+        .then(result => {
+          setPaginatedData(result.paginatedData ?? emptyPaginatedData)
+        })
+  }
   const loadPage = useCallback(() => {
     if (props.programId) {
       loadFilteredResults(+props.programId)
+    } else {
+      loadPaginatedResults(1)
     }
   }, [props.programId])
-  const loadNextPage = () => {}
-  const loadPreviousPage = () => {}
+  const loadNextPage = () => {
+    loadPaginatedResults(paginatedData.paginationMetadata.nextPage)
+  }
+  const loadPreviousPage = () => {
+    loadPaginatedResults(paginatedData.paginationMetadata.previousPage)
+  }
   useEffect(() => {
     loadPage()
   }, [loadPage])

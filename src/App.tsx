@@ -109,10 +109,14 @@ function Discs() {
           <DiscDetail/>
         </Route>
         <Route path={match.path}>
-          <ProgramList/>
+          <DiscList/>
         </Route>
       </Switch>
   )
+}
+
+function DiscList() {
+  return <PaginatedDiscsScreen />
 }
 
 function DiscListFilteredByProgram() {
