@@ -8,7 +8,7 @@ export interface DiscProgram {
   programType: string
 }
 
-interface DiscSeries {
+export interface DiscSeries {
   id: number,
   name: string
 }

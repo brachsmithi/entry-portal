@@ -105,3 +105,87 @@ export const discWithNameAndSeriesJSON = `
   ]
 }
 `
+
+export const fullyLoadedDiscData: DiscData = {
+  id: 42,
+  name: 'The Disc With Everything',
+  state: 'FILED',
+  format: 'DVD-R',
+  location: {
+    id: 222,
+    name: 'Cupboard'
+  },
+  package: {
+    id: 333,
+    name: 'Extravagant Packaging'
+  },
+  programs: [
+    {
+      id: 411,
+      title: 'The First Program',
+      year: "2022",
+      programType: 'EXTRA',
+      version: 'Theatrical Edit'
+    },
+    {
+      id: 422,
+      title: 'Another Program',
+      year: "1999",
+      programType: 'FEATURE',
+      version: 'Director\'s Cut'
+    }
+  ],
+  series: [
+    {
+      id: 511,
+      name: 'That One Series'
+    },
+    {
+      id: 522,
+      name: 'Part of Something Else, Too'
+    }
+  ]
+}
+
+export const fullyLoadedDiscJson: string = `
+{
+  "id": 42,
+  "name": "The Disc With Everything",
+  "state": "FILED",
+  "format": "DVD-R",
+  "location": {
+    "id": 222,
+    "name": "Cupboard"
+  },
+  "package": {
+    "id": 333,
+    "name": "Extravagant Packaging"
+  },
+  "programs": [
+    {
+      "id": 411,
+      "title": "The First Program",
+      "year": "2022",
+      "programType": "EXTRA",
+      "version": "Theatrical Edit"
+    },
+    {
+      "id": 422,
+      "title": "Another Program",
+      "year": "1999",
+      "programType": "FEATURE",
+      "version": "Director's Cut"
+    }
+  ],
+  "series": [
+    {
+      "id": 511,
+      "name": "That One Series"
+    },
+    {
+      "id": 522,
+      "name": "Part of Something Else, Too"
+    }
+  ]
+}
+`

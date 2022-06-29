@@ -1,4 +1,4 @@
-import DiscData, { DiscProgram } from '../models/DiscData'
+import DiscData, { DiscProgram, DiscSeries } from '../models/DiscData'
 import React from 'react'
 
 interface DiscDisplayProperties {
@@ -9,6 +9,11 @@ export function DiscDisplay(props: DiscDisplayProperties) {
   const programsElements = (programArray: DiscProgram[]) => {
     return programArray.map((program: DiscProgram) => (
         <div key={ program.id } className='program'><a href={ `/programs/${ program.id }` }>{ program.title }</a></div>
+    ))
+  }
+  const seriesElements = (seriesArray: DiscSeries[]) => {
+    return seriesArray.map((series: DiscSeries) => (
+        <div key={ series.id } className='series'><a href={ `/series/${ series.id }` }>{ series.name }</a></div>
     ))
   }
   return (
@@ -24,8 +29,11 @@ export function DiscDisplay(props: DiscDisplayProperties) {
         <div className='package'>
           { props.disc.package.name }
         </div>
+        <div className='series-list'>
+          { seriesElements(props.disc.series) }
+        </div>
         <div className='content-programs'>
-          { programsElements(props.disc.programs)}
+          { programsElements(props.disc.programs) }
         </div>
       </div>
   )

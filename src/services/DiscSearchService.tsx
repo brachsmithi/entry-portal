@@ -49,7 +49,8 @@ export async function loadDiscDetails(id: number): Promise<DiscResponse> {
           format: response.format,
           location: response.location,
           state: response.state,
-          programs: response.programs
+          programs: response.programs,
+          series: response.series
         }
       }
   )
