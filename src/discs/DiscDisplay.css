@@ -1,0 +1,54 @@
+.disc-display {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.disc-display .header {
+    font-size: x-large;
+}
+
+.disc-display .header .name {
+    font-weight: bold;
+}
+
+.disc-display .header .attributes {
+    margin-top: .5rem;
+    font-size: large;
+}
+
+.disc-display .header .format {
+    font-weight: bold;
+}
+
+.disc-display .header .state {
+    margin-left: .5rem;
+    font-style: italic;
+}
+
+.disc-display .header .location {
+    margin-left: .5rem;
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: normal;
+}
+
+.disc-display .package {
+    font-style: italic;
+}
+
+.disc-display .content-programs {
+    margin-top: .5rem;
+    border: 1px solid black;
+    padding: .25rem .5rem;
+}
+
+.disc-display .content-programs .program {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+
+.disc-display .content-programs .program a {
+    text-decoration: none;
+    color: black;
+}
