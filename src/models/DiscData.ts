@@ -5,7 +5,8 @@ export interface DiscProgram {
   title: string,
   year: string,
   version: string
-  programType: string
+  programType: string,
+  sequence: number
 }
 
 export interface DiscSeries {

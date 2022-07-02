@@ -1,6 +1,8 @@
 import './SequencedContents.css'
 import SequencedItem from './SequencedItem'
 
+export const sequencedContentsTestId = 'sequenced-contents'
+
 export interface SequencedContentsProps {
   sequencedElements: SequencedElement[]
 }
@@ -27,7 +29,7 @@ export default function SequencedContents(props: SequencedContentsProps): JSX.El
     })
   }
   return (
-      <div className='sequenced-contents'>
+      <div className='sequenced-contents' data-testid={sequencedContentsTestId}>
         {sequencedItems(props.sequencedElements)}
       </div>
   )

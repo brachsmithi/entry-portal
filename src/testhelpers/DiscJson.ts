@@ -19,14 +19,16 @@ export const discWithProgramsPackageAndNameData: DiscData = {
       title: "Il demonio",
       year: "1963",
       version: "",
-      programType: "FEATURE"
+      programType: "FEATURE",
+      sequence: 0
     },
     {
       id: 6665,
       title: "Dark Waters",
       year: "1993",
       version: "",
-      programType: "FEATURE"
+      programType: "FEATURE",
+      sequence: 0
     }
   ],
   series: []
@@ -52,14 +54,16 @@ export const discWithProgramsPackageAndNameJson = `
       "title": "Il demonio",
       "year": "1963",
       "version": "",
-      "program_type": "FEATURE"
+      "program_type": "FEATURE",
+      "sequence": 0
     },
     {
       "id": 6665,
       "title": "Dark Waters",
       "year": "1993",
       "version": "",
-      "program_type": "FEATURE"
+      "program_type": "FEATURE",
+      "sequence": 0
     }
   ],
   "series": []
@@ -125,14 +129,16 @@ export const fullyLoadedDiscData: DiscData = {
       title: 'The First Program',
       year: "2022",
       programType: 'EXTRA',
-      version: 'Theatrical Edit'
+      version: 'Theatrical Edit',
+      sequence: 0
     },
     {
       id: 422,
       title: 'Another Program',
       year: "1999",
       programType: 'FEATURE',
-      version: 'Director\'s Cut'
+      version: 'Director\'s Cut',
+      sequence: 0
     }
   ],
   series: [
@@ -167,14 +173,16 @@ export const fullyLoadedDiscJson: string = `
       "title": "The First Program",
       "year": "2022",
       "programType": "EXTRA",
-      "version": "Theatrical Edit"
+      "version": "Theatrical Edit",
+      "sequence": 1
     },
     {
       "id": 422,
       "title": "Another Program",
       "year": "1999",
       "programType": "FEATURE",
-      "version": "Director's Cut"
+      "version": "Director's Cut",
+      "sequence": 2
     }
   ],
   "series": [

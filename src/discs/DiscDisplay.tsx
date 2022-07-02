@@ -1,16 +1,23 @@
 import DiscData, { DiscProgram, DiscSeries } from '../models/DiscData'
 import React from 'react'
 import './DiscDisplay.css'
+import SequencedContents, { SequencedElement } from "../common/SequencedContents";
 
 interface DiscDisplayProperties {
   disc: DiscData
 }
 
 export function DiscDisplay(props: DiscDisplayProperties) {
-  const programsElements = (programArray: DiscProgram[]) => {
-    return programArray.map((program: DiscProgram) => (
-        <div key={ program.id } className='program'><a href={ `/programs/${ program.id }` }>{ program.title }</a></div>
-    ))
+  const programsElements = (programArray: DiscProgram[]): SequencedElement[] => {
+    return programArray.map((program: DiscProgram): SequencedElement => {
+      return {
+        sequence: program.sequence,
+        className: 'program',
+        element: (
+          <a href={ `/programs/${ program.id }` }>{ program.title }</a>
+        )
+      }
+    })
   }
   const seriesElements = (seriesArray: DiscSeries[]) => {
     return seriesArray.map((series: DiscSeries) => (
@@ -33,9 +40,7 @@ export function DiscDisplay(props: DiscDisplayProperties) {
         <div className='series-list'>
           { seriesElements(props.disc.series) }
         </div>
-        <div className='content-programs'>
-          { programsElements(props.disc.programs) }
-        </div>
+        <SequencedContents sequencedElements={programsElements(props.disc.programs)} />
       </div>
   )
 }
