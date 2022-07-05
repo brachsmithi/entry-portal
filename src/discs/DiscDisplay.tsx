@@ -1,7 +1,7 @@
 import DiscData, { DiscProgram, DiscSeries } from '../models/DiscData'
 import React from 'react'
+import SequencedContents, { SequencedElement } from '../common/SequencedContents'
 import './DiscDisplay.css'
-import SequencedContents, { SequencedElement } from "../common/SequencedContents";
 
 interface DiscDisplayProperties {
   disc: DiscData
@@ -40,7 +40,9 @@ export function DiscDisplay(props: DiscDisplayProperties) {
         <div className='series-list'>
           { seriesElements(props.disc.series) }
         </div>
-        <SequencedContents sequencedElements={programsElements(props.disc.programs)} />
+        { props.disc.programs.length > 0 &&
+            <SequencedContents sequencedElements={programsElements(props.disc.programs)} /> }
+
       </div>
   )
 }

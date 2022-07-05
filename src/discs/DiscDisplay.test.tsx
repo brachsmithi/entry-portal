@@ -1,6 +1,6 @@
 import { DiscDisplay } from './DiscDisplay'
 import { render } from '@testing-library/react'
-import DiscData from '../models/DiscData'
+import DiscData, { emptyDiscData } from '../models/DiscData'
 import { sequencedContentsTestId } from '../common/SequencedContents'
 
 describe('DiscDisplay', () => {
@@ -37,6 +37,12 @@ describe('DiscDisplay', () => {
 
     const programContents = getByTestId(sequencedContentsTestId).textContent
     expect(programContents?.match(/Program Two.*Program One.*Program Three/)).not.toBeNull()
+  })
+
+  it('does not include sequenced contents when there are no programs',() => {
+    const { queryByTestId } = render(<DiscDisplay disc={emptyDiscData}/>)
+
+    expect(queryByTestId(sequencedContentsTestId)).not.toBeInTheDocument()
   })
 
 })

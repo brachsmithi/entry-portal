@@ -37,18 +37,31 @@
     font-style: italic;
 }
 
-.disc-display .content-programs {
+.disc-display .series-list {
+    margin-top: .5rem;
+}
+
+.disc-display .series-list .series:not(:first-of-type) {
+    margin-left: .5rem;
+}
+
+.disc-display .series-list .series a {
+    text-decoration: none;
+    color: black;
+}
+
+.disc-display .sequenced-contents {
     margin-top: .5rem;
     border: 1px solid black;
     padding: .25rem .5rem;
 }
 
-.disc-display .content-programs .program {
-    margin-top: .25rem;
-    margin-bottom: .25rem;
+.disc-display .sequenced-contents .program {
+    /*margin-top: .25rem;*/
+    /*margin-bottom: .25rem;*/
 }
 
-.disc-display .content-programs .program a {
+.disc-display .sequenced-contents .program a {
     text-decoration: none;
     color: black;
 }
