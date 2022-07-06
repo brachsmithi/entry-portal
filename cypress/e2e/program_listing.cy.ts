@@ -1,8 +1,12 @@
 import {
   programListing1,
   programListing2,
-  programListing3, programListing4,
-  returnProgramListingJson, returnSearchListingJson, searchListing1, totalProgramPages
+  programListing3,
+  programListing4,
+  returnProgramListingJson,
+  returnSearchListingJson,
+  searchListing1,
+  totalProgramPages
 } from '../../src/testhelpers/ProgramSearchJson'
 import { programData1, programJson1 } from '../../src/testhelpers/ProgramJson'
 

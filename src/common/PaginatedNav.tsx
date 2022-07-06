@@ -3,9 +3,12 @@ import './PaginatedNav.css'
 import PaginationMetadata from '../models/PaginationMetadata'
 import SearchDisplay, { SearchDisplayProps } from './SearchDisplay'
 import FilterDisplay, { FilterDisplayProps } from './FilterDisplay'
+import { ListingTypeMenu } from './ListingTypeMenu'
+import { ListingType } from './ListingType'
 
 interface PaginatedNavProps {
   metadata: PaginationMetadata,
+  listingType: ListingType,
   searchDisplayProps?: SearchDisplayProps,
   filterDisplayProps?: FilterDisplayProps,
   nextAction: () => void,
@@ -18,7 +21,8 @@ export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   const filterEnabled = props.filterDisplayProps?.filterStrategy && props.filterDisplayProps?.id > 0
   const searchEnabled = props.searchDisplayProps?.searchStrategy
   return (
-      <div>
+      <>
+        <ListingTypeMenu listingType={props.listingType} />
         { searchEnabled &&
               <SearchDisplay
                   searchStrategy={props.searchDisplayProps?.searchStrategy!}
@@ -52,6 +56,6 @@ export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
             </button>
           </div>
         </div>
-      </div>
+      </>
   )
 }

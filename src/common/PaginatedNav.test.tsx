@@ -9,11 +9,16 @@ import { act } from 'react-dom/test-utils'
 import FilterResponse from '../models/FilterResponse'
 import { FilterDisplayProps } from './FilterDisplay'
 import { FilterType } from '../services/FilterType'
+import { ListingType } from './ListingType'
 
 describe('PaginatedNav', () => {
 
   it('renders with empty metadata', () => {
-    render(<PaginatedNav metadata={defaultPaginationMetadata} nextAction={jest.fn()} previousAction={jest.fn()} />)
+    render(<PaginatedNav
+        listingType={ListingType.programs}
+        metadata={defaultPaginationMetadata}
+        nextAction={jest.fn()}
+        previousAction={jest.fn()} />)
     expect(screen.getByText(/Page 1 of 1/i)).toBeInTheDocument()
     expect(screen.queryByText('Prev')).not.toBeEnabled()
     expect(screen.queryByText('Next')).not.toBeEnabled()
@@ -24,7 +29,11 @@ describe('PaginatedNav', () => {
       ...defaultPaginationMetadata,
       totalPages: 90
     }
-    render(<PaginatedNav metadata={metadata} nextAction={jest.fn()} previousAction={jest.fn()} />)
+    render(<PaginatedNav
+        listingType={ListingType.programs}
+        metadata={metadata}
+        nextAction={jest.fn()}
+        previousAction={jest.fn()} />)
     expect(screen.getByText(/Page 1 of 90/i)).toBeInTheDocument()
     expect(screen.queryByText('Prev')).not.toBeEnabled()
     expect(screen.queryByText('Next')).toBeEnabled()
@@ -36,7 +45,11 @@ describe('PaginatedNav', () => {
       currentPage: 12,
       totalPages: 12
     }
-    render(<PaginatedNav metadata={metadata} nextAction={jest.fn()} previousAction={jest.fn()} />)
+    render(<PaginatedNav
+        listingType={ListingType.programs}
+        metadata={metadata}
+        nextAction={jest.fn()}
+        previousAction={jest.fn()} />)
     expect(screen.getByText(/Page 12 of 12/i)).toBeInTheDocument()
     expect(screen.queryByText('Prev')).toBeEnabled()
     expect(screen.queryByText('Next')).not.toBeEnabled()
@@ -49,7 +62,11 @@ describe('PaginatedNav', () => {
     }
     const nextFunction = jest.fn()
     const previousFunction = jest.fn()
-    render(<PaginatedNav metadata={metadata} nextAction={nextFunction} previousAction={previousFunction} />)
+    render(<PaginatedNav
+        listingType={ListingType.programs}
+        metadata={metadata}
+        nextAction={nextFunction}
+        previousAction={previousFunction} />)
 
     const nextElement = screen.getByText('Next')
     userEvent.click(nextElement)
@@ -66,7 +83,11 @@ describe('PaginatedNav', () => {
     }
     const nextFunction = jest.fn()
     const previousFunction = jest.fn()
-    render(<PaginatedNav metadata={metadata} nextAction={nextFunction} previousAction={previousFunction} />)
+    render(<PaginatedNav
+        listingType={ListingType.programs}
+        metadata={metadata}
+        nextAction={nextFunction}
+        previousAction={previousFunction} />)
 
     const previousButton = screen.getByText('Prev')
     userEvent.click(previousButton)
@@ -91,6 +112,7 @@ describe('PaginatedNav', () => {
       }
     }
     render(<PaginatedNav
+        listingType={ListingType.programs}
         metadata={defaultPaginationMetadata}
         searchDisplayProps={searchProperties}
         nextAction={jest.fn()}
@@ -118,6 +140,7 @@ describe('PaginatedNav', () => {
       }
     }
     render(<PaginatedNav
+        listingType={ListingType.programs}
         metadata={defaultPaginationMetadata}
         filterDisplayProps={filterProperties}
         nextAction={jest.fn()}

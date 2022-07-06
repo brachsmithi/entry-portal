@@ -6,6 +6,7 @@ import SearchTermResponse from '../models/SearchTermResponse'
 import { defaultSearchMetadata } from '../models/SearchMetadata'
 import { FilterType } from '../services/FilterType'
 import FilterResponse from '../models/FilterResponse'
+import { ListingType } from '../common/ListingType'
 
 export default {
   title: 'PaginatedNav',
@@ -16,6 +17,7 @@ const Template: ComponentStory<typeof PaginatedNav> = (args) => <PaginatedNav {.
 
 export const Default = Template.bind({})
 Default.args = {
+  listingType: ListingType.programs,
   metadata: defaultPaginationMetadata,
   previousAction: () => {},
   nextAction: () => {}
@@ -23,6 +25,7 @@ Default.args = {
 
 export const FirstOfMany = Template.bind({})
 FirstOfMany.args = {
+  listingType: ListingType.programs,
   metadata: {
     ...defaultPaginationMetadata,
     currentPage: 1,
@@ -34,6 +37,7 @@ FirstOfMany.args = {
 
 export const MidstOfMany = Template.bind({})
 MidstOfMany.args = {
+  listingType: ListingType.programs,
   metadata: {
     ...defaultPaginationMetadata,
     currentPage: 26,
@@ -45,6 +49,7 @@ MidstOfMany.args = {
 
 export const LastOfMany = Template.bind({})
 LastOfMany.args = {
+  listingType: ListingType.programs,
   metadata: {
     ...defaultPaginationMetadata,
     currentPage: 50,
@@ -56,6 +61,7 @@ LastOfMany.args = {
 
 export const WithSearch = Template.bind({})
 WithSearch.args = {
+  listingType: ListingType.programs,
   metadata: {
     ...defaultPaginationMetadata,
     currentPage: 26,
@@ -82,6 +88,7 @@ WithSearch.args = {
 
 export const WithFilter = Template.bind({})
 WithFilter.args = {
+  listingType: ListingType.programs,
   metadata: defaultPaginationMetadata,
   previousAction: () => {},
   nextAction: () => {},

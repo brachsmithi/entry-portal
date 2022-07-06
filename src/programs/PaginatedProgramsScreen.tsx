@@ -4,7 +4,8 @@ import loadProgramListings, { loadProgramSearchResults } from '../services/Progr
 import { emptyPaginatedData } from '../models/PaginatedData'
 import { ListingDisplay } from '../common/ListingDisplay'
 import ProgramSearchStrategy from './ProgramSearchStrategy'
-import { makeActionForRoot } from "../common/DetailLinkAction";
+import { makeActionForRoot } from '../common/DetailLinkAction'
+import { ListingType } from '../common/ListingType'
 
 interface PaginatedProgramsScreenProps {
   searchTerm?: string
@@ -40,6 +41,7 @@ export function PaginatedProgramsScreen(props: PaginatedProgramsScreenProps): JS
   return (
       <>
         <PaginatedNav
+            listingType={ListingType.programs}
             metadata={ paginatedData.paginationMetadata }
             searchDisplayProps={{
               searchStrategy: ProgramSearchStrategy(),
