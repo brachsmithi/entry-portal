@@ -1,6 +1,7 @@
 import { Button, Menu, MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 import { ListingType } from './ListingType'
+import './ListingTypeMenu.css'
 
 interface ListingTypeMenuProps {
   listingType: ListingType
@@ -21,24 +22,29 @@ export function ListingTypeMenu(props: ListingTypeMenuProps): JSX.Element {
   const menuItemFor = (listingType: ListingType) => {
     return (
         <MenuItem
+          className='listing-type-menu-item'
           key={listingType.key}
           onClick={() => routeTo(listingType.path)}>
-          {listingType.name}
+          <b>{listingType.icon}</b>&nbsp;&nbsp;{listingType.name}
         </MenuItem>
     )
   }
   return (
-      <>
+      <div className='listing-menu-container'>
         <Button
             className='listing-type-button'
             onClick={openMenu}>{props.listingType.icon}</Button>
         <Menu
+            className='listing-type-menu'
             open={open}
             anchorEl={anchorEl}
-            onClose={closeMenu}>
+            onClose={closeMenu}
+            MenuListProps={{
+              dense: true
+            }}>
           { menuItemFor(ListingType.programs) }
           { menuItemFor(ListingType.discs) }
         </Menu>
-      </>
+      </div>
   )
 }

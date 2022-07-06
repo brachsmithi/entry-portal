@@ -1,0 +1,19 @@
+.listing-menu-container {
+    position: absolute;
+    top: 0;
+    left: -1rem;
+}
+
+.listing-menu-container .listing-type-button {
+    border: 0.16rem crimson solid;
+    border-radius: 20rem;
+    padding: 0 0 0 1.5rem;
+    color: black;
+    font-weight: bold;
+    font-size: small;
+}
+
+.listing-menu-container .listing-type-menu .listing-type-menu-item {
+    font-size: small;
+    padding: 0.25rem;
+}
