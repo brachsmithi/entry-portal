@@ -107,6 +107,7 @@ describe('PaginatedNav', () => {
     const loadAction = jest.fn()
     const rootPath = '/root_path'
     const filterProperties: FilterDisplayProps = {
+      id: 12,
       filterStrategy: {
         filterAction: filterAction
       },
