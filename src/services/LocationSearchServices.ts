@@ -1,5 +1,5 @@
 import LocationResponse from '../models/LocationResponse'
-import { emptyLocationData, LocationDiscData } from '../models/LocationData'
+import { LocationDiscData } from '../models/LocationData'
 
 export async function loadLocationDetails(id: number): Promise<LocationResponse> {
   let url = `http://localhost:3000/locations/${id}.json`
@@ -19,9 +19,9 @@ export async function loadLocationDetails(id: number): Promise<LocationResponse>
 
   return new LocationResponse({
     data: {
-      ...emptyLocationData,
       id: response.id,
       name: response.name,
+      filled: response.filled,
       discs: locationDiscs(response.discs)
     }
   })

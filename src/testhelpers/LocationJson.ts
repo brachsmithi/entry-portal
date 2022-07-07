@@ -42,3 +42,46 @@ export const locationJson: string = `
     ]
   }
 `
+
+export const locationFilledData: LocationData =
+    {
+      id: 2,
+      name: "Someplace",
+      filled: true,
+      discs: [
+        {
+          id: 111,
+          displayName: 'Movie/Sequel'
+        },
+        {
+          id: 211,
+          displayName: 'Disc Two'
+        },
+        {
+          id: 311,
+          displayName: 'Three (2001)'
+        }
+      ]
+    }
+
+export const locationFilledJson: string = `
+  {
+    "id": 2,
+    "name": "Someplace",
+    "filled": true,
+    "discs": [
+      {
+        "id": 111,
+        "display_title": "Movie/Sequel"
+      },
+      {
+        "id": 211,
+        "display_title": "Disc Two"
+      },
+      {
+        "id": 311,
+        "display_title": "Three (2001)"
+      }
+    ]
+  }
+`
