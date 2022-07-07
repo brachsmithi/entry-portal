@@ -1,5 +1,6 @@
 import LocationData, { LocationDiscData } from '../models/LocationData'
 import React from 'react'
+import './LocationDisplay.css'
 
 interface LocationDisplayProperties {
   location: LocationData
