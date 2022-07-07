@@ -10,6 +10,7 @@ import DetailSeriesScreen from './series/DetailSeriesScreen'
 import { makeActionForRoot } from './common/DetailLinkAction'
 import { PaginatedDiscsScreen } from './discs/PaginatedDiscsScreen'
 import DetailDiscScreen from './discs/DetailDiscScreen'
+import DetailLocationScreen from './locations/DetailLocationScreen'
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path='/discs'>
             <Discs/>
+          </Route>
+          <Route path='/locations'>
+            <Locations/>
           </Route>
           <Route path='/search'>
             <Search/>
@@ -96,6 +100,27 @@ function Persons() {
         </Route>
       </Switch>
   )
+}
+
+function Locations() {
+  let match = useRouteMatch()
+  return (
+      <Switch>
+        <Route path={`${match.path}/:locationId`}>
+          <LocationDetail/>
+        </Route>
+        <Route path={match.path}>
+          <ProgramList/>
+        </Route>
+      </Switch>
+  )
+}
+
+function LocationDetail() {
+  // @ts-ignore
+  const { locationId } = useParams()
+
+  return <DetailLocationScreen locationId={locationId}/>
 }
 
 function Discs() {

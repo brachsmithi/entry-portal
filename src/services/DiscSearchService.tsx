@@ -37,8 +37,6 @@ export async function loadDiscDetails(id: number): Promise<DiscResponse> {
   const response = await fetch(url)
       .then(response => response.json())
 
-  console.log(response)
-
   return new DiscResponse(
       {
         data: {

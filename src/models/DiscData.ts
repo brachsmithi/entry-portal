@@ -1,5 +1,3 @@
-import { Location } from './Location'
-
 export interface DiscProgram {
   id: number,
   title: string,
@@ -14,7 +12,7 @@ export interface DiscSeries {
   name: string
 }
 
-interface DiscPackage {
+export interface DiscPackage {
   id?: number,
   name?: string
 }
@@ -24,10 +22,15 @@ export default interface DiscData {
   name: string,
   format: string,
   state: string,
-  location: Location,
+  location: DiscLocation,
   package: DiscPackage,
   programs: DiscProgram[]
   series: DiscSeries[]
+}
+
+export interface DiscLocation {
+  id: number,
+  name: string
 }
 
 export const emptyDiscData: DiscData = {
