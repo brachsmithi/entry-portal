@@ -33,6 +33,11 @@
     font-weight: normal;
 }
 
+.disc-display .header .location a {
+    color: black;
+    text-decoration: none;
+}
+
 .disc-display .package {
     font-style: italic;
 }
