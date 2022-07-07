@@ -1,7 +1,7 @@
 import { DiscDisplay } from './DiscDisplay'
 import { render } from '@testing-library/react'
 import DiscData, { emptyDiscData } from '../models/DiscData'
-import { sequencedContentsTestId } from '../common/SequencedContents'
+import { sequencedContentsTestId } from '../common/sequence/SequencedContents'
 
 describe('DiscDisplay', () => {
 

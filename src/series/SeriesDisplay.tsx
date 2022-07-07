@@ -6,7 +6,7 @@ import SeriesData, {
   SeriesPackageData,
   SeriesProgramData, SeriesWrapperSeries
 } from '../models/SeriesData'
-import SequencedContents, { SequencedElement } from '../common/SequencedContents'
+import SequencedContents, { SequencedElement } from '../common/sequence/SequencedContents'
 
 interface SeriesDisplayProperties {
   series: SeriesData

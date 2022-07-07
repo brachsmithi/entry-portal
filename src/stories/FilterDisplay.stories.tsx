@@ -1,7 +1,7 @@
-import FilterDisplay from '../common/FilterDisplay'
+import FilterDisplay from '../common/filter/FilterDisplay'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { FilterType } from '../services/FilterType'
-import { makeActionForRoot } from '../common/DetailLinkAction'
+import { makeActionForRoot } from '../common/detail/DetailLinkAction'
 import FilterResponse from '../models/FilterResponse'
 
 export default {

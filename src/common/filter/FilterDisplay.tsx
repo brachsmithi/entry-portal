@@ -1,7 +1,7 @@
 import './FilterDisplay.css'
-import FilterStrategy from '../models/FilterStrategy'
-import { DetailLinkAction } from './DetailLinkAction'
-import { FilterType } from '../services/FilterType'
+import FilterStrategy from '../../models/FilterStrategy'
+import { DetailLinkAction } from '../detail/DetailLinkAction'
+import { FilterType } from '../../services/FilterType'
 
 export interface FilterDisplayProps {
   filterStrategy: FilterStrategy

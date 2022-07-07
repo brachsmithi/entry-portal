@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import DetailNav from "../common/DetailNav"
+import DetailNav from "../common/detail/DetailNav"
 import { ProgramDisplay } from "./ProgramDisplay"
 import { emptyProgramData } from "../models/ProgramData"
 import { loadProgramDetails } from "../services/ProgramSearchService"

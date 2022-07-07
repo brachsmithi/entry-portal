@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { emptyLocationData } from '../models/LocationData'
 import { loadLocationDetails } from '../services/LocationSearchServices'
-import DetailNav from '../common/DetailNav'
+import DetailNav from '../common/detail/DetailNav'
 import { LocationDisplay } from './LocationDisplay'
 
 interface DetailLocationScreenProps {

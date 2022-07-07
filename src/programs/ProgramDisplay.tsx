@@ -1,7 +1,7 @@
 import React from 'react'
 import "./ProgramDisplay.css"
 import ProgramData from "../models/ProgramData"
-import { formatDuration } from "../common/DisplayFormatters"
+import { formatDuration } from "../common/format/DisplayFormatters"
 import Person from "../models/Person"
 import Alias from "../models/Alias"
 import AlternateTitle from "../models/AlternateTitle"

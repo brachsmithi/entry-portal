@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import SearchDisplay from "../common/SearchDisplay"
+import SearchDisplay from "../common/search/SearchDisplay"
 import SearchTermResponse from "../models/SearchTermResponse"
 
 export default {

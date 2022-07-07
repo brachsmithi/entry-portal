@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { PaginatedNav } from '../common/PaginatedNav'
+import { PaginatedNav } from '../common/paginate/PaginatedNav'
 import { emptyPaginatedData } from '../models/PaginatedData'
-import { ListingDisplay } from '../common/ListingDisplay'
+import { ListingDisplay } from '../common/listing/ListingDisplay'
 import DiscFilterStrategy from './DiscFilterStrategy'
 import { loadDiscListings, loadFilteredDiscListings } from '../services/DiscSearchService'
 import { FilterType } from '../services/FilterType'
-import { makeActionForRoot } from '../common/DetailLinkAction'
-import { ListingType } from '../common/ListingType'
+import { makeActionForRoot } from '../common/detail/DetailLinkAction'
+import { ListingType } from '../common/listing/ListingType'
 
 interface PaginatedDiscsScreenProps {
   programId?: string

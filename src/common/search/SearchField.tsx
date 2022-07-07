@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react"
 import './SearchField.css'
-import SearchTermResponse from "../models/SearchTermResponse"
-import { ListingData } from "../models/ListingData"
+import SearchTermResponse from "../../models/SearchTermResponse"
+import { ListingData } from "../../models/ListingData"
 
 interface SearchFieldProps {
   searchAction: (searchTerm: string) => Promise<SearchTermResponse>

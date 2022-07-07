@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { PaginatedNav } from '../common/PaginatedNav'
+import { PaginatedNav } from '../common/paginate/PaginatedNav'
 import loadProgramListings, { loadProgramSearchResults } from '../services/ProgramSearchService'
 import { emptyPaginatedData } from '../models/PaginatedData'
-import { ListingDisplay } from '../common/ListingDisplay'
+import { ListingDisplay } from '../common/listing/ListingDisplay'
 import ProgramSearchStrategy from './ProgramSearchStrategy'
-import { makeActionForRoot } from '../common/DetailLinkAction'
-import { ListingType } from '../common/ListingType'
+import { makeActionForRoot } from '../common/detail/DetailLinkAction'
+import { ListingType } from '../common/listing/ListingType'
 
 interface PaginatedProgramsScreenProps {
   searchTerm?: string

@@ -1,6 +1,6 @@
 import React from 'react'
 import './ListingDisplay.css'
-import { ListingData } from "../models/ListingData"
+import { ListingData } from "../../models/ListingData"
 
 export interface ListingDisplayProperties {
   listings: Array<ListingData>

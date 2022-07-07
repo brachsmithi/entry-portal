@@ -1,0 +1,12 @@
+{
+  "clearMocks": true,
+  "maxWorkers": "50%",
+  "preset": "jest-expo",
+  "collectCoverage": false,
+  "testEnvironment": "node",
+  "cacheDirectory": ".jest/cache",
+  "coverageDirectory": ".jest/coverage",
+  "moduleFileExtensions": ["ts", "tsx", "js"],
+  "moduleDirectories": ["node_modules", "src"],
+  "testPathIgnorePatterns": ["<rootDir>/node_modules/"]
+}

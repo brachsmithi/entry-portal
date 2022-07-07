@@ -1,15 +1,15 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { PaginatedNav } from './PaginatedNav'
-import { defaultPaginationMetadata } from '../models/PaginationMetadata'
+import { defaultPaginationMetadata } from '../../models/PaginationMetadata'
 import userEvent from '@testing-library/user-event'
-import { SearchDisplayProps } from './SearchDisplay'
-import SearchTermResponse from '../models/SearchTermResponse'
+import { SearchDisplayProps } from '../search/SearchDisplay'
+import SearchTermResponse from '../../models/SearchTermResponse'
 import { act } from 'react-dom/test-utils'
-import FilterResponse from '../models/FilterResponse'
-import { FilterDisplayProps } from './FilterDisplay'
-import { FilterType } from '../services/FilterType'
-import { ListingType } from './ListingType'
+import FilterResponse from '../../models/FilterResponse'
+import { FilterDisplayProps } from '../filter/FilterDisplay'
+import { FilterType } from '../../services/FilterType'
+import { ListingType } from '../listing/ListingType'
 
 describe('PaginatedNav', () => {
 

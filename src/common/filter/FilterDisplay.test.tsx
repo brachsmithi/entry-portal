@@ -1,9 +1,9 @@
-import FilterStrategy from '../models/FilterStrategy'
-import FilterResponse from '../models/FilterResponse'
-import { DetailLinkAction } from './DetailLinkAction'
+import FilterStrategy from '../../models/FilterStrategy'
+import FilterResponse from '../../models/FilterResponse'
+import { DetailLinkAction } from '../detail/DetailLinkAction'
 import { render } from '@testing-library/react'
 import FilterDisplay from './FilterDisplay'
-import { FilterType } from '../services/FilterType'
+import { FilterType } from '../../services/FilterType'
 
 describe('FilterDisplay', () => {
 

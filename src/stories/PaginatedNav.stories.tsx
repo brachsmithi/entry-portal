@@ -1,12 +1,12 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { PaginatedNav } from '../common/PaginatedNav'
+import { PaginatedNav } from '../common/paginate/PaginatedNav'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import SearchTermResponse from '../models/SearchTermResponse'
 import { defaultSearchMetadata } from '../models/SearchMetadata'
 import { FilterType } from '../services/FilterType'
 import FilterResponse from '../models/FilterResponse'
-import { ListingType } from '../common/ListingType'
+import { ListingType } from '../common/listing/ListingType'
 
 export default {
   title: 'PaginatedNav',

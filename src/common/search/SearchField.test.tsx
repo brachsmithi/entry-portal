@@ -1,8 +1,8 @@
 import { act, render } from "@testing-library/react"
 import SearchField from "./SearchField"
 import userEvent from "@testing-library/user-event"
-import SearchTermResponse from "../models/SearchTermResponse"
-import { defaultPaginationMetadata } from "../models/PaginationMetadata";
+import SearchTermResponse from "../../models/SearchTermResponse"
+import { defaultPaginationMetadata } from "../../models/PaginationMetadata";
 
 describe('SearchField', () => {
 

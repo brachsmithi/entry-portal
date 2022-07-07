@@ -1,6 +1,6 @@
 import DiscData, { DiscLocation, DiscProgram, DiscSeries } from '../models/DiscData'
 import React from 'react'
-import SequencedContents, { SequencedElement } from '../common/SequencedContents'
+import SequencedContents, { SequencedElement } from '../common/sequence/SequencedContents'
 import './DiscDisplay.css'
 
 interface DiscDisplayProperties {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import DetailNav from '../common/DetailNav'
+import DetailNav from '../common/detail/DetailNav'
 import { emptySeriesData } from '../models/SeriesData'
 import { loadSeriesDetails } from '../services/SeriesSearchService'
 import { SeriesDisplay } from './SeriesDisplay'

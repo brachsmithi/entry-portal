@@ -1,7 +1,7 @@
 // @ts-ignore
 import React from 'react'
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { ListingDisplay } from "../common/ListingDisplay"
+import { ListingDisplay } from "../common/listing/ListingDisplay"
 
 export default {
   title: 'ListingDisplay',

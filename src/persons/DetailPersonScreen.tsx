@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { emptyPersonData } from '../models/PersonData'
 import { loadPersonDetails } from '../services/PersonSearchService'
-import DetailNav from '../common/DetailNav'
+import DetailNav from '../common/detail/DetailNav'
 import { PersonDisplay } from './PersonDisplay'
 
 interface DetailPersonScreenProps {

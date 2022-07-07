@@ -1,8 +1,8 @@
 import './SearchDisplay.css'
 import SearchField from './SearchField'
-import SearchStrategy from '../models/SearchStrategy'
+import SearchStrategy from '../../models/SearchStrategy'
 import { useState } from 'react'
-import { DetailLinkAction } from './DetailLinkAction'
+import { DetailLinkAction } from '../detail/DetailLinkAction'
 
 export interface SearchDisplayProps {
   searchStrategy: SearchStrategy,

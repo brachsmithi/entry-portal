@@ -1,10 +1,10 @@
 import React from 'react'
 import './PaginatedNav.css'
-import PaginationMetadata from '../models/PaginationMetadata'
-import SearchDisplay, { SearchDisplayProps } from './SearchDisplay'
-import FilterDisplay, { FilterDisplayProps } from './FilterDisplay'
-import { ListingTypeMenu } from './ListingTypeMenu'
-import { ListingType } from './ListingType'
+import PaginationMetadata from '../../models/PaginationMetadata'
+import SearchDisplay, { SearchDisplayProps } from '../search/SearchDisplay'
+import FilterDisplay, { FilterDisplayProps } from '../filter/FilterDisplay'
+import { ListingTypeMenu } from '../listing/ListingTypeMenu'
+import { ListingType } from '../listing/ListingType'
 
 interface PaginatedNavProps {
   metadata: PaginationMetadata,

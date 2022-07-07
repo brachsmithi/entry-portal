@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react"
 import SearchDisplay from "./SearchDisplay"
-import SearchStrategy from "../models/SearchStrategy"
+import SearchStrategy from "../../models/SearchStrategy"
 import userEvent from "@testing-library/user-event"
-import { DetailLinkAction } from "./DetailLinkAction";
+import { DetailLinkAction } from "../detail/DetailLinkAction";
 
 describe('SearchDisplay', () => {
 

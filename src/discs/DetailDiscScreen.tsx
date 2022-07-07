@@ -1,4 +1,4 @@
-import DetailNav from '../common/DetailNav'
+import DetailNav from '../common/detail/DetailNav'
 import React, { useEffect, useState } from 'react'
 import { emptyDiscData } from '../models/DiscData'
 import { loadDiscDetails } from '../services/DiscSearchService'

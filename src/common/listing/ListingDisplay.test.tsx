@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { ListingDisplay } from "./ListingDisplay"
-import { ListingData } from "../models/ListingData"
+import { ListingData } from "../../models/ListingData"
 
 describe('ProgramListDisplay', () => {
 
