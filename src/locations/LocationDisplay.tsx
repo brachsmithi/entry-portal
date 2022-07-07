@@ -1,22 +1,36 @@
 import LocationData, { LocationDiscData } from '../models/LocationData'
 import React from 'react'
 import './LocationDisplay.css'
+import { LoadingPlaceholder } from '../common/lazy/LoadingPlaceholder'
+import { loadSortableDisc } from '../services/DiscSearchService'
 
 interface LocationDisplayProperties {
   location: LocationData
 }
 
 export function LocationDisplay(props: LocationDisplayProperties) {
-  const discDiv = (discs: LocationDiscData[]) => {
+  const discDiv = (discs: LocationDiscData[]): JSX.Element => {
     const discElements = (discs: LocationDiscData[]) => {
+      const loadDisc = (id: number, elKey: number): Promise<JSX.Element> => {
+        return loadSortableDisc(id).then((response) => {
+          return (
+              <div
+                key={elKey}
+                className='disc'
+              >
+                <a href={`/discs/${id}`}>{response.sortableDiscData.displayTitle}</a>
+              </div>
+          )
+        })
+      }
       return discs.map((disc, index) => {
         return (
-            <div
-                key={index}
-                className='disc'
-            >
-              <a href={`/discs/${disc.id}`}>{disc.displayName}</a>
-            </div>)
+            <LoadingPlaceholder
+                id={disc.id}
+                elKey={index}
+                loader={loadDisc}
+            />
+        )
       })
     }
     return (

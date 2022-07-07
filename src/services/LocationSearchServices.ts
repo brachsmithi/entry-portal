@@ -10,8 +10,7 @@ export async function loadLocationDetails(id: number): Promise<LocationResponse>
     const discArray: LocationDiscData[] = []
     discs.forEach((disc) => {
       discArray.push({
-        id: disc.id,
-        displayName: disc.display_title
+        id: disc.id
       })
     })
     return discArray

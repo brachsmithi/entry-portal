@@ -7,16 +7,13 @@ export const locationData: LocationData =
       filled: false,
       discs: [
         {
-          id: 3900,
-          displayName: 'L\'Inferno/Haxan'
+          id: 3900
         },
         {
-          id: 2689,
-          displayName: 'Midnite Movies Double Feature: The Tomb of Ligeia/An Evening of Edgar Allan Poe'
+          id: 2689
         },
         {
-          id: 1595,
-          displayName: 'Se7en (1995)'
+          id: 1595
         }
       ]
     }
@@ -28,16 +25,13 @@ export const locationJson: string = `
     "filled": false,
     "discs": [
       {
-        "id": 3900,
-        "display_title": "L'Inferno/Haxan"
+        "id": 3900
       },
       {
-        "id": 2689,
-        "display_title": "Midnite Movies Double Feature: The Tomb of Ligeia/An Evening of Edgar Allan Poe"
+        "id": 2689
       },
       {
-        "id": 1595,
-        "display_title": "Se7en (1995)"
+        "id": 1595
       }
     ]
   }
@@ -50,16 +44,13 @@ export const locationFilledData: LocationData =
       filled: true,
       discs: [
         {
-          id: 111,
-          displayName: 'Movie/Sequel'
+          id: 111
         },
         {
-          id: 211,
-          displayName: 'Disc Two'
+          id: 211
         },
         {
-          id: 311,
-          displayName: 'Three (2001)'
+          id: 311
         }
       ]
     }
@@ -71,16 +62,13 @@ export const locationFilledJson: string = `
     "filled": true,
     "discs": [
       {
-        "id": 111,
-        "display_title": "Movie/Sequel"
+        "id": 111
       },
       {
-        "id": 211,
-        "display_title": "Disc Two"
+        "id": 211
       },
       {
-        "id": 311,
-        "display_title": "Three (2001)"
+        "id": 311
       }
     ]
   }

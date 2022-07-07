@@ -8,6 +8,10 @@ import {
   seriesWithProgramsJson
 } from '../../src/testhelpers/SeriesJson'
 import { locationData, locationJson } from '../../src/testhelpers/LocationJson'
+import {
+  sortableDiscWithNameAndPackageData,
+  sortableDiscWithNameAndPackageJson
+} from '../../src/testhelpers/DiscSortableJson'
 
 describe('Disc Details', () => {
 
@@ -27,6 +31,9 @@ describe('Disc Details', () => {
     cy.intercept('GET',
         'http://localhost:3000/locations/*.json',
         locationJson)
+    cy.intercept('GET',
+        `http://localhost:3000/discs/sortable/*.json`,
+        sortableDiscWithNameAndPackageJson)
 
     cy.visit(`/discs/${fullyLoadedDiscData.id}`)
 
@@ -37,7 +44,7 @@ describe('Disc Details', () => {
     cy.contains(fullyLoadedDiscData.location.name).click()
 
     cy.contains(locationData.name)
-    cy.contains(locationData.discs[0].displayName)
+    cy.get('div > a').contains(sortableDiscWithNameAndPackageData.displayTitle)
 
     cy.contains('Back').click()
     cy.contains(fullyLoadedDiscData.name)

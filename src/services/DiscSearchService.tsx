@@ -6,6 +6,7 @@ import { FilterType } from './FilterType'
 import DiscResponse from '../models/DiscResponse'
 import { emptyDiscData } from '../models/DiscData'
 import PaginatedSearchResponse from '../models/PaginatedSearchResponse'
+import SortableDiscResponse from '../models/SortableDiscResponse'
 
 export async function loadDiscListings(page: number): Promise<PaginatedSearchResponse> {
   let url = `http://localhost:3000/discs.json?page=${page}`
@@ -51,6 +52,24 @@ export async function loadDiscDetails(id: number): Promise<DiscResponse> {
           series: response.series
         }
       }
+  )
+}
+
+export async function loadSortableDisc(id: number): Promise<SortableDiscResponse> {
+  let url = `http://localhost:3000/discs/sortable/${id}.json`
+  const response = await fetch(url)
+      .then(response => response.json())
+
+  return new SortableDiscResponse(
+    {
+      data: {
+        id: response.id,
+        sortTitle: response.sort_title,
+        displayTitle: response.display_title,
+        package: response.package,
+        series: response.series
+      }
+    }
   )
 }
 

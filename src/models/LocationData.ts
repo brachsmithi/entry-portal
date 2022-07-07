@@ -6,8 +6,7 @@ export default interface LocationData {
 }
 
 export interface LocationDiscData {
-  id: number,
-  displayName: string
+  id: number
 }
 
 export const emptyLocationData: LocationData = {
