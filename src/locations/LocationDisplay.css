@@ -28,6 +28,12 @@
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
+
+.location-display .location-discs .placeholder {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
 .location-display .location-discs .disc a {
     color: black;
     text-decoration: none;
