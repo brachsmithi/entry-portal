@@ -29,6 +29,19 @@
     padding-bottom: 0.25rem;
 }
 
+.location-display .location-discs .disc .name {
+    font-weight: bold;
+}
+
+.location-display .location-discs .disc .package {
+    font-style: italic;
+    margin-left: 0.5rem;
+}
+
+.location-display .location-discs .disc .series {
+    margin-left: 0.5rem;
+}
+
 .location-display .location-discs .placeholder {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;

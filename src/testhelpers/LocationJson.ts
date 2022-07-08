@@ -47,10 +47,10 @@ export const locationFilledData: LocationData =
           id: 111
         },
         {
-          id: 211
+          id: 2958
         },
         {
-          id: 311
+          id: 14
         }
       ]
     }
@@ -65,10 +65,10 @@ export const locationFilledJson: string = `
         "id": 111
       },
       {
-        "id": 211
+        "id": 2958
       },
       {
-        "id": 311
+        "id": 14
       }
     ]
   }

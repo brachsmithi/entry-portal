@@ -1,7 +1,9 @@
 import { locationFilledData, locationFilledJson } from '../../src/testhelpers/LocationJson'
 import { discWithProgramsPackageAndNameData } from '../../src/testhelpers/DiscJson'
 import {
+  fullyLoadedSortableDiscData,
   fullyLoadedSortableDiscJson,
+  sortableDiscWithNameAndPackageData,
   sortableDiscWithNameAndPackageJson,
   sortableDiscWithNoNameData,
   sortableDiscWithNoNameJson
@@ -14,17 +16,17 @@ describe('Location Details', () => {
         'http://localhost:3000/locations/*.json',
         locationFilledJson)
     cy.intercept('GET',
-        `http://localhost:3000/discs/sortable/${locationFilledData.discs[0]}.json`,
+        `http://localhost:3000/discs/${fullyLoadedSortableDiscData.id}.json`,
+        discWithProgramsPackageAndNameData)
+    cy.intercept('GET',
+        `http://localhost:3000/discs/sortable/${locationFilledData.discs[0].id}.json`,
         sortableDiscWithNoNameJson)
     cy.intercept('GET',
-        `http://localhost:3000/discs/sortable/${locationFilledData.discs[1]}.json`,
+        `http://localhost:3000/discs/sortable/${locationFilledData.discs[1].id}.json`,
         sortableDiscWithNameAndPackageJson)
     cy.intercept('GET',
-        `http://localhost:3000/discs/sortable/${locationFilledData.discs[2]}.json`,
+        `http://localhost:3000/discs/sortable/${locationFilledData.discs[2].id}.json`,
         fullyLoadedSortableDiscJson)
-    cy.intercept('GET',
-        `http://localhost:3000/discs/*.json`,
-        discWithProgramsPackageAndNameData)
 
     cy.visit(`/locations/${locationFilledData.id}`)
 
@@ -32,7 +34,12 @@ describe('Location Details', () => {
     cy.contains('FILLED')
     cy.contains('loading...')
 
-    cy.get('div > a').contains(sortableDiscWithNoNameData.displayTitle).click()
+    cy.get('div[data-index="0"] > a', {timeout: 6000}).contains(sortableDiscWithNoNameData.displayTitle)
+    cy.get('div[data-index="1"] > a', {timeout: 6000}).contains(sortableDiscWithNameAndPackageData.displayTitle)
+    cy.contains(sortableDiscWithNameAndPackageData.package)
+    cy.get('div[data-index="2"] > a', {timeout: 6000}).contains(fullyLoadedSortableDiscData.displayTitle)
+    cy.contains(fullyLoadedSortableDiscData.series)
+    cy.contains(fullyLoadedSortableDiscData.displayTitle).click()
 
     cy.contains(discWithProgramsPackageAndNameData.name)
     cy.contains(discWithProgramsPackageAndNameData.package.name)
