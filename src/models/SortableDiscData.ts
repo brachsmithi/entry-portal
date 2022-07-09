@@ -2,8 +2,14 @@ export default interface SortableDiscData {
   id: number,
   sortTitle: string,
   displayTitle: string,
-  package: string | null,
-  series: string | null
+  package: {
+    id: number,
+    name: string,
+  } | null,
+  series: {
+    id: number,
+    name: string
+  } | null
 }
 
 export const emptySortableDiscData: SortableDiscData = {

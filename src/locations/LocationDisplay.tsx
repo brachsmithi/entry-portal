@@ -20,8 +20,12 @@ export function LocationDisplay(props: LocationDisplayProperties) {
                 className='disc'
               >
                 <a className='name' href={`/discs/${id}`}>{response.sortableDiscData.displayTitle}</a>
-                <span className='package'>{response.sortableDiscData.package}</span>
-                <span className='series'>{response.sortableDiscData.series}</span>
+                {response.sortableDiscData.package &&
+                    <span className='package'>{response.sortableDiscData.package?.name}</span>
+                }
+                {response.sortableDiscData.series &&
+                    <a className='series' href={`/series/${response.sortableDiscData.series?.id}`}>{response.sortableDiscData.series?.name}</a>
+                }
               </div>
           )
         })
@@ -30,6 +34,7 @@ export function LocationDisplay(props: LocationDisplayProperties) {
         return (
             <LoadingPlaceholder
                 id={disc.id}
+                key={index}
                 elKey={index}
                 loader={loadDisc}
             />

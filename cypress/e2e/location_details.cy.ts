@@ -8,25 +8,29 @@ import {
   sortableDiscWithNoNameData,
   sortableDiscWithNoNameJson
 } from '../../src/testhelpers/DiscSortableJson'
+import { seriesWithWrapperAndDiscsData, seriesWithWrapperAndDiscsJson } from '../../src/testhelpers/SeriesJson'
 
 describe('Location Details', () => {
 
   it('should display filled location details', () => {
     cy.intercept('GET',
-        'http://localhost:3000/locations/*.json',
-        locationFilledJson)
+        `http://localhost:3000/series/*.json`,
+        seriesWithWrapperAndDiscsJson)
     cy.intercept('GET',
         `http://localhost:3000/discs/${fullyLoadedSortableDiscData.id}.json`,
         discWithProgramsPackageAndNameData)
     cy.intercept('GET',
-        `http://localhost:3000/discs/sortable/${locationFilledData.discs[0].id}.json`,
-        sortableDiscWithNoNameJson)
+        `http://localhost:3000/discs/sortable/${locationFilledData.discs[2].id}.json`,
+        fullyLoadedSortableDiscJson).as('sortable3')
     cy.intercept('GET',
         `http://localhost:3000/discs/sortable/${locationFilledData.discs[1].id}.json`,
-        sortableDiscWithNameAndPackageJson)
+        sortableDiscWithNameAndPackageJson).as('sortable2')
     cy.intercept('GET',
-        `http://localhost:3000/discs/sortable/${locationFilledData.discs[2].id}.json`,
-        fullyLoadedSortableDiscJson)
+        `http://localhost:3000/discs/sortable/${locationFilledData.discs[0].id}.json`,
+        sortableDiscWithNoNameJson).as('sortable1')
+    cy.intercept('GET',
+        'http://localhost:3000/locations/*.json',
+        locationFilledJson)
 
     cy.visit(`/locations/${locationFilledData.id}`)
 
@@ -34,15 +38,23 @@ describe('Location Details', () => {
     cy.contains('FILLED')
     cy.contains('loading...')
 
-    cy.get('div[data-index="0"] > a', {timeout: 6000}).contains(sortableDiscWithNoNameData.displayTitle)
-    cy.get('div[data-index="1"] > a', {timeout: 6000}).contains(sortableDiscWithNameAndPackageData.displayTitle)
-    cy.contains(sortableDiscWithNameAndPackageData.package)
-    cy.get('div[data-index="2"] > a', {timeout: 6000}).contains(fullyLoadedSortableDiscData.displayTitle)
-    cy.contains(fullyLoadedSortableDiscData.series)
+    cy.wait(['@sortable1', '@sortable2', '@sortable3'])
+
+    cy.get('div[data-index="0"] > a', {timeout: 3000}).contains(sortableDiscWithNoNameData.displayTitle)
+    cy.get('div[data-index="1"] > a', {timeout: 3000}).contains(sortableDiscWithNameAndPackageData.displayTitle)
+    cy.contains(sortableDiscWithNameAndPackageData.package.name)
+    cy.get('div[data-index="2"] > a', {timeout: 3000}).contains(fullyLoadedSortableDiscData.displayTitle)
     cy.contains(fullyLoadedSortableDiscData.displayTitle).click()
 
     cy.contains(discWithProgramsPackageAndNameData.name)
     cy.contains(discWithProgramsPackageAndNameData.package.name)
+
+    cy.contains('Back').click()
+    cy.contains(locationFilledData.name)
+
+    cy.get('div[data-index="2"] > a', {timeout: 3000}).contains(fullyLoadedSortableDiscData.series.name).click()
+    cy.contains(seriesWithWrapperAndDiscsData.name)
+    cy.contains(seriesWithWrapperAndDiscsData.wrapperSeries[0].name)
 
     cy.contains('Back').click()
     cy.contains(locationFilledData.name)

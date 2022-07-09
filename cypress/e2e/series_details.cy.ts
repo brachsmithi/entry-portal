@@ -1,10 +1,11 @@
-import { seriesWithWrapperAndDiscsData } from '../../src/testhelpers/SeriesJson'
+import { seriesWithWrapperAndDiscsData, seriesWithWrapperAndDiscsJson } from '../../src/testhelpers/SeriesJson'
 
 describe('Series Details', () => {
 
   it('loads series details from the server', () => {
     cy.intercept('GET',
-        `http://localhost:3000/series/${seriesWithWrapperAndDiscsData.id}`)
+        `http://localhost:3000/series/${seriesWithWrapperAndDiscsData.id}.json`,
+        seriesWithWrapperAndDiscsJson)
 
     cy.visit(`/series/${seriesWithWrapperAndDiscsData.id}`)
 

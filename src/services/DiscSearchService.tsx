@@ -60,14 +60,32 @@ export async function loadSortableDisc(id: number): Promise<SortableDiscResponse
   const response = await fetch(url)
       .then(response => response.json())
 
+  const packageValue = (response: any) => {
+    if (response.package != null) {
+      return {
+        id: response.package_id,
+        name: response.package
+      }
+    }
+    return null
+  }
+  const seriesValue = (response: any) => {
+    if (response.series != null) {
+      return {
+        id: response.series_id,
+        name: response.series
+      }
+    }
+    return null
+  }
   return new SortableDiscResponse(
     {
       data: {
         id: response.id,
         sortTitle: response.sort_title,
         displayTitle: response.display_title,
-        package: response.package,
-        series: response.series
+        package: packageValue(response),
+        series: seriesValue(response)
       }
     }
   )
