@@ -9,6 +9,7 @@ import {
   sortableDiscWithNoNameJson
 } from '../../src/testhelpers/DiscSortableJson'
 import { seriesWithWrapperAndDiscsData, seriesWithWrapperAndDiscsJson } from '../../src/testhelpers/SeriesJson'
+import { packageWithProgramsData, packageWithProgramsJson } from '../../src/testhelpers/PackageJson'
 
 describe('Location Details', () => {
 
@@ -19,6 +20,9 @@ describe('Location Details', () => {
     cy.intercept('GET',
         `http://localhost:3000/discs/${fullyLoadedSortableDiscData.id}.json`,
         discWithProgramsPackageAndNameData)
+    cy.intercept('GET',
+        `http://localhost:3000/packages/${sortableDiscWithNameAndPackageData.package.id}.json`,
+        packageWithProgramsJson)
     cy.intercept('GET',
         `http://localhost:3000/discs/sortable/${locationFilledData.discs[2].id}.json`,
         fullyLoadedSortableDiscJson).as('sortable3')
@@ -55,6 +59,15 @@ describe('Location Details', () => {
     cy.get('div[data-index="2"] > a', {timeout: 3000}).contains(fullyLoadedSortableDiscData.series.name).click()
     cy.contains(seriesWithWrapperAndDiscsData.name)
     cy.contains(seriesWithWrapperAndDiscsData.wrapperSeries[0].name)
+
+    cy.contains('Back').click()
+    cy.contains(locationFilledData.name)
+
+    cy.contains(sortableDiscWithNameAndPackageData.package.name).click()
+
+    cy.contains(packageWithProgramsData.name)
+    cy.contains(packageWithProgramsData.discs[0].name)
+    cy.contains(packageWithProgramsData.discs[1].name)
 
     cy.contains('Back').click()
     cy.contains(locationFilledData.name)

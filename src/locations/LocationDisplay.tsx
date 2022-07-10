@@ -21,7 +21,7 @@ export function LocationDisplay(props: LocationDisplayProperties) {
               >
                 <a className='name' href={`/discs/${id}`}>{response.sortableDiscData.displayTitle}</a>
                 {response.sortableDiscData.package &&
-                    <span className='package'>{response.sortableDiscData.package?.name}</span>
+                    <a className='package' href={`/packages/${response.sortableDiscData.package?.id}`}>{response.sortableDiscData.package?.name}</a>
                 }
                 {response.sortableDiscData.series &&
                     <a className='series' href={`/series/${response.sortableDiscData.series?.id}`}>{response.sortableDiscData.series?.name}</a>

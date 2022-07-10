@@ -11,6 +11,7 @@ import { makeActionForRoot } from './common/detail/DetailLinkAction'
 import { PaginatedDiscsScreen } from './discs/PaginatedDiscsScreen'
 import DetailDiscScreen from './discs/DetailDiscScreen'
 import DetailLocationScreen from './locations/DetailLocationScreen'
+import DetailPackageScreen from './packages/DetailPackageScreen'
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path='/locations'>
             <Locations/>
+          </Route>
+          <Route path='/packages'>
+            <Packages/>
           </Route>
           <Route path='/search'>
             <Search/>
@@ -116,11 +120,32 @@ function Locations() {
   )
 }
 
+function Packages() {
+  let match = useRouteMatch()
+  return (
+      <Switch>
+        <Route path={`${match.path}/:packageId`}>
+          <PackageDetail/>
+        </Route>
+        <Route path={match.path}>
+          <ProgramList/>
+        </Route>
+      </Switch>
+  )
+}
+
 function LocationDetail() {
   // @ts-ignore
   const { locationId } = useParams()
 
   return <DetailLocationScreen locationId={locationId}/>
+}
+
+function PackageDetail() {
+  // @ts-ignore
+  const { packageId } = useParams()
+
+  return <DetailPackageScreen packageId={packageId}/>
 }
 
 function Discs() {
