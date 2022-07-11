@@ -5,10 +5,16 @@ export default interface PackageData {
   discs: PackageDisc[]
 }
 
-interface PackageContainedPackage {
+export interface PackageContainedPackage {
   id: number,
   name: string,
   sequence: number
+}
+
+export const emptyPackageContainedPackageData: PackageContainedPackage = {
+  id: 0,
+  name: '',
+  sequence: 0
 }
 
 export interface PackageDisc {
@@ -27,10 +33,16 @@ export const emptyPackageDiscData: PackageDisc = {
   programs: []
 }
 
-interface PackageDiscProgram {
+export interface PackageDiscProgram {
   id: number,
   name: string,
   version: string
+}
+
+export const emptyPackageDiscProgram = {
+  id: 0,
+  name: '',
+  version: ''
 }
 
 export const emptyPackageData: PackageData = {

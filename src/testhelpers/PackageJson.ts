@@ -137,3 +137,115 @@ export const packageContainingPackagesJson: string = `
     "discs": []
   }
 `
+
+export const fullyLoadedPackageData: PackageData = {
+  id: 111,
+  name: 'This is the Package',
+  containedPackages: [
+    {
+      id: 211,
+      name: 'Inner Package',
+      sequence: 1
+    },
+    {
+      id: 222,
+      name: 'Package Three',
+      sequence: 2
+    }
+  ],
+  discs: [
+    {
+      id: 311,
+      name: 'A Disc',
+      format: 'DVD',
+      sequence: 3,
+      programs: [
+        {
+          id: 411,
+          name: 'A Program',
+          version: 'TV Edit'
+        },
+        {
+          id: 422,
+          name: 'Some Other Film',
+          version: 'Theatrical Cut'
+        }
+      ]
+    },
+    {
+      id: 511,
+      name: 'This One is Blu',
+      format: 'Blu-ray',
+      sequence: 4,
+      programs: [
+        {
+          id: 611,
+          name: 'A Completely Different Program',
+          version: 'Unrated'
+        },
+        {
+          id: 622,
+          name: 'Film at 11',
+          version: 'Director\'s Cut'
+        }
+      ]
+    }
+  ]
+}
+
+export const fullyLoadedPackageJson: string = `
+  {
+    "id": 111,
+    "name": "This is the Package",
+    "contained_packages": [
+      {
+        "id": 211,
+        "name": "Inner Package",
+        "sequence": 1
+      },
+      {
+        "id": 222,
+        "name": "Package Three",
+        "sequence": 2
+      }
+    ],
+    "discs": [
+      {
+        "id": 311,
+        "name": "A Disc",
+        "format": "DVD",
+        "sequence": 3,
+        "programs": [
+          {
+            "id": 411,
+            "name": "A Program",
+            "version": "TV Edit"
+          },
+          {
+            "id": 422,
+            "name": "Some Other Film",
+            "version": "Theatrical Cut"
+          }
+        ]
+      },
+      {
+        "id": 511,
+        "name": "This One is Blu",
+        "format": "Blu-ray",
+        "sequence": 4,
+        "programs": [
+          {
+            "id": 611,
+            "name": "A Completely Different Program",
+            "version": "Unrated"
+          },
+          {
+            "id": 622,
+            "name": "Film at 11",
+            "version": "Director's Cut"
+          }
+        ]
+      }
+    ]
+  }
+`
