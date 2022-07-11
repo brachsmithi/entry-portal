@@ -11,7 +11,7 @@ export function PackageDisplay(props: PackageDisplayProperties) {
     const packageElements = (packages: PackageContainedPackage[]) => {
       return packages.map((pkg, index) => {
         return (
-            <div className='package' key={index}>{pkg.name}</div>
+            <div className='package' key={index}><a href={`/packages/${pkg.id}`}>{pkg.name}</a></div>
         )
       })
     }
