@@ -27,7 +27,7 @@ export function PackageDisplay(props: PackageDisplayProperties) {
         const createProgramCollectionElement = (programs: PackageDiscProgram[]) => {
           const programElements = programs.map((program: PackageDiscProgram, index: number) => {
             return <div className='program' key={index}>
-              <span className='name'>{program.name}</span>
+              <span className='name'><a href={`/programs/${program.id}`}>{program.name}</a></span>
               <span className='version'>{program.version}</span>
             </div>
           })
