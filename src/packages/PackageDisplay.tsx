@@ -40,7 +40,7 @@ export function PackageDisplay(props: PackageDisplayProperties) {
         return (
             <div className='disc' key={index}>
               <div className='header'>
-                <span className='name'>{disc.name}</span>
+                <span className='name'><a href={`/discs/${disc.id}`}>{disc.name}</a></span>
                 <span className='format'>{disc.format}</span>
               </div>
               { createProgramCollectionElement(disc.programs) }

@@ -4,10 +4,14 @@ import {
   packageWithProgramsData,
   packageWithProgramsJson
 } from '../../src/testhelpers/PackageJson'
+import { discWithNameAndSeriesData, discWithNameAndSeriesJSON } from '../../src/testhelpers/DiscJson'
 
 describe('Package Details', () => {
 
   it('should display filled package details', () => {
+    cy.intercept('GET',
+        'http://localhost:3000/discs/*.json',
+        discWithNameAndSeriesJSON)
     cy.intercept('GET',
         `http://localhost:3000/packages/${fullyLoadedPackageData.containedPackages[0].id}.json`,
         packageWithProgramsJson)
@@ -33,10 +37,18 @@ describe('Package Details', () => {
     cy.contains(fullyLoadedPackageData.discs[1].programs[1].name)
     cy.contains(fullyLoadedPackageData.discs[1].programs[1].version)
 
-    //contained package link
+    // contained package link
     cy.contains(fullyLoadedPackageData.containedPackages[0].name).click()
     cy.contains(packageWithProgramsData.name)
     cy.contains(packageWithProgramsData.discs[0].programs[0].name)
+
+    cy.contains('Back').click()
+    cy.contains(fullyLoadedPackageData.name)
+
+    // disc link
+    cy.contains(fullyLoadedPackageData.discs[1].name).click()
+    cy.contains(discWithNameAndSeriesData.name)
+    cy.contains(discWithNameAndSeriesData.series[0].name)
 
     cy.contains('Back').click()
     cy.contains(fullyLoadedPackageData.name)
