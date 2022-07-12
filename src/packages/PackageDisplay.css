@@ -12,62 +12,62 @@
     font-weight: bold;
 }
 
-.package-display .contents {
+.package-display .sequenced-contents {
     margin-top: 0.5rem;
     padding: 0.25rem 0.5rem;
     border: 1px black solid;
 }
 
-.package-display .contents .package {
+.package-display .sequenced-contents .package {
     font-size: large;
     font-weight: bold;
-    margin: 0.5rem;
+    margin: 0 0.5rem;
 }
 
-.package-display .contents .package a {
+.package-display .sequenced-contents .package a {
     color: black;
     text-decoration: none;
 }
 
-.package-display .contents .disc {
-    margin: 0.5rem;
+.package-display .sequenced-contents .disc {
+    margin: 0 0.5rem;
 }
 
-.package-display .contents .disc .header {
+.package-display .sequenced-contents .disc .header {
     font-size: large;
 }
 
-.package-display .contents .disc .header .name {
+.package-display .sequenced-contents .disc .header .name {
     font-weight: bold;
 }
 
-.package-display .contents .disc .header .name a {
+.package-display .sequenced-contents .disc .header .name a {
     color: black;
     text-decoration: none;
 }
 
-.package-display .contents .disc .header .format {
+.package-display .sequenced-contents .disc .header .format {
     font-weight: normal;
     margin-left: 1rem;
 }
 
-.package-display .contents .disc .programs {
+.package-display .sequenced-contents .disc .programs {
     margin-left: 0.5rem;
 }
 
-.package-display .contents .disc .programs .program {
+.package-display .sequenced-contents .disc .programs .program {
     font-size: medium;
 }
 
-.package-display .contents .disc .programs .program .name {
+.package-display .sequenced-contents .disc .programs .program .name {
     font-style: italic;
 }
 
-.package-display .contents .disc .programs .program .name a {
+.package-display .sequenced-contents .disc .programs .program .name a {
     color: black;
     text-decoration: none;
 }
 
-.package-display .contents .disc .programs .program .version {
+.package-display .sequenced-contents .disc .programs .program .version {
     margin-left: 0.5rem;
 }

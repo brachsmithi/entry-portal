@@ -16,7 +16,8 @@ export async function loadPackageDetails(id: number): Promise<PackageResponse> {
       return {
         ...emptyPackageContainedPackageData,
         id: packageJson.id,
-        name: packageJson.name
+        name: packageJson.name,
+        sequence: packageJson.sequence
       }
     })
   }
@@ -28,7 +29,7 @@ export async function loadPackageDetails(id: number): Promise<PackageResponse> {
           ...emptyPackageDiscProgram,
           id: programJson.id,
           name: programJson.name,
-          version: programJson.version
+          version: programJson.version,
         }
       })
     }
@@ -38,7 +39,8 @@ export async function loadPackageDetails(id: number): Promise<PackageResponse> {
         id: discJson.id,
         name: discJson.name,
         format: discJson.format,
-        programs: createPrograms(discJson.programs)
+        programs: createPrograms(discJson.programs),
+        sequence: discJson.sequence
       }
     })
   }
