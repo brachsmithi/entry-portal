@@ -1,0 +1,73 @@
+.package-display {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.package-display .header {
+    font-size: x-large;
+}
+
+.package-display .header .name {
+    font-weight: bold;
+}
+
+.package-display .contents {
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px black solid;
+}
+
+.package-display .contents .package {
+    font-size: large;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.package-display .contents .package a {
+    color: black;
+    text-decoration: none;
+}
+
+.package-display .contents .disc {
+    margin: 0.5rem;
+}
+
+.package-display .contents .disc .header {
+    font-size: large;
+}
+
+.package-display .contents .disc .header .name {
+    font-weight: bold;
+}
+
+.package-display .contents .disc .header .name a {
+    color: black;
+    text-decoration: none;
+}
+
+.package-display .contents .disc .header .format {
+    font-weight: normal;
+    margin-left: 1rem;
+}
+
+.package-display .contents .disc .programs {
+    margin-left: 0.5rem;
+}
+
+.package-display .contents .disc .programs .program {
+    font-size: medium;
+}
+
+.package-display .contents .disc .programs .program .name {
+    font-style: italic;
+}
+
+.package-display .contents .disc .programs .program .name a {
+    color: black;
+    text-decoration: none;
+}
+
+.package-display .contents .disc .programs .program .version {
+    margin-left: 0.5rem;
+}

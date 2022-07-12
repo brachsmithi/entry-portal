@@ -21,46 +21,41 @@ export function PackageDisplay(props: PackageDisplayProperties) {
         </div>
     )
   }
-  const discCollectionElement = (discCollection: PackageDisc[]) => {
-    const discElements = (discs: PackageDisc[]) => {
-      return discs.map((disc, index) => {
-        const createProgramCollectionElement = (programs: PackageDiscProgram[]) => {
-          const programElements = programs.map((program: PackageDiscProgram, index: number) => {
-            return <div className='program' key={index}>
-              <span className='name'><a href={`/programs/${program.id}`}>{program.name}</a></span>
-              <span className='version'>{program.version}</span>
-            </div>
-          })
-          return (
-            <div className='programs'>
-              { programElements }
-            </div>
-          )
-        }
+  const discElements = (discs: PackageDisc[]) => {
+    return discs.map((disc, index) => {
+      const createProgramCollectionElement = (programs: PackageDiscProgram[]) => {
+        const programElements = programs.map((program: PackageDiscProgram, index: number) => {
+          return <div className='program' key={index}>
+            <span className='name'><a href={`/programs/${program.id}`}>{program.name}</a></span>
+            <span className='version'>{program.version}</span>
+          </div>
+        })
         return (
-            <div className='disc' key={index}>
-              <div className='header'>
-                <span className='name'><a href={`/discs/${disc.id}`}>{disc.name}</a></span>
-                <span className='format'>{disc.format}</span>
-              </div>
-              { createProgramCollectionElement(disc.programs) }
-            </div>
+          <div className='programs'>
+            { programElements }
+          </div>
         )
-      })
-    }
-    return (
-        <div className='discs'>
-          { discElements(discCollection) }
-        </div>
-    )
+      }
+      return (
+          <div className='disc' key={index}>
+            <div className='header'>
+              <span className='name'><a href={`/discs/${disc.id}`}>{disc.name}</a></span>
+              <span className='format'>{disc.format}</span>
+            </div>
+            { createProgramCollectionElement(disc.programs) }
+          </div>
+      )
+    })
   }
   return (
       <div className='package-display'>
         <div className='header'>
           <span className='name'>{ props.package.name }</span>
         </div>
-        {props.package.containedPackages.length > 0 && containedPackagesElement(props.package.containedPackages)}
-        {props.package.discs.length > 0 && discCollectionElement(props.package.discs)}
+        <div className='contents'>
+          {props.package.containedPackages.length > 0 && containedPackagesElement(props.package.containedPackages)}
+          {props.package.discs.length > 0 && discElements(props.package.discs)}
+        </div>
       </div>
   )
 }
