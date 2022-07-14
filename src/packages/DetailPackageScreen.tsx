@@ -12,7 +12,7 @@ export default function DetailPackageScreen(props: DetailPackageScreenProps) {
   const [pkg, setPkg] = useState(emptyPackageData)
   useEffect(() => {
     loadPackageDetails(props.packageId).then((response) => {
-      setPkg(response.packageData)
+      setPkg(response.data ?? emptyPackageData)
     })
   }, [props.packageId, setPkg])
   return (
