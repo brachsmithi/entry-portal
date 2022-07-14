@@ -5,12 +5,12 @@ import { defaultPaginationMetadata } from '../../models/PaginationMetadata'
 import userEvent from '@testing-library/user-event'
 import { SearchDisplayProps } from '../search/SearchDisplay'
 import { act } from 'react-dom/test-utils'
-import FilterResponse from '../../models/FilterResponse'
 import { FilterDisplayProps } from '../filter/FilterDisplay'
 import { FilterType } from '../../services/FilterType'
 import { ListingType } from '../listing/ListingType'
 import DataResponse from '../../models/DataResponse'
 import SearchData from '../../models/SearchData'
+import FilterData from '../../models/FilterData'
 
 describe('PaginatedNav', () => {
 
@@ -126,7 +126,7 @@ describe('PaginatedNav', () => {
 
   it('includes filter when filter props are provided', async () => {
     const filterAction = jest.fn()
-    filterAction.mockResolvedValue(new FilterResponse({}))
+    filterAction.mockResolvedValue(new DataResponse<FilterData>({}))
     const loadAction = jest.fn()
     const rootPath = '/root_path'
     const filterProperties: FilterDisplayProps = {

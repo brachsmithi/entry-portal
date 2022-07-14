@@ -2,7 +2,8 @@ import FilterDisplay from '../common/filter/FilterDisplay'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { FilterType } from '../services/FilterType'
 import { makeActionForRoot } from '../common/detail/DetailLinkAction'
-import FilterResponse from '../models/FilterResponse'
+import DataResponse from '../models/DataResponse'
+import FilterData from '../models/FilterData'
 
 export default {
   title: 'FilterDisplay',
@@ -16,6 +17,6 @@ ProgramFilter.args = {
   filterType: FilterType.Program,
   linkAction: makeActionForRoot('/demo'),
   filterStrategy: {
-    filterAction: (_, __) => {return Promise.resolve(new FilterResponse({}))}
+    filterAction: (_, __) => {return Promise.resolve(new DataResponse<FilterData>({}))}
   }
 }

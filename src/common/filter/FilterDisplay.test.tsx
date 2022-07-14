@@ -1,9 +1,10 @@
 import FilterStrategy from '../../models/FilterStrategy'
-import FilterResponse from '../../models/FilterResponse'
 import { DetailLinkAction } from '../detail/DetailLinkAction'
 import { render } from '@testing-library/react'
 import FilterDisplay from './FilterDisplay'
 import { FilterType } from '../../services/FilterType'
+import DataResponse from '../../models/DataResponse'
+import FilterData from '../../models/FilterData'
 
 describe('FilterDisplay', () => {
 
@@ -11,7 +12,7 @@ describe('FilterDisplay', () => {
     const id = 24
     const filterStrategy: FilterStrategy = {
       filterAction: (_, __) => {
-        return Promise.resolve(new FilterResponse({}))
+        return Promise.resolve(new DataResponse<FilterData>({}))
       }
     }
     const linkAction: DetailLinkAction = {

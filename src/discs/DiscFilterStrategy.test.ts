@@ -1,9 +1,9 @@
 import DiscFilterStrategy from './DiscFilterStrategy'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import { discListingForProgramIdData1, discListingForProgramIdData2 } from '../testhelpers/DiscSearchJson'
-import FilterResponse from '../models/FilterResponse'
 import { FilterType } from '../services/FilterType'
 import FilterData from '../models/FilterData'
+import DataResponse from '../models/DataResponse'
 
 describe('DiscFilterStrategy', () => {
 
@@ -25,7 +25,7 @@ describe('DiscFilterStrategy', () => {
           resultCount: 2
         }
       }
-      discSearchService.loadFilteredDiscListings.mockReturnValue(new FilterResponse({
+      discSearchService.loadFilteredDiscListings.mockReturnValue(new DataResponse<FilterData>({
         data: filterData
       }))
       const response = await DiscFilterStrategy().filterAction(FilterType.Program, 1)

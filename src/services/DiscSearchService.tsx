@@ -1,12 +1,12 @@
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import { ListingData } from '../models/ListingData'
 import { Disc } from '../models/Disc'
-import FilterResponse from '../models/FilterResponse'
 import DataResponse from '../models/DataResponse'
 import { FilterType } from './FilterType'
 import DiscData, { emptyDiscData } from '../models/DiscData'
 import SortableDiscData from '../models/SortableDiscData'
 import PaginatedData from '../models/PaginatedData'
+import FilterData from '../models/FilterData'
 
 export async function loadDiscListings(page: number): Promise<DataResponse<PaginatedData>> {
   let url = `http://localhost:3000/discs.json?page=${page}`
@@ -28,9 +28,9 @@ export async function loadDiscListings(page: number): Promise<DataResponse<Pagin
   )
 }
 
-export async function loadFilteredDiscListings(key: FilterType, id: number): Promise<FilterResponse> {
+export async function loadFilteredDiscListings(key: FilterType, id: number): Promise<DataResponse<FilterData>> {
   if (key === FilterType.Program) return loadDiscListingsForProgram(id)
-  return new FilterResponse({error: `No known filter for key: ${key}`})
+  return new DataResponse<FilterData>({error: `No known filter for key: ${key}`})
 }
 
 export async function loadDiscDetails(id: number): Promise<DataResponse<DiscData>> {
@@ -91,12 +91,12 @@ export async function loadSortableDisc(id: number): Promise<DataResponse<Sortabl
   )
 }
 
-async function loadDiscListingsForProgram(programId: number): Promise<FilterResponse> {
+async function loadDiscListingsForProgram(programId: number): Promise<DataResponse<FilterData>> {
   let url = `http://localhost:3000/discs/with_program/${programId}.json`
   const response = await fetch(url)
       .then(response => response.json())
 
-  return new FilterResponse({
+  return new DataResponse<FilterData>({
     data: {
       data: discListings(response.discs),
       paginationMetadata: defaultPaginationMetadata,

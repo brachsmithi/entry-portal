@@ -4,10 +4,10 @@ import { PaginatedNav } from '../common/paginate/PaginatedNav'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import { defaultSearchMetadata } from '../models/SearchMetadata'
 import { FilterType } from '../services/FilterType'
-import FilterResponse from '../models/FilterResponse'
 import { ListingType } from '../common/listing/ListingType'
 import DataResponse from '../models/DataResponse'
 import SearchData from '../models/SearchData'
+import FilterData from '../models/FilterData'
 
 export default {
   title: 'PaginatedNav',
@@ -96,7 +96,7 @@ WithFilter.args = {
   filterDisplayProps: {
     filterType: FilterType.Program,
     filterStrategy: {
-      filterAction: (_, __) => {return Promise.resolve(new FilterResponse({}))}
+      filterAction: (_, __) => {return Promise.resolve(new DataResponse<FilterData>({}))}
     },
     linkAction: {
       loadAction: (_: number) => {},
