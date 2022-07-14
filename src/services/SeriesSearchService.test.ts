@@ -31,7 +31,7 @@ describe('SeriesSearchService', () => {
       const response = await loadSeriesDetails(expectedData.id)
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/series/${ expectedData.id }.json`)
-      expect(response.seriesData).toEqual(expectedData)
+      expect(response.data).toEqual(expectedData)
     }
 
   })

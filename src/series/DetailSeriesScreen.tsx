@@ -11,7 +11,7 @@ export default function DetailSeriesScreen(props: DetailSeriesScreenProps) {
   const [series, setSeries] = useState(emptySeriesData)
   useEffect(() => {
     loadSeriesDetails(props.seriesId).then((response) => {
-      setSeries(response.seriesData)
+      setSeries(response.data ?? emptySeriesData)
     })
   }, [props.seriesId, setSeries])
   return (

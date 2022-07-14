@@ -1,7 +1,7 @@
-import SeriesResponse from '../models/SeriesResponse'
-import { SeriesProgramData } from '../models/SeriesData'
+import SeriesData, { SeriesProgramData } from '../models/SeriesData'
+import DataResponse from '../models/DataResponse'
 
-export async function loadSeriesDetails(id: number): Promise<SeriesResponse> {
+export async function loadSeriesDetails(id: number): Promise<DataResponse<SeriesData>> {
   let url = `http://localhost:3000/series/${id}.json`
   const response = await fetch(url)
       .then(response => response.json())
@@ -21,7 +21,7 @@ export async function loadSeriesDetails(id: number): Promise<SeriesResponse> {
     return programs.map((program) => seriesProgramData(program));
   }
 
-  return new SeriesResponse(
+  return new DataResponse<SeriesData>(
       {
         data: {
           id: response.id,
