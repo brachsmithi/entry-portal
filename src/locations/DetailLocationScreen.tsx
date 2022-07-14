@@ -12,7 +12,7 @@ export default function DetailLocationScreen(props: DetailLocationScreenProps) {
   const [location, setLocation] = useState(emptyLocationData)
   useEffect(() => {
     loadLocationDetails(props.locationId).then((response) => {
-      setLocation(response.locationData)
+      setLocation(response.data ?? emptyLocationData)
     })
   }, [props.locationId, setLocation])
   return (
