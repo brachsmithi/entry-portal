@@ -5,7 +5,7 @@ import ProgramData from '../models/ProgramData'
 import AlternateTitle from "../models/AlternateTitle"
 import Person from '../models/Person'
 import Alias from '../models/Alias'
-import SearchTermResponse from '../models/SearchTermResponse'
+import SearchData from '../models/SearchData'
 
 export default async function loadProgramListings(page?: number): Promise<PaginatedSearchResponse> {
   let url = 'http://localhost:3000/programs.json'
@@ -32,7 +32,7 @@ export default async function loadProgramListings(page?: number): Promise<Pagina
   )
 }
 
-export async function loadProgramSearchResults(searchTerm: string, page?: number): Promise<SearchTermResponse> {
+export async function loadProgramSearchResults(searchTerm: string, page?: number): Promise<DataResponse<SearchData>> {
   let url = `http://localhost:3000/programs.json?search=${searchTerm}`
   if (page) url += `&page=${page}`
   const response = await fetch(url)
@@ -42,7 +42,7 @@ export async function loadProgramSearchResults(searchTerm: string, page?: number
     return programs.map(program => listing(program));
   }
 
-  return new SearchTermResponse({
+  return new DataResponse<SearchData>({
     data: {
       data: searchListings(response.programs),
       searchMetadata: {

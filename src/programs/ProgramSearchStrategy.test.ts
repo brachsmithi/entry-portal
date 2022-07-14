@@ -1,8 +1,8 @@
-import SearchTermResponse from '../models/SearchTermResponse'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import ProgramSearchStrategy from './ProgramSearchStrategy'
 import SearchData from '../models/SearchData'
 import { programListing1, programListing2 } from '../testhelpers/ProgramSearchJson'
+import DataResponse from '../models/DataResponse'
 
 describe('ProgramSearchStrategy', () => {
 
@@ -22,7 +22,7 @@ describe('ProgramSearchStrategy', () => {
       },
       paginationMetadata: defaultPaginationMetadata
     }
-    programSearchService.loadProgramSearchResults.mockReturnValue(new SearchTermResponse({
+    programSearchService.loadProgramSearchResults.mockReturnValue(new DataResponse<SearchData>({
       data: searchData
     }))
     const response = await ProgramSearchStrategy().searchAction(searchTerm)

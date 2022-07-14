@@ -1,5 +1,6 @@
-import SearchTermResponse from './SearchTermResponse'
+import DataResponse from './DataResponse'
+import SearchData from './SearchData'
 
 export default interface SearchStrategy {
-  searchAction: (searchTerm: string) => Promise<SearchTermResponse>
+  searchAction: (searchTerm: string) => Promise<DataResponse<SearchData>>
 }

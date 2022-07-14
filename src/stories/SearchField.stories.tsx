@@ -1,7 +1,8 @@
 import React from 'react'
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import SearchField from "../common/search/SearchField"
-import SearchTermResponse from "../models/SearchTermResponse"
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import SearchField from '../common/search/SearchField'
+import DataResponse from '../models/DataResponse'
+import SearchData from '../models/SearchData'
 
 export default {
   title: 'SearchField',
@@ -14,7 +15,7 @@ export const Default = Template.bind({})
 Default.args = {
   loadAction: (_: number) => {},
   searchAction: (term: string) => {
-    return Promise.resolve(new SearchTermResponse({
+    return Promise.resolve(new DataResponse<SearchData>({
       data: {
         data: [
           {

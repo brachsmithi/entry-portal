@@ -2,11 +2,12 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { PaginatedNav } from '../common/paginate/PaginatedNav'
 import { defaultPaginationMetadata } from '../models/PaginationMetadata'
-import SearchTermResponse from '../models/SearchTermResponse'
 import { defaultSearchMetadata } from '../models/SearchMetadata'
 import { FilterType } from '../services/FilterType'
 import FilterResponse from '../models/FilterResponse'
 import { ListingType } from '../common/listing/ListingType'
+import DataResponse from '../models/DataResponse'
+import SearchData from '../models/SearchData'
 
 export default {
   title: 'PaginatedNav',
@@ -71,7 +72,7 @@ WithSearch.args = {
   nextAction: () => {},
   searchDisplayProps: {
     searchStrategy: {
-      searchAction: (_: string) => new Promise(() => new SearchTermResponse({
+      searchAction: (_: string) => new Promise(() => new DataResponse<SearchData>({
         data: {
           data: [],
           searchMetadata: defaultSearchMetadata,

@@ -1,7 +1,8 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import SearchDisplay from "../common/search/SearchDisplay"
-import SearchTermResponse from "../models/SearchTermResponse"
+import DataResponse from '../models/DataResponse'
+import SearchData from '../models/SearchData'
 
 export default {
   title: 'SearchDisplay',
@@ -14,7 +15,7 @@ export const ProgramSearch = Template.bind({})
 ProgramSearch.args = {
   searchStrategy: {
     searchAction: (term: string) => {
-      return Promise.resolve(new SearchTermResponse({
+      return Promise.resolve(new DataResponse<SearchData>({
         data: {
           data: [
             {

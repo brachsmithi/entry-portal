@@ -1,8 +1,9 @@
 import { act, render } from "@testing-library/react"
 import SearchField from "./SearchField"
 import userEvent from "@testing-library/user-event"
-import SearchTermResponse from "../../models/SearchTermResponse"
-import { defaultPaginationMetadata } from "../../models/PaginationMetadata";
+import { defaultPaginationMetadata } from '../../models/PaginationMetadata'
+import DataResponse from '../../models/DataResponse'
+import SearchData from '../../models/SearchData'
 
 describe('SearchField', () => {
 
@@ -14,7 +15,7 @@ describe('SearchField', () => {
   })
 
   it('fires set search term action whenever search text changes', async () => {
-    const searchAction = jest.fn((_: string) => Promise.resolve(new SearchTermResponse({})))
+    const searchAction = jest.fn((_: string) => Promise.resolve(new DataResponse<SearchData>({})))
     const setSearchTerm = jest.fn((_: string) => {})
     const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()} setSearchTerm={setSearchTerm}/>)
     const textbox = getByRole('textbox')
@@ -28,7 +29,7 @@ describe('SearchField', () => {
   })
 
   it('fires search action when there are 3 letters in search text', async () => {
-    const searchAction = jest.fn((_: string) => Promise.resolve(new SearchTermResponse({})))
+    const searchAction = jest.fn((_: string) => Promise.resolve(new DataResponse<SearchData>({})))
     const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()} setSearchTerm={jest.fn()}/>)
     const textbox = getByRole('textbox')
 
@@ -42,7 +43,7 @@ describe('SearchField', () => {
 
   it('displays list of options matching search text', async () => {
     const searchTerm = 'disco'
-    const response = new SearchTermResponse({
+    const response = new DataResponse<SearchData>({
       data: {
         paginationMetadata: defaultPaginationMetadata,
         data: [
@@ -82,7 +83,7 @@ describe('SearchField', () => {
 
   it('clicking an option sends item id to load action', async () => {
     const searchTerm = 'sheen'
-    const response = new SearchTermResponse({
+    const response = new DataResponse<SearchData>({
       data: {
         paginationMetadata: defaultPaginationMetadata,
         data: [

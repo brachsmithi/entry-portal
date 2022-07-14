@@ -4,12 +4,13 @@ import { PaginatedNav } from './PaginatedNav'
 import { defaultPaginationMetadata } from '../../models/PaginationMetadata'
 import userEvent from '@testing-library/user-event'
 import { SearchDisplayProps } from '../search/SearchDisplay'
-import SearchTermResponse from '../../models/SearchTermResponse'
 import { act } from 'react-dom/test-utils'
 import FilterResponse from '../../models/FilterResponse'
 import { FilterDisplayProps } from '../filter/FilterDisplay'
 import { FilterType } from '../../services/FilterType'
 import { ListingType } from '../listing/ListingType'
+import DataResponse from '../../models/DataResponse'
+import SearchData from '../../models/SearchData'
 
 describe('PaginatedNav', () => {
 
@@ -98,7 +99,7 @@ describe('PaginatedNav', () => {
 
   it('includes search when search props are provided', async () => {
     const searchAction = jest.fn()
-    searchAction.mockResolvedValue(new SearchTermResponse({}))
+    searchAction.mockResolvedValue(new DataResponse<SearchData>({}))
     const loadAction = jest.fn()
     const rootPath = '/root_path'
     const searchTerm = 'atl'

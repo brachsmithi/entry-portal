@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useState } from "react"
 import './SearchField.css'
-import SearchTermResponse from "../../models/SearchTermResponse"
-import { ListingData } from "../../models/ListingData"
+import { ListingData } from '../../models/ListingData'
+import DataResponse from '../../models/DataResponse'
+import SearchData from '../../models/SearchData'
 
 interface SearchFieldProps {
-  searchAction: (searchTerm: string) => Promise<SearchTermResponse>
+  searchAction: (searchTerm: string) => Promise<DataResponse<SearchData>>
   loadAction: (id: number) => void
   setSearchTerm: (term: string) => void
 }
@@ -33,8 +34,10 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
     if (searchTerm.length >= 3) {
       props.searchAction(searchTerm)
           .then(result => {
-            const options = result.data.data.map(listing => createOptionLinkData(listing))
-            setOptionLinks(options)
+            if (result.data?.data) {
+              const options = result.data!.data.map(listing => createOptionLinkData(listing))
+              setOptionLinks(options)
+            }
           })
     }
   }
