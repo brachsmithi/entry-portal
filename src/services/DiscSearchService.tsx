@@ -6,7 +6,7 @@ import DataResponse from '../models/DataResponse'
 import { FilterType } from './FilterType'
 import DiscData, { emptyDiscData } from '../models/DiscData'
 import PaginatedSearchResponse from '../models/PaginatedSearchResponse'
-import SortableDiscResponse from '../models/SortableDiscResponse'
+import SortableDiscData from '../models/SortableDiscData'
 
 export async function loadDiscListings(page: number): Promise<PaginatedSearchResponse> {
   let url = `http://localhost:3000/discs.json?page=${page}`
@@ -55,7 +55,7 @@ export async function loadDiscDetails(id: number): Promise<DataResponse<DiscData
   )
 }
 
-export async function loadSortableDisc(id: number): Promise<SortableDiscResponse> {
+export async function loadSortableDisc(id: number): Promise<DataResponse<SortableDiscData>> {
   let url = `http://localhost:3000/discs/sortable/${id}.json`
   const response = await fetch(url)
       .then(response => response.json())
@@ -78,7 +78,7 @@ export async function loadSortableDisc(id: number): Promise<SortableDiscResponse
     }
     return null
   }
-  return new SortableDiscResponse(
+  return new DataResponse<SortableDiscData>(
     {
       data: {
         id: response.id,

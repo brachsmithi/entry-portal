@@ -19,12 +19,12 @@ export function LocationDisplay(props: LocationDisplayProperties) {
                 data-index={elKey}
                 className='disc'
               >
-                <a className='name' href={`/discs/${id}`}>{response.sortableDiscData.displayTitle}</a>
-                {response.sortableDiscData.package &&
-                    <a className='package' href={`/packages/${response.sortableDiscData.package?.id}`}>{response.sortableDiscData.package?.name}</a>
+                <a className='name' href={`/discs/${id}`}>{response.data!.displayTitle}</a>
+                {response.data?.package &&
+                    <a className='package' href={`/packages/${response.data.package?.id}`}>{response.data.package?.name}</a>
                 }
-                {response.sortableDiscData.series &&
-                    <a className='series' href={`/series/${response.sortableDiscData.series?.id}`}>{response.sortableDiscData.series?.name}</a>
+                {response.data?.series &&
+                    <a className='series' href={`/series/${response.data.series?.id}`}>{response.data.series?.name}</a>
                 }
               </div>
           )
