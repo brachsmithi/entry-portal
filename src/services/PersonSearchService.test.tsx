@@ -36,7 +36,7 @@ describe('PersonSearchService', () => {
       const response = await loadPersonDetails(expectedData.id)
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/persons/${ expectedData.id }.json`)
-      expect(response.personData).toEqual(expectedData)
+      expect(response.data).toEqual(expectedData)
     }
 
   })

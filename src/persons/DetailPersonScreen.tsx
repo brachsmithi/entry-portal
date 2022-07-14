@@ -11,7 +11,7 @@ export default function DetailPersonScreen(props: DetailPersonScreenProps) {
   const [person, setPerson] = useState(emptyPersonData)
   useEffect(() => {
     loadPersonDetails(props.personId).then((response) => {
-      setPerson(response.personData)
+      setPerson(response.data ?? emptyPersonData)
     })
   }, [props.personId, setPerson])
   return (
