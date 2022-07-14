@@ -15,7 +15,7 @@ export function PaginatedProgramsScreen(props: PaginatedProgramsScreenProps): JS
   const [paginatedData, setPaginatedData] = useState(emptyPaginatedData)
   const loadUnfilteredResults = (page: number) => {
     loadProgramListings(page)
-        .then(result => setPaginatedData(result.paginatedData ?? emptyPaginatedData))
+        .then(result => setPaginatedData(result.data ?? emptyPaginatedData))
   }
   const loadSearchResults = (searchTerm: string, page: number) => {
     loadProgramSearchResults(searchTerm, page)

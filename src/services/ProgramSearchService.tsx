@@ -1,4 +1,3 @@
-import PaginatedSearchResponse from "../models/PaginatedSearchResponse"
 import { ListingData } from '../models/ListingData'
 import DataResponse from '../models/DataResponse'
 import ProgramData from '../models/ProgramData'
@@ -6,8 +5,9 @@ import AlternateTitle from "../models/AlternateTitle"
 import Person from '../models/Person'
 import Alias from '../models/Alias'
 import SearchData from '../models/SearchData'
+import PaginatedData from '../models/PaginatedData'
 
-export default async function loadProgramListings(page?: number): Promise<PaginatedSearchResponse> {
+export default async function loadProgramListings(page?: number): Promise<DataResponse<PaginatedData>> {
   let url = 'http://localhost:3000/programs.json'
   if (page) url += `?page=${page}`
   const response = await fetch(url)
@@ -17,7 +17,7 @@ export default async function loadProgramListings(page?: number): Promise<Pagina
     return programs.map(program => listing(program));
   }
 
-  return new PaginatedSearchResponse(
+  return new DataResponse<PaginatedData>(
       {
         data: {
           data: programListings(response.programs),

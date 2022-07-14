@@ -23,7 +23,7 @@ export function PaginatedDiscsScreen(props: PaginatedDiscsScreenProps): JSX.Elem
   const loadPaginatedResults = (page: number) => {
     loadDiscListings(page)
         .then(result => {
-          setPaginatedData(result.paginatedData ?? emptyPaginatedData)
+          setPaginatedData(result.data ?? emptyPaginatedData)
         })
   }
   const loadPage = useCallback(() => {
