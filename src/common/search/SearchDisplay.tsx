@@ -1,8 +1,8 @@
 import './SearchDisplay.css'
-import SearchField from './SearchField'
 import SearchStrategy from '../../models/SearchStrategy'
 import { useState } from 'react'
 import { DetailLinkAction } from '../detail/DetailLinkAction'
+import PicklistInputField from '../component/PicklistInputField'
 
 export interface SearchDisplayProps {
   searchStrategy: SearchStrategy,
@@ -13,10 +13,10 @@ export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('')
   return (
       <div className='search'>
-        <SearchField
-            searchAction={props.searchStrategy.searchAction}
+        <PicklistInputField
+            termAction={props.searchStrategy.searchAction}
             loadAction={props.linkAction.loadAction}
-            setSearchTerm={setSearchTerm}
+            setTerm={setSearchTerm}
         />
         <div className='search-button'>
           <a href={props.linkAction.rootPath.concat('?search=', searchTerm)}>Search</a>

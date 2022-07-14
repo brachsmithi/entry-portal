@@ -1,23 +1,23 @@
 import { act, render } from "@testing-library/react"
-import SearchField from "./SearchField"
 import userEvent from "@testing-library/user-event"
 import { defaultPaginationMetadata } from '../../models/PaginationMetadata'
 import DataResponse from '../../models/DataResponse'
 import SearchData from '../../models/SearchData'
+import PicklistInputField from './PicklistInputField'
 
-describe('SearchField', () => {
+describe('PicklistInputField', () => {
 
   it('renders a text field', () => {
-    const { getByRole } = render(<SearchField searchAction={jest.fn()} loadAction={jest.fn()} setSearchTerm={jest.fn()}/>)
+    const { getByRole } = render(<PicklistInputField termAction={jest.fn()} loadAction={jest.fn()} setTerm={jest.fn()}/>)
     const textbox = getByRole('textbox') as HTMLInputElement
-    expect(textbox.placeholder).toEqual('Enter search text')
-    expect(textbox).toHaveAttribute('id', 'searchField')
+    expect(textbox.placeholder).toEqual('Enter text')
+    expect(textbox).toHaveAttribute('id', 'picklistInputField')
   })
 
   it('fires set search term action whenever search text changes', async () => {
     const searchAction = jest.fn((_: string) => Promise.resolve(new DataResponse<SearchData>({})))
     const setSearchTerm = jest.fn((_: string) => {})
-    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()} setSearchTerm={setSearchTerm}/>)
+    const { getByRole } = render(<PicklistInputField termAction={searchAction} loadAction={jest.fn()} setTerm={setSearchTerm}/>)
     const textbox = getByRole('textbox')
 
     userEvent.type(textbox, 'ca')
@@ -30,7 +30,7 @@ describe('SearchField', () => {
 
   it('fires search action when there are 3 letters in search text', async () => {
     const searchAction = jest.fn((_: string) => Promise.resolve(new DataResponse<SearchData>({})))
-    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()} setSearchTerm={jest.fn()}/>)
+    const { getByRole } = render(<PicklistInputField termAction={searchAction} loadAction={jest.fn()} setTerm={jest.fn()}/>)
     const textbox = getByRole('textbox')
 
     userEvent.type(textbox, 'ab')
@@ -69,7 +69,7 @@ describe('SearchField', () => {
     const searchAction = jest.fn()
     searchAction.mockResolvedValue(Promise.resolve(response))
 
-    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={jest.fn()} setSearchTerm={jest.fn()}/>)
+    const { getByRole } = render(<PicklistInputField termAction={searchAction} loadAction={jest.fn()} setTerm={jest.fn()}/>)
     const textbox = getByRole('textbox')
 
     await act(() => userEvent.type(textbox, searchTerm))
@@ -104,7 +104,7 @@ describe('SearchField', () => {
     searchAction.mockResolvedValue(Promise.resolve(response))
     const loadAction = jest.fn()
 
-    const { getByRole } = render(<SearchField searchAction={searchAction} loadAction={loadAction} setSearchTerm={jest.fn()}/>)
+    const { getByRole } = render(<PicklistInputField termAction={searchAction} loadAction={loadAction} setTerm={jest.fn()}/>)
     const textbox = getByRole('textbox')
 
     await act(() => userEvent.type(textbox, searchTerm))

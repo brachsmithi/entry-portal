@@ -50,7 +50,7 @@ describe('Listing Programs', () => {
     cy.intercept('GET', 'http://localhost:3000/programs.json?page=1', JSON.parse(returnProgramListingJson(1)))
     cy.intercept('GET', 'http://localhost:3000/programs.json?search=*&page=1', JSON.parse(returnSearchListingJson(searchTerm, 1, 2, 1)))
 
-    cy.get('[placeholder="Enter search text"]').type(searchTerm)
+    cy.get('[placeholder="Enter text"]').type(searchTerm)
     cy.contains('Search').click()
 
     cy.contains(searchListing1.primary)

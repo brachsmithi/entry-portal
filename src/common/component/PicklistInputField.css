@@ -1,4 +1,4 @@
-.search-options {
+.picklist-input-options {
     border-left: black 1px solid;
     border-right: black 1px solid;
     border-bottom: black 1px solid;
@@ -6,19 +6,21 @@
     padding-left: .15rem;
     padding-right: .15rem;
     width: 15rem;
+    position: absolute;
+    background: white;
 }
 
-.search-options li {
+.picklist-input-options li {
     padding: .25rem .15rem;
     color: #333;
     list-style: none
 }
 
-.search-options li:hover {
+.picklist-input-options li:hover {
     color: black;
     background-color: lightgrey;
 }
 
-.search-field {
+.picklist-input-field {
     width: 20rem;
 }

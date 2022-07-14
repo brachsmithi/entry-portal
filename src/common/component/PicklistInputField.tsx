@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useState } from "react"
-import './SearchField.css'
+import './PicklistInputField.css'
 import { ListingData } from '../../models/ListingData'
 import DataResponse from '../../models/DataResponse'
 import SearchData from '../../models/SearchData'
 
-interface SearchFieldProps {
-  searchAction: (searchTerm: string) => Promise<DataResponse<SearchData>>
+interface PicklistInputFieldProps {
+  termAction: (term: string) => Promise<DataResponse<SearchData>>
   loadAction: (id: number) => void
-  setSearchTerm: (term: string) => void
+  setTerm: (term: string) => void
 }
 
 interface OptionLinkData {
@@ -17,7 +17,7 @@ interface OptionLinkData {
 
 const emptyOptionLinks: Array<OptionLinkData> = []
 
-export default function SearchField(props: SearchFieldProps): JSX.Element {
+export default function PicklistInputField(props: PicklistInputFieldProps): JSX.Element {
   const [optionLinks, setOptionLinks] = useState(emptyOptionLinks)
   const callLoadAction = (event: React.MouseEvent<HTMLLIElement>) => {
     props.loadAction(event.currentTarget.value)
@@ -28,11 +28,11 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
       text: listing.primary
     }
   }
-  const onSearchTermChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = event.target.value
-    props.setSearchTerm(searchTerm)
-    if (searchTerm.length >= 3) {
-      props.searchAction(searchTerm)
+  const onTermChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const term = event.target.value
+    props.setTerm(term)
+    if (term.length >= 3) {
+      props.termAction(term)
           .then(result => {
             if (result.data?.data) {
               const options = result.data!.data.map(listing => createOptionLinkData(listing))
@@ -45,16 +45,16 @@ export default function SearchField(props: SearchFieldProps): JSX.Element {
     return <li key={data.id} value={data.id} onClick={callLoadAction}>{data.text}</li>
   })
   return (
-      <div className='search-entry'>
+      <div className='picklist-input-entry'>
         <input
-            id='searchField'
+            id='picklistInputField'
             type='text'
-            className='search-field'
-            placeholder='Enter search text'
-            onChange={onSearchTermChange}
+            className='picklist-input-field'
+            placeholder='Enter text'
+            onChange={onTermChange}
         />
         { optionLinks.length > 0 &&
-          <ul className='search-options' role='listbox'>{options(optionLinks)}</ul>
+          <ul className='picklist-input-options' role='listbox'>{options(optionLinks)}</ul>
         }
       </div>
   )
