@@ -2,18 +2,18 @@ import PersonData from './PersonData'
 import PackageData from './PackageData'
 import DiscData from './DiscData'
 import { personWithAliasesData } from '../testhelpers/PersonJson'
-import Response from './Response'
+import DataResponse from './DataResponse'
 
-describe('Response', () => {
+describe('DataResponse', () => {
 
   describe('received data', () => {
 
     let data: PersonData
-    let response: Response<PersonData>
+    let response: DataResponse<PersonData>
 
     beforeEach(() => {
       data = personWithAliasesData
-      response = new Response({data: data})
+      response = new DataResponse({data: data})
     })
 
     it('provides the given data', () => {
@@ -33,11 +33,11 @@ describe('Response', () => {
   describe('received error', () => {
 
     let error: string
-    let response: Response<PackageData>
+    let response: DataResponse<PackageData>
 
     beforeEach(() => {
       error = 'things are rotten'
-      response = new Response<PackageData>({error: error})
+      response = new DataResponse<PackageData>({error: error})
     })
 
     it ('reports the error', () => {
@@ -56,10 +56,10 @@ describe('Response', () => {
 
   describe('does not have data or error', () => {
 
-    let response: Response<DiscData>
+    let response: DataResponse<DiscData>
 
     beforeEach(() => {
-      response = new Response<DiscData>({})
+      response = new DataResponse<DiscData>({})
     })
 
     it ('reports an error', () => {

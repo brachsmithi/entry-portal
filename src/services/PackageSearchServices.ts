@@ -6,9 +6,9 @@ import PackageData, {
   PackageDisc,
   PackageDiscProgram
 } from '../models/PackageData'
-import Response from '../models/Response'
+import DataResponse from '../models/DataResponse'
 
-export async function loadPackageDetails(id: number): Promise<Response<PackageData>> {
+export async function loadPackageDetails(id: number): Promise<DataResponse<PackageData>> {
   let url = `http://localhost:3000/packages/${id}.json`
   const response = await fetch(url)
       .then(response => response.json())
@@ -46,7 +46,7 @@ export async function loadPackageDetails(id: number): Promise<Response<PackageDa
       }
     })
   }
-  return new Response<PackageData>({
+  return new DataResponse<PackageData>({
     data: {
       id: response.id,
       name: response.name,

@@ -1,10 +1,10 @@
-export default class Response<T> {
+export default class DataResponse<T> {
   data: T | undefined
   error: string | undefined;
 
   constructor(input: { data?: T, error?: string }) {
     this.data = input.data
-    this.error = Response.errorMessage(input.data, input.error)
+    this.error = DataResponse.errorMessage(input.data, input.error)
   }
 
   isError() {

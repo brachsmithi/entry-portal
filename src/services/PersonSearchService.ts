@@ -1,7 +1,7 @@
 import PersonData, { PersonProgramData } from '../models/PersonData'
-import Response from '../models/Response'
+import DataResponse from '../models/DataResponse'
 
-export async function loadPersonDetails(id: number): Promise<Response<PersonData>> {
+export async function loadPersonDetails(id: number): Promise<DataResponse<PersonData>> {
   let url = `http://localhost:3000/persons/${id}.json`
   const response = await fetch(url)
       .then(response => response.json())
@@ -29,7 +29,7 @@ export async function loadPersonDetails(id: number): Promise<Response<PersonData
     return programs.map((program) => personProgramData(program))
   }
 
-  return new Response<PersonData>(
+  return new DataResponse<PersonData>(
       {
         data: {
           id: response.id,
