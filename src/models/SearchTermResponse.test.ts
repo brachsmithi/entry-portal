@@ -1,5 +1,6 @@
 import SearchData from "./SearchData"
 import SearchTermResponse from "./SearchTermResponse"
+import { defaultPaginationMetadata } from './PaginationMetadata'
 
 describe('SearchTermResponse', () => {
 
@@ -9,7 +10,8 @@ describe('SearchTermResponse', () => {
       searchMetadata: {
         searchTerm: 'moon',
         resultCount: 36
-      }
+      },
+      paginationMetadata: defaultPaginationMetadata
     }
     const response = new SearchTermResponse({data: programs})
     expect(response.isError()).toBeFalsy()
