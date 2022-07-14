@@ -26,7 +26,7 @@ describe('ProgramSearchService', () => {
       const response = await loadProgramDetails(expectedData.id)
 
       expect(fetch).toHaveBeenCalledWith(`http://localhost:3000/programs/${ expectedData.id }.json`)
-      expect(response.programData).toEqual(expectedData)
+      expect(response.data).toEqual(expectedData)
     }
 
   })

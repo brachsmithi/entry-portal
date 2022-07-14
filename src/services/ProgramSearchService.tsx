@@ -1,10 +1,11 @@
 import PaginatedSearchResponse from "../models/PaginatedSearchResponse"
-import { ListingData } from "../models/ListingData"
-import ProgramResponse from "../models/ProgramResponse"
+import { ListingData } from '../models/ListingData'
+import DataResponse from '../models/DataResponse'
+import ProgramData from '../models/ProgramData'
 import AlternateTitle from "../models/AlternateTitle"
-import Person from "../models/Person"
-import Alias from "../models/Alias"
-import SearchTermResponse from "../models/SearchTermResponse"
+import Person from '../models/Person'
+import Alias from '../models/Alias'
+import SearchTermResponse from '../models/SearchTermResponse'
 
 export default async function loadProgramListings(page?: number): Promise<PaginatedSearchResponse> {
   let url = 'http://localhost:3000/programs.json'
@@ -58,7 +59,7 @@ export async function loadProgramSearchResults(searchTerm: string, page?: number
   })
 }
 
-export async function loadProgramDetails(id: number): Promise<ProgramResponse> {
+export async function loadProgramDetails(id: number): Promise<DataResponse<ProgramData>> {
   let url = `http://localhost:3000/programs/${id}.json`
   const response = await fetch(url)
       .then(response => response.json())
@@ -95,7 +96,7 @@ export async function loadProgramDetails(id: number): Promise<ProgramResponse> {
     return people.map((person) => programPerson(person));
   }
 
-  return new ProgramResponse(
+  return new DataResponse<ProgramData>(
       {
         data: {
           id: response.id,

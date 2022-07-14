@@ -12,7 +12,7 @@ export default function DetailProgramScreen(props: DetailProgramScreenProps) {
   const [program, setProgram] = useState(emptyProgramData)
   useEffect(() => {
     loadProgramDetails(props.programId).then((response) => {
-      setProgram(response.programData)
+      setProgram(response.data ?? emptyProgramData)
     })
   }, [props.programId, setProgram])
   return (
