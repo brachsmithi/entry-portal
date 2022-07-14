@@ -12,7 +12,7 @@ export default function DetailDiscScreen(props: DetailDiscScreenProps) {
   const [disc, setDisc] = useState(emptyDiscData)
   useEffect(() => {
     loadDiscDetails(props.discId).then((response) => {
-      setDisc(response.discData)
+      setDisc(response.data ?? emptyDiscData)
     })
   }, [props.discId, setDisc])
   return (

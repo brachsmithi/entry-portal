@@ -2,9 +2,9 @@ import { defaultPaginationMetadata } from '../models/PaginationMetadata'
 import { ListingData } from '../models/ListingData'
 import { Disc } from '../models/Disc'
 import FilterResponse from '../models/FilterResponse'
+import Response from '../models/Response'
 import { FilterType } from './FilterType'
-import DiscResponse from '../models/DiscResponse'
-import { emptyDiscData } from '../models/DiscData'
+import DiscData, { emptyDiscData } from '../models/DiscData'
 import PaginatedSearchResponse from '../models/PaginatedSearchResponse'
 import SortableDiscResponse from '../models/SortableDiscResponse'
 
@@ -33,12 +33,12 @@ export async function loadFilteredDiscListings(key: FilterType, id: number): Pro
   return new FilterResponse({error: `No known filter for key: ${key}`})
 }
 
-export async function loadDiscDetails(id: number): Promise<DiscResponse> {
+export async function loadDiscDetails(id: number): Promise<Response<DiscData>> {
   let url = `http://localhost:3000/discs/${id}.json`
   const response = await fetch(url)
       .then(response => response.json())
 
-  return new DiscResponse(
+  return new Response<DiscData>(
       {
         data: {
           ...emptyDiscData,
