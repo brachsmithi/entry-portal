@@ -1,7 +1,10 @@
 .filter {
-    display: flex;
     padding-top: 2rem;
     padding-left: 1rem;
+}
+
+.filter-active {
+    display: flex;
     justify-content: center;
 }
 

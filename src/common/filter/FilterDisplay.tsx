@@ -27,7 +27,7 @@ export default function FilterDisplay(props: FilterDisplayProps) {
   return(
       <div className='filter'>
         { props.id &&
-          <div>
+          <div className='filter-active'>
             <div className='description'>
               Filter on {props.filterType.toLowerCase()}
             </div>
