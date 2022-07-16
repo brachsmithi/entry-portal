@@ -2,10 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { PaginatedNav } from '../common/paginate/PaginatedNav'
 import { emptyPaginatedData } from '../models/PaginatedData'
 import { ListingDisplay } from '../common/listing/ListingDisplay'
-import DiscFilterStrategy from './DiscFilterStrategy'
+import DiscProgramFilterStrategy from './DiscProgramFilterStrategy'
 import { loadDiscListings, loadFilteredDiscListings } from '../services/DiscSearchService'
 import { FilterType } from '../services/FilterType'
-import { makeActionForRoot } from '../common/detail/DetailLinkAction'
+import { makeActionForRoot } from '../common/filter/FilterLinkAction'
 import { ListingType } from '../common/listing/ListingType'
 
 interface PaginatedDiscsScreenProps {
@@ -50,7 +50,7 @@ export function PaginatedDiscsScreen(props: PaginatedDiscsScreenProps): JSX.Elem
             metadata={ paginatedData.paginationMetadata }
             filterDisplayProps={
               {
-                filterStrategy: DiscFilterStrategy(),
+                filterStrategy: DiscProgramFilterStrategy(),
                 filterType: FilterType.Program,
                 linkAction: makeActionForRoot('/discs'),
                 id: +props.programId!

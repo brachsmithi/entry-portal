@@ -1,10 +1,10 @@
 import FilterStrategy from '../../models/FilterStrategy'
-import { DetailLinkAction } from '../detail/DetailLinkAction'
+import { IdLinkAction } from '../nav/IdLinkAction'
 import { ByRoleMatcher, ByRoleOptions, Matcher, SelectorMatcherOptions, render } from '@testing-library/react'
 import FilterDisplay from './FilterDisplay'
 import { FilterType } from '../../services/FilterType'
 import DataResponse from '../../models/DataResponse'
-import FilterData from '../../models/FilterData'
+import SearchData from '../../models/SearchData'
 
 describe('FilterDisplay', () => {
 
@@ -17,11 +17,11 @@ describe('FilterDisplay', () => {
     beforeEach(() => {
       const id = 24
       const filterStrategy: FilterStrategy = {
-        filterAction: (_, __) => {
-          return Promise.resolve(new DataResponse<FilterData>({}))
+        filterAction: (_) => {
+          return Promise.resolve(new DataResponse<SearchData>({}))
         }
       }
-      const linkAction: DetailLinkAction = {
+      const linkAction: IdLinkAction = {
         loadAction: _ => {},
         rootPath: '/filter'
       }
@@ -54,11 +54,11 @@ describe('FilterDisplay', () => {
 
     beforeEach(() => {
       const filterStrategy: FilterStrategy = {
-        filterAction: (_, __) => {
-          return Promise.resolve(new DataResponse<FilterData>({}))
+        filterAction: (_) => {
+          return Promise.resolve(new DataResponse<SearchData>({}))
         }
       }
-      const linkAction: DetailLinkAction = {
+      const linkAction: IdLinkAction = {
         loadAction: _ => {},
         rootPath: '/filter'
       }

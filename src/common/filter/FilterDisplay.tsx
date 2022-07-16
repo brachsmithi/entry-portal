@@ -1,32 +1,24 @@
 import './FilterDisplay.css'
 import FilterStrategy from '../../models/FilterStrategy'
-import { DetailLinkAction } from '../detail/DetailLinkAction'
+import { IdLinkAction } from '../nav/IdLinkAction'
 import { FilterType } from '../../services/FilterType'
 import PicklistInputField from '../component/PicklistInputField'
-import DataResponse from "../../models/DataResponse";
-import SearchData from "../../models/SearchData";
+import { useState } from 'react'
 
 export interface FilterDisplayProps {
   filterStrategy: FilterStrategy
-  linkAction: DetailLinkAction
+  linkAction: IdLinkAction
   filterType: FilterType
   id?: number
 }
 
 export default function FilterDisplay(props: FilterDisplayProps) {
-  const termAction = (_: string) => {
-    return new Promise<DataResponse<SearchData>>(_ => new DataResponse<SearchData>({}))
-  }
-  const loadAction = () => {
+  const [filterTerm, setFilterTerm] = useState('')
 
-  }
-  const setTerm = () => {
-
-  }
-
+  const active: boolean = !(props.id === undefined || Number.isNaN(props.id))
   return(
       <div className='filter'>
-        { props.id &&
+        { active &&
           <div className='filter-active'>
             <div className='description'>
               Filter on {props.filterType.toLowerCase()}
@@ -34,15 +26,13 @@ export default function FilterDisplay(props: FilterDisplayProps) {
             <div className='clear-button'>
               <a href={props.linkAction.rootPath}>Clear</a>
             </div>
-          </div>
-        }
-
-        { !props.id &&
+          </div> }
+        { !active &&
           <div>
             <PicklistInputField
-                termAction={termAction}
-                loadAction={loadAction}
-                setTerm={setTerm}/>
+                termAction={props.filterStrategy.filterAction}
+                loadAction={props.linkAction.loadAction}
+                setTerm={setFilterTerm}/>
           </div> }
       </div>
   )

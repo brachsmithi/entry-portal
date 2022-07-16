@@ -7,7 +7,6 @@ import { FilterType } from '../services/FilterType'
 import { ListingType } from '../common/listing/ListingType'
 import DataResponse from '../models/DataResponse'
 import SearchData from '../models/SearchData'
-import FilterData from '../models/FilterData'
 
 export default {
   title: 'PaginatedNav',
@@ -96,7 +95,7 @@ WithFilter.args = {
   filterDisplayProps: {
     filterType: FilterType.Program,
     filterStrategy: {
-      filterAction: (_, __) => {return Promise.resolve(new DataResponse<FilterData>({}))}
+      filterAction: (_) => {return Promise.resolve(new DataResponse<SearchData>({}))}
     },
     linkAction: {
       loadAction: (_: number) => {},

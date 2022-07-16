@@ -39,7 +39,7 @@ export async function loadProgramSearchResults(searchTerm: string, page?: number
       .then(response => response.json())
 
   function searchListings(programs: any[]): Array<ListingData> {
-    return programs.map(program => listing(program));
+    return programs.map(program => listing(program))
   }
 
   return new DataResponse<SearchData>({

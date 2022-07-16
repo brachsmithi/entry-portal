@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { FilterType } from '../services/FilterType'
 import { makeActionForRoot } from '../common/detail/DetailLinkAction'
 import DataResponse from '../models/DataResponse'
-import FilterData from '../models/FilterData'
+import SearchData from '../models/SearchData'
 
 export default {
   title: 'FilterDisplay',
@@ -18,7 +18,7 @@ ProgramFilterActive.args = {
   filterType: FilterType.Program,
   linkAction: makeActionForRoot('/demo'),
   filterStrategy: {
-    filterAction: (_, __) => {return Promise.resolve(new DataResponse<FilterData>({}))}
+    filterAction: (_) => {return Promise.resolve(new DataResponse<SearchData>({}))}
   }
 }
 
@@ -27,6 +27,6 @@ ReadyToFilter.args = {
   filterType: FilterType.Program,
   linkAction: makeActionForRoot('/demo'),
   filterStrategy: {
-    filterAction: (_, __) => {return Promise.resolve(new DataResponse<FilterData>({}))}
+    filterAction: (_) => {return Promise.resolve(new DataResponse<SearchData>({}))}
   }
 }

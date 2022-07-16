@@ -18,7 +18,7 @@ interface PaginatedNavProps {
 export function PaginatedNav(props: PaginatedNavProps): JSX.Element {
   const prevEnabled = props.metadata.currentPage > 1
   const nextEnabled = props.metadata.totalPages > props.metadata.currentPage
-  const filterEnabled = props.filterDisplayProps?.filterStrategy && props.filterDisplayProps?.id > 0
+  const filterEnabled = props.filterDisplayProps?.filterStrategy
   const searchEnabled = props.searchDisplayProps?.searchStrategy
   return (
       <>

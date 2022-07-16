@@ -46,7 +46,7 @@ describe('Listing Programs', () => {
   })
 
   it('allows search', () => {
-    const searchTerm = searchListing1.primary.substr(0, 4)
+    const searchTerm = searchListing1.primary.substring(0, 4)
     cy.intercept('GET', 'http://localhost:3000/programs.json?page=1', JSON.parse(returnProgramListingJson(1)))
     cy.intercept('GET', 'http://localhost:3000/programs.json?search=*&page=1', JSON.parse(returnSearchListingJson(searchTerm, 1, 2, 1)))
 

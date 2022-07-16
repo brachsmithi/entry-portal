@@ -1,12 +1,12 @@
 import './SearchDisplay.css'
 import SearchStrategy from '../../models/SearchStrategy'
 import { useState } from 'react'
-import { DetailLinkAction } from '../detail/DetailLinkAction'
+import { IdLinkAction } from '../nav/IdLinkAction'
 import PicklistInputField from '../component/PicklistInputField'
 
 export interface SearchDisplayProps {
   searchStrategy: SearchStrategy,
-  linkAction: DetailLinkAction
+  linkAction: IdLinkAction
 }
 
 export default function SearchDisplay(props: SearchDisplayProps): JSX.Element {

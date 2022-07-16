@@ -4,7 +4,7 @@ export function makeActionForRoot(rootPath: string): IdLinkAction {
   return {
     rootPath: rootPath,
     loadAction: (id: number) => {
-      window.location.href = `${ rootPath }/${ id }`
+      window.location.href = `${ rootPath }/program?programId=${ id }`
     }
   }
 }

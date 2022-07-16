@@ -1,7 +1,6 @@
-import { FilterType } from '../services/FilterType'
 import DataResponse from './DataResponse'
-import FilterData from './FilterData'
+import SearchData from './SearchData'
 
 export default interface FilterStrategy {
-  filterAction: (key: FilterType, id: number) => Promise<DataResponse<FilterData>>
+  filterAction: (filterTerm: string) => Promise<DataResponse<SearchData>>
 }

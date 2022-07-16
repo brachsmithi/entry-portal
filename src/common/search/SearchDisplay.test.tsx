@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react"
 import SearchDisplay from "./SearchDisplay"
 import SearchStrategy from "../../models/SearchStrategy"
-import userEvent from "@testing-library/user-event"
-import { DetailLinkAction } from "../detail/DetailLinkAction";
+import userEvent from '@testing-library/user-event'
+import { IdLinkAction } from '../nav/IdLinkAction'
 
 describe('SearchDisplay', () => {
 
@@ -10,7 +10,7 @@ describe('SearchDisplay', () => {
     const strategy: SearchStrategy = {
       searchAction: jest.fn()
     }
-    const action: DetailLinkAction = {
+    const action: IdLinkAction = {
       loadAction: jest.fn(),
       rootPath: '/category'
     }
