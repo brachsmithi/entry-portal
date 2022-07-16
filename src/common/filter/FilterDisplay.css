@@ -8,6 +8,11 @@
     justify-content: center;
 }
 
+.filter-form {
+    display: flex;
+    justify-content: center;
+}
+
 .description {
     font-weight: bold;
     font-size: large;

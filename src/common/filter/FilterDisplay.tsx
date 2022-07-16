@@ -25,7 +25,7 @@ export default function FilterDisplay(props: FilterDisplayProps) {
             </div>
           </div> }
         { !active &&
-          <div>
+          <div className='filter-form'>
             <PicklistInputField
                 termAction={props.filterStrategy.filterAction}
                 loadAction={props.linkAction.loadAction}
