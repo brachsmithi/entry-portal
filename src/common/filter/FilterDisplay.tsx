@@ -3,7 +3,6 @@ import FilterStrategy from '../../models/FilterStrategy'
 import { IdLinkAction } from '../nav/IdLinkAction'
 import { FilterType } from '../../services/FilterType'
 import PicklistInputField from '../component/PicklistInputField'
-import { useState } from 'react'
 
 export interface FilterDisplayProps {
   filterStrategy: FilterStrategy
@@ -13,8 +12,6 @@ export interface FilterDisplayProps {
 }
 
 export default function FilterDisplay(props: FilterDisplayProps) {
-  const [filterTerm, setFilterTerm] = useState('')
-
   const active: boolean = !(props.id === undefined || Number.isNaN(props.id))
   return(
       <div className='filter'>
@@ -32,7 +29,7 @@ export default function FilterDisplay(props: FilterDisplayProps) {
             <PicklistInputField
                 termAction={props.filterStrategy.filterAction}
                 loadAction={props.linkAction.loadAction}
-                setTerm={setFilterTerm}/>
+                setTerm={(_: string) => {}}/>
           </div> }
       </div>
   )
