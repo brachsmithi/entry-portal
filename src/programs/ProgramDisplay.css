@@ -62,3 +62,19 @@
     font-style: italic;
     font-size: larger;
 }
+
+.program-display .filter-search {
+    margin-top: 2rem;
+}
+
+.program-display .filter-search .listing-link {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: .5rem 1rem;
+    font-family: Arial, sans-serif;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8rem;
+    text-decoration: none;
+}
