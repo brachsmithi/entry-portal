@@ -6,6 +6,11 @@ import {
 } from '../../src/testhelpers/ProgramJson'
 import { personData, personJson } from '../../src/testhelpers/PersonJson'
 import { seriesWithProgramsData, seriesWithProgramsJson } from '../../src/testhelpers/SeriesJson'
+import {
+  discListingForProgramIdData1,
+  discListingForProgramIdData2,
+  discListingForProgramIdJson
+} from '../../src/testhelpers/DiscSearchJson'
 
 describe('Program Details', () => {
 
@@ -44,6 +49,20 @@ describe('Program Details', () => {
     cy.contains('Back').click()
 
     cy.contains(programData3.title)
+  })
+
+  it('links to disc listings', () => {
+    cy.intercept('GET', 'http://localhost:3000/programs/*.json', JSON.parse(programJson1))
+    cy.intercept('GET', 'http://localhost:3000/discs/with_program/*.json', JSON.parse(discListingForProgramIdJson))
+
+    cy.visit(`/programs/${programData1.id}`)
+    cy.contains(programData1.title)
+
+    cy.get('a').contains('Discs').click()
+
+    cy.contains('Page 1 of 1')
+    cy.contains(discListingForProgramIdData1.primary)
+    cy.contains(discListingForProgramIdData2.primary)
   })
 
 });

@@ -36,7 +36,6 @@ describe('Filtering Discs', () => {
     cy.get('[placeholder="Enter text"]').type(filterTerm)
     cy.get('ul li').contains(searchListing1.primary).click()
 
-    // cy.visit(`/discs/program?programId=${PROGRAM_ID_FOR_DISC_LISTING_FILTER}`)
     cy.contains('Page 1 of 1')
     cy.contains(discListingForProgramIdData1.primary).click()
 

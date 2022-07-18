@@ -62,6 +62,9 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
         <div className='duration'>{formatDuration(props.program.lengthInMinutes)}</div>
         <div className='people'>{peopleElements(props.program.people)}</div>
         <div className='series-list'>{seriesElements(props.program.series)}</div>
+        <div className='filter-search'>
+          <a className='listing-link' href={`/discs/program?programId=${props.program.id}`}>Discs</a>
+        </div>
       </div>
   )
 }
