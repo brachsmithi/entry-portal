@@ -53,6 +53,11 @@
 .person-display .programs .program .auxiliary .series-list {
     font-weight: bold;
 }
+
+.person-display .programs .program .auxiliary .series-list .series:not(:last-of-type):after {
+    content: ", ";
+}
+
 .person-display .programs .program .auxiliary .series-list .series-separator {
     margin-left: .25rem;
     margin-right: .25rem;
