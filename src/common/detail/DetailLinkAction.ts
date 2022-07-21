@@ -1,10 +1,11 @@
 import { IdLinkAction } from '../nav/IdLinkAction'
+import LinkGenerator from '../nav/LinkGenerator'
 
-export function makeActionForRoot(rootPath: string): IdLinkAction {
+export function makeActionForRoot(linkGenerator: LinkGenerator): IdLinkAction {
   return {
-    rootPath: rootPath,
+    rootPath: linkGenerator.rootPath(),
     loadAction: (id: number) => {
-      window.location.href = `${ rootPath }/${ id }`
+      window.location.href = linkGenerator.detailPath(id)
     }
   }
 }

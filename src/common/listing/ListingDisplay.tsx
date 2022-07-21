@@ -1,10 +1,11 @@
 import React from 'react'
 import './ListingDisplay.css'
-import { ListingData } from "../../models/ListingData"
+import { ListingData } from '../../models/ListingData'
+import LinkGenerator from '../nav/LinkGenerator'
 
 export interface ListingDisplayProperties {
   listings: Array<ListingData>
-  path: string
+  linkGenerator: LinkGenerator
 }
 
 export function ListingDisplay(props: ListingDisplayProperties): JSX.Element {
@@ -15,7 +16,7 @@ export function ListingDisplay(props: ListingDisplayProperties): JSX.Element {
   const listingElements = props.listings.map(
       (listing, i) => (
           <div className='listing-entry' key={i}>
-            <a href={`${props.path}/${listing.id}`} className='primary'>{ listing.primary }</a>
+            <a href={ props.linkGenerator.detailPath(listing.id)} className='primary'>{ listing.primary }</a>
             <span className='secondary'>{secondaryContent(listing.secondary)}</span>
             <span className='tertiary'>{listing.tertiary.join('/')}</span>
           </div>

@@ -1,7 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { ListingDisplay } from "./ListingDisplay"
-import { ListingData } from "../../models/ListingData"
+import { ListingDisplay } from './ListingDisplay'
+import { ListingData } from '../../models/ListingData'
+import ProgramLinkGenerator from '../../programs/ProgramLinkGenerator'
+import DiscLinkGenerator from '../../discs/DiscLinkGenerator'
 
 describe('ProgramListDisplay', () => {
 
@@ -26,21 +28,21 @@ describe('ProgramListDisplay', () => {
         tertiary: []
       }
     ]
-    const path = '/fakePath'
-    render(<ListingDisplay listings={listings} path={path}/>)
+    const linkGenerator = new ProgramLinkGenerator()
+    render(<ListingDisplay listings={listings} linkGenerator={linkGenerator}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).not.toBeInTheDocument()
-    await verifyLink(listings[0], path)
+    await verifyLink(listings[0], linkGenerator.rootPath())
     expect(screen.queryByText('(2001)')).toBeInTheDocument()
-    await verifyLink(listings[1], path)
+    await verifyLink(listings[1], linkGenerator.rootPath())
     expect(screen.queryByText('()')).not.toBeInTheDocument()
     expect(screen.queryByText('Movie Franchise/2nd Series')).toBeInTheDocument()
-    await verifyLink(listings[2], path)
+    await verifyLink(listings[2], linkGenerator.rootPath())
     expect(screen.queryByText('(1987/Full Screen)')).toBeInTheDocument()
   })
 
   it('shows default text when there is no content', () => {
-    render(<ListingDisplay listings={[]} path=''/>)
+    render(<ListingDisplay listings={[]} linkGenerator={new DiscLinkGenerator()}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).toBeInTheDocument()
   })

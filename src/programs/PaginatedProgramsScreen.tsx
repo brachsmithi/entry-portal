@@ -6,6 +6,8 @@ import { ListingDisplay } from '../common/listing/ListingDisplay'
 import ProgramSearchStrategy from './ProgramSearchStrategy'
 import { makeActionForRoot } from '../common/detail/DetailLinkAction'
 import { ListingType } from '../common/listing/ListingType'
+import ProgramLinkGenerator from './ProgramLinkGenerator'
+import LinkGenerator from '../common/nav/LinkGenerator'
 
 interface PaginatedProgramsScreenProps {
   searchTerm?: string
@@ -38,6 +40,7 @@ export function PaginatedProgramsScreen(props: PaginatedProgramsScreenProps): JS
     loadPage(1)
   }, [loadPage])
 
+  const linkGenerator: LinkGenerator = new ProgramLinkGenerator()
   return (
       <>
         <PaginatedNav
@@ -45,12 +48,12 @@ export function PaginatedProgramsScreen(props: PaginatedProgramsScreenProps): JS
             metadata={ paginatedData.paginationMetadata }
             searchDisplayProps={{
               searchStrategy: ProgramSearchStrategy(),
-              linkAction: makeActionForRoot('/programs')
+              linkAction: makeActionForRoot(linkGenerator)
             }}
             nextAction={loadNextPage}
             previousAction={loadPreviousPage}
         />
-        <ListingDisplay listings={paginatedData.data} path='/programs'/>
+        <ListingDisplay listings={paginatedData.data} linkGenerator={linkGenerator}/>
       </>
   )
 }

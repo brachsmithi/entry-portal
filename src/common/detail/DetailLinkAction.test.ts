@@ -1,4 +1,5 @@
 import { makeActionForRoot } from './DetailLinkAction'
+import LinkGenerator from '../nav/LinkGenerator'
 
 describe('DetailLinkAction', () => {
 
@@ -16,7 +17,7 @@ describe('DetailLinkAction', () => {
     })
 
     it('loads the detail page for the model type', () => {
-      const action = makeActionForRoot('/foo')
+      const action = makeActionForRoot(new FooLinkGenerator())
       action.loadAction(5)
       expect(window.location.href).toEqual('/foo/5')
     })
@@ -27,13 +28,12 @@ describe('DetailLinkAction', () => {
 
   })
 
-  describe('rootPath', () => {
-
-    it('returns the root path entered', () => {
-      const action = makeActionForRoot('/foo')
-      expect(action.rootPath).toEqual('/foo')
-    })
-
-  })
-
 })
+
+class FooLinkGenerator extends LinkGenerator {
+
+  rootPath(): string {
+    return '/foo'
+  }
+
+}

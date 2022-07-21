@@ -1,7 +1,8 @@
 // @ts-ignore
 import React from 'react'
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { ListingDisplay } from "../common/listing/ListingDisplay"
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ListingDisplay } from '../common/listing/ListingDisplay'
+import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
 
 export default {
   title: 'ListingDisplay',
@@ -109,5 +110,5 @@ Listings.args = {
       tertiary: []
     }
   ],
-  path: '/programs'
+  linkGenerator: new ProgramLinkGenerator()
 }

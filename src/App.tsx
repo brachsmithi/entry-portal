@@ -12,6 +12,7 @@ import { PaginatedDiscsScreen } from './discs/PaginatedDiscsScreen'
 import DetailDiscScreen from './discs/DetailDiscScreen'
 import DetailLocationScreen from './locations/DetailLocationScreen'
 import DetailPackageScreen from './packages/DetailPackageScreen'
+import ProgramLinkGenerator from './programs/ProgramLinkGenerator'
 
 function App() {
   return (
@@ -81,7 +82,7 @@ function ProgramList() {
 function ProgramSearch() {
   return <SearchDisplay
       searchStrategy={ProgramSearchStrategy()}
-      linkAction={makeActionForRoot('/program')}
+      linkAction={makeActionForRoot(new ProgramLinkGenerator())}
   />
 }
 
