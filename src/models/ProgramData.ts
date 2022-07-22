@@ -1,6 +1,6 @@
-import AlternateTitle from "./AlternateTitle"
-import Person from "./Person"
-import Series from "./Series";
+import AlternateTitle from './AlternateTitle'
+import Person from './Person'
+import Series from './Series'
 
 export const emptyProgramData: ProgramData = {
   alternateTitles: [],
@@ -8,9 +8,9 @@ export const emptyProgramData: ProgramData = {
   lengthInMinutes: 0,
   people: [],
   series: [],
-  title: "",
-  version: "",
-  year: ""
+  title: '',
+  version: '',
+  year: ''
 }
 
 export default interface ProgramData {

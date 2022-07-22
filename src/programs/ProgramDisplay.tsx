@@ -6,6 +6,9 @@ import Person from "../models/Person"
 import Alias from "../models/Alias"
 import AlternateTitle from "../models/AlternateTitle"
 import Series from '../models/Series'
+import LinkGenerator from '../common/nav/LinkGenerator'
+import PersonLinkGenerator from './PersonLinkGenerator'
+import SeriesLinkGenerator from '../series/SeriesLinkGenerator'
 
 export interface ProgramDisplayProperties {
   program: ProgramData
@@ -13,11 +16,12 @@ export interface ProgramDisplayProperties {
 
 export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
   const peopleElements = (personArray: Person[]) => {
+    const linkGenerator: LinkGenerator = new PersonLinkGenerator()
     function personElement(person: Person, index: number) {
       return (
           <div key={index} className='person'>
             <span className='main'>
-              <a href={ `/persons/${person.id}` }>{person.name}</a>
+              <a href={ linkGenerator.detailPath(person.id) }>{person.name}</a>
             </span>
             <span className='alias'>
               {person.aliases.map((alias: Alias) => alias.name).join('/')}
@@ -32,10 +36,11 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
   }
 
   const seriesElements = (seriesArray: Series[]) => {
+    const linkGenerator: LinkGenerator = new SeriesLinkGenerator()
     const seriesElement = (series: Series, index: number) => {
       return (
           <div key={index} className='series'>
-            <a href={ `/series/${series.id}` }>{series.name}</a>
+            <a href={ linkGenerator.detailPath(series.id) }>{series.name}</a>
           </div>
       )
     }

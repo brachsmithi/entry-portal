@@ -1,7 +1,10 @@
 import PersonData, { PersonProgramData } from '../models/PersonData'
 import React from 'react'
 import './PersonDisplay.css'
-import Series from "../models/Series";
+import Series from '../models/Series'
+import LinkGenerator from '../common/nav/LinkGenerator'
+import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
+import SeriesLinkGenerator from '../series/SeriesLinkGenerator'
 
 interface PersonDisplayProperties {
   person: PersonData
@@ -10,10 +13,11 @@ interface PersonDisplayProperties {
 export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
   const programsElements = (programArray: PersonProgramData[]) => {
     const seriesElements = (seriesArray: Series[]) => {
+      const linkGenerator: LinkGenerator = new SeriesLinkGenerator()
       const seriesElement = (series: Series, index: number) => {
         return (
             <span key={index} className='series'>
-              <a href={`/series/${series.id}`}>{series.name}</a>
+              <a href={linkGenerator.detailPath(series.id)}>{series.name}</a>
             </span>
         )
       }
@@ -22,11 +26,12 @@ export function PersonDisplay(props: PersonDisplayProperties): JSX.Element {
       )
     }
     const programElement = (program: PersonProgramData, index: number) => {
+      const linkGenerator: LinkGenerator = new ProgramLinkGenerator()
       return (
           <div key={index} className='program'>
             <div className='main'>
               <span className='title'>
-                <a href={`/programs/${program.id}`}>{program.title}</a>
+                <a href={linkGenerator.detailPath(program.id)}>{program.title}</a>
               </span>
               <span className='year'>
                 {program.year}

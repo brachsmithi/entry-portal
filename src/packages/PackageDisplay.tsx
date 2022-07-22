@@ -2,6 +2,10 @@ import PackageData, { PackageContainedPackage, PackageDisc, PackageDiscProgram }
 import React from 'react'
 import './PackageDisplay.css'
 import SequencedContents, { SequencedElement } from '../common/sequence/SequencedContents'
+import LinkGenerator from '../common/nav/LinkGenerator'
+import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
+import DiscLinkGenerator from '../discs/DiscLinkGenerator'
+import PackageLinkGenerator from './PackageLinkGenerator'
 
 interface PackageDisplayProperties {
   package: PackageData
@@ -9,13 +13,14 @@ interface PackageDisplayProperties {
 
 export function PackageDisplay(props: PackageDisplayProperties) {
   const packageElements = (packages: PackageContainedPackage[]) => {
+    const linkGenerator: LinkGenerator = new PackageLinkGenerator()
     return packages.map((pkg): SequencedElement => {
       return {
         sequence: pkg.sequence,
         className: 'package',
         element: (
             <div>
-              <a href={`/packages/${pkg.id}`}>{pkg.name}</a>
+              <a href={linkGenerator.detailPath(pkg.id)}>{pkg.name}</a>
             </div>
         )
       }
@@ -25,8 +30,9 @@ export function PackageDisplay(props: PackageDisplayProperties) {
     return discs.map((disc): SequencedElement => {
       const createProgramCollectionElement = (programs: PackageDiscProgram[]) => {
         const programElements = programs.map((program: PackageDiscProgram, index: number) => {
+          const linkGenerator: LinkGenerator = new ProgramLinkGenerator()
           return <div className='program' key={index}>
-            <span className='name'><a href={`/programs/${program.id}`}>{program.name}</a></span>
+            <span className='name'><a href={linkGenerator.detailPath(program.id)}>{program.name}</a></span>
             <span className='version'>{program.version}</span>
           </div>
         })
@@ -36,13 +42,14 @@ export function PackageDisplay(props: PackageDisplayProperties) {
           </div>
         )
       }
+      const linkGenerator: LinkGenerator = new DiscLinkGenerator()
       return {
         sequence: disc.sequence,
         className: 'disc',
         element: (
             <div >
               <div className='header'>
-                <span className='name'><a href={ `/discs/${ disc.id }` }>{ disc.name }</a></span>
+                <span className='name'><a href={ linkGenerator.detailPath(disc.id) }>{ disc.name }</a></span>
                 <span className='format'>{ disc.format }</span>
               </div>
               { createProgramCollectionElement(disc.programs) }
