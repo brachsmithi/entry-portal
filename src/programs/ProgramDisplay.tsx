@@ -9,6 +9,8 @@ import Series from '../models/Series'
 import LinkGenerator from '../common/nav/LinkGenerator'
 import PersonLinkGenerator from './PersonLinkGenerator'
 import SeriesLinkGenerator from '../series/SeriesLinkGenerator'
+import DiscLinkGenerator from '../discs/DiscLinkGenerator'
+import { FilterType } from '../services/FilterType'
 
 export interface ProgramDisplayProperties {
   program: ProgramData
@@ -55,6 +57,7 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
     }).join('/')
   }
 
+  const discLinkGenerator: LinkGenerator = new DiscLinkGenerator()
   return (
       <div className='program-display'>
         <div className='header'>
@@ -68,7 +71,7 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
         <div className='people'>{peopleElements(props.program.people)}</div>
         <div className='series-list'>{seriesElements(props.program.series)}</div>
         <div className='filter-search'>
-          <a className='listing-link' href={`/discs/program?programId=${props.program.id}`}>Discs</a>
+          <a className='listing-link' href={ discLinkGenerator.filterPath(FilterType.Program, props.program.id) }>Discs</a>
         </div>
       </div>
   )
