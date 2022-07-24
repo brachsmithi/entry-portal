@@ -3,10 +3,12 @@ import { render, screen } from '@testing-library/react'
 import { ProgramDisplay } from './ProgramDisplay'
 import ProgramData from '../models/ProgramData'
 import { expectDetailLink } from '../testhelpers/ElementExpectations'
+import loadRegistries from '../registries/RegistryLoader'
 
 describe('ProgramDisplay', () => {
 
   it('shows details of fully filled program', () => {
+    loadRegistries()
     const expectPersonLink = (id: number, name: string) => {
       expectDetailLink(id, name, '/persons')
     }

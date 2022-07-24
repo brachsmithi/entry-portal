@@ -6,6 +6,7 @@ import {
   discListingForProgramIdData2, discListingForProgramIdJson, discListingForProgramIdWithNoPackageJson
 } from '../testhelpers/DiscSearchJson'
 import { PaginatedDiscsScreen } from './PaginatedDiscsScreen'
+import loadRegistries from '../registries/RegistryLoader'
 
 describe('PaginatedDiscsScreen', () => {
 
@@ -17,6 +18,7 @@ describe('PaginatedDiscsScreen', () => {
   it('constructs disc links correctly', async () => {
     // @ts-ignore
     fetch.mockResponseOnce(discListingForProgramIdJson)
+    loadRegistries()
 
     await waitFor(() => render(<PaginatedDiscsScreen programId='3' />))
 

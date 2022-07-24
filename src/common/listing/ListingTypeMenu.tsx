@@ -24,7 +24,7 @@ export function ListingTypeMenu(props: ListingTypeMenuProps): JSX.Element {
         <MenuItem
           className='listing-type-menu-item'
           key={listingType.key}
-          onClick={() => routeTo(listingType.path)}>
+          onClick={() => routeTo(listingType.path())}>
           <b>{listingType.icon}</b>&nbsp;&nbsp;{listingType.name}
         </MenuItem>
     )

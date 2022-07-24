@@ -3,10 +3,12 @@ import React from 'react'
 import { expectDetailLink } from '../testhelpers/ElementExpectations'
 import SeriesData from '../models/SeriesData'
 import { SeriesDisplay } from './SeriesDisplay'
+import loadRegistries from '../registries/RegistryLoader'
 
 describe('SeriesDisplay', () => {
 
   it('shows details of fully filled series', () => {
+    loadRegistries()
     const idSeries = 111
     const nameSeries = 'Test Series'
     const idProgram1 = 2111

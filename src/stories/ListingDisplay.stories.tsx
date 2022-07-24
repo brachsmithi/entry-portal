@@ -2,7 +2,8 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ListingDisplay } from '../common/listing/ListingDisplay'
-import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
+import { linkGeneratorRegistry } from '../registries/LinkGeneratorRegistry'
+import { ModelType } from '../models/ModelType'
 
 export default {
   title: 'ListingDisplay',
@@ -110,5 +111,5 @@ Listings.args = {
       tertiary: []
     }
   ],
-  linkGenerator: new ProgramLinkGenerator()
+  linkGenerator: linkGeneratorRegistry.get(ModelType.Program)
 }

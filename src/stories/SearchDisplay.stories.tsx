@@ -3,7 +3,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import SearchDisplay from '../common/search/SearchDisplay'
 import DataResponse from '../models/DataResponse'
 import SearchData from '../models/SearchData'
-import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
+import { rootPathFor } from '../registries/LinkGeneratorRegistry'
+import { ModelType } from '../models/ModelType'
 
 export default {
   title: 'SearchDisplay',
@@ -54,6 +55,6 @@ ProgramSearch.args = {
   },
   linkAction: {
     loadAction: (_: number) => {},
-    rootPath: new ProgramLinkGenerator().rootPath()
+    rootPath: rootPathFor(ModelType.Program)
   }
 }

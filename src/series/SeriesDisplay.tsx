@@ -4,12 +4,12 @@ import SeriesData, {
   SeriesContainedSeries,
   SeriesDiscData,
   SeriesPackageData,
-  SeriesProgramData, SeriesWrapperSeries
+  SeriesProgramData,
+  SeriesWrapperSeries
 } from '../models/SeriesData'
 import SequencedContents, { SequencedElement } from '../common/sequence/SequencedContents'
-import LinkGenerator from '../common/nav/LinkGenerator'
-import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
-import SeriesLinkGenerator from './SeriesLinkGenerator'
+import { ModelType } from '../models/ModelType'
+import { detailPathFor } from '../registries/LinkGeneratorRegistry'
 
 interface SeriesDisplayProperties {
   series: SeriesData
@@ -17,7 +17,6 @@ interface SeriesDisplayProperties {
 
 export function SeriesDisplay(props: SeriesDisplayProperties): JSX.Element {
   const programsElements = (programArray: SeriesProgramData[]): SequencedElement[] => {
-    const linkGenerator: LinkGenerator = new ProgramLinkGenerator()
     const programElement = (program: SeriesProgramData): SequencedElement => {
       return {
         sequence: program.sequence,
@@ -26,7 +25,7 @@ export function SeriesDisplay(props: SeriesDisplayProperties): JSX.Element {
             <>
                <div className='main'>
                    <span className='title'>
-                     <a href={linkGenerator.detailPath(program.id)}>{program.title}</a>
+                     <a href={detailPathFor(ModelType.Program, program.id)}>{program.title}</a>
                    </span>
                  <span className='year'>
                      {program.year}
@@ -77,14 +76,13 @@ export function SeriesDisplay(props: SeriesDisplayProperties): JSX.Element {
     })
   }
   const containedSeriesElements = (containedSeriesArray: SeriesContainedSeries[]): SequencedElement[] => {
-    const linkGenerator: LinkGenerator = new SeriesLinkGenerator()
     const containedSeriesElement = (containedSeries: SeriesContainedSeries): SequencedElement => {
       return {
         sequence: containedSeries.sequence,
         className: 'contained-series',
         element: (
           <span className='name'>
-            <a href={ linkGenerator.detailPath(containedSeries.id) }>{ containedSeries.name }</a>
+            <a href={ detailPathFor(ModelType.Series, containedSeries.id) }>{ containedSeries.name }</a>
           </span>
         )
       }
@@ -94,11 +92,10 @@ export function SeriesDisplay(props: SeriesDisplayProperties): JSX.Element {
     })
   }
   const wrapperSeriesElements = (wrapperSeriesArray: SeriesWrapperSeries[]) => {
-    const linkGenerator = new SeriesLinkGenerator()
     const wrapperSeriesElement = (wrapperSeries: SeriesWrapperSeries, index: number) => {
       return (
           <div key={index}  className='wrapper-series'>
-            <a href={ linkGenerator.detailPath(wrapperSeries.id) }>{wrapperSeries.name}</a>
+            <a href={ detailPathFor(ModelType.Series, wrapperSeries.id) }>{wrapperSeries.name}</a>
           </div>
       )
     }

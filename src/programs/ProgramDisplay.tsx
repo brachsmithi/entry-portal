@@ -6,11 +6,9 @@ import Person from "../models/Person"
 import Alias from "../models/Alias"
 import AlternateTitle from "../models/AlternateTitle"
 import Series from '../models/Series'
-import LinkGenerator from '../common/nav/LinkGenerator'
-import PersonLinkGenerator from './PersonLinkGenerator'
-import SeriesLinkGenerator from '../series/SeriesLinkGenerator'
-import DiscLinkGenerator from '../discs/DiscLinkGenerator'
 import { FilterType } from '../services/FilterType'
+import { detailPathFor, filterPathFor } from '../registries/LinkGeneratorRegistry'
+import { ModelType } from '../models/ModelType'
 
 export interface ProgramDisplayProperties {
   program: ProgramData
@@ -18,12 +16,11 @@ export interface ProgramDisplayProperties {
 
 export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
   const peopleElements = (personArray: Person[]) => {
-    const linkGenerator: LinkGenerator = new PersonLinkGenerator()
     function personElement(person: Person, index: number) {
       return (
           <div key={index} className='person'>
             <span className='main'>
-              <a href={ linkGenerator.detailPath(person.id) }>{person.name}</a>
+              <a href={ detailPathFor(ModelType.Person, person.id) }>{person.name}</a>
             </span>
             <span className='alias'>
               {person.aliases.map((alias: Alias) => alias.name).join('/')}
@@ -38,11 +35,10 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
   }
 
   const seriesElements = (seriesArray: Series[]) => {
-    const linkGenerator: LinkGenerator = new SeriesLinkGenerator()
     const seriesElement = (series: Series, index: number) => {
       return (
           <div key={index} className='series'>
-            <a href={ linkGenerator.detailPath(series.id) }>{series.name}</a>
+            <a href={ detailPathFor(ModelType.Series, series.id) }>{series.name}</a>
           </div>
       )
     }
@@ -57,7 +53,6 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
     }).join('/')
   }
 
-  const discLinkGenerator: LinkGenerator = new DiscLinkGenerator()
   return (
       <div className='program-display'>
         <div className='header'>
@@ -71,7 +66,10 @@ export function ProgramDisplay(props: ProgramDisplayProperties): JSX.Element {
         <div className='people'>{peopleElements(props.program.people)}</div>
         <div className='series-list'>{seriesElements(props.program.series)}</div>
         <div className='filter-search'>
-          <a className='listing-link' href={ discLinkGenerator.filterPath(FilterType.Program, props.program.id) }>Discs</a>
+          <a
+              className='listing-link'
+              href={ filterPathFor(ModelType.Disc, FilterType.Program, props.program.id) }
+          >Discs</a>
         </div>
       </div>
   )

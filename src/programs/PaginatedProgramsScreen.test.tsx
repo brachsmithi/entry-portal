@@ -11,6 +11,7 @@ import {
   returnSearchListingJson
 } from '../testhelpers/ProgramSearchJson'
 import { ListingData } from '../models/ListingData'
+import loadRegistries from '../registries/RegistryLoader'
 
 describe('PaginatedProgramsScreen', () => {
 
@@ -22,6 +23,7 @@ describe('PaginatedProgramsScreen', () => {
   it('constructs program links correctly', async () => {
     // @ts-ignore
     fetch.mockResponseOnce(returnProgramListingJson())
+    loadRegistries()
 
     await waitFor(() => render(<PaginatedProgramsScreen/>))
 

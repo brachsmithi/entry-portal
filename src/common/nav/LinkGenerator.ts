@@ -13,3 +13,17 @@ export default abstract class LinkGenerator {
   }
 
 }
+
+class DefaultLinkGenerator extends LinkGenerator {
+  rootPath(): string {
+    return '/'
+  }
+  filterPath(filterType: FilterType, id: number): string {
+    return this.rootPath()
+  }
+  detailPath(id: number): string {
+    return this.rootPath()
+  }
+}
+
+export const defaultLinkGenerator = new DefaultLinkGenerator()

@@ -1,10 +1,9 @@
 import DiscData, { DiscLocation, DiscProgram, DiscSeries } from '../models/DiscData'
 import React from 'react'
 import SequencedContents, { SequencedElement } from '../common/sequence/SequencedContents'
-import ProgramLinkGenerator from '../programs/ProgramLinkGenerator'
-import SeriesLinkGenerator from '../series/SeriesLinkGenerator'
-import LocationLinkGenerator from '../locations/LocationLinkGenerator'
 import './DiscDisplay.css'
+import { ModelType } from '../models/ModelType'
+import { detailPathFor } from '../registries/LinkGeneratorRegistry'
 
 interface DiscDisplayProperties {
   disc: DiscData
@@ -12,26 +11,25 @@ interface DiscDisplayProperties {
 
 export function DiscDisplay(props: DiscDisplayProperties) {
   const programsElements = (programArray: DiscProgram[]): SequencedElement[] => {
-    const linkGenerator: ProgramLinkGenerator = new ProgramLinkGenerator()
     return programArray.map((program: DiscProgram): SequencedElement => {
       return {
         sequence: program.sequence,
         className: 'program',
         element: (
-          <a href={ linkGenerator.detailPath(program.id) }>{ program.title }</a>
+          <a href={ detailPathFor(ModelType.Program, program.id) }>{ program.title }</a>
         )
       }
     })
   }
   const seriesElements = (seriesArray: DiscSeries[]) => {
-    const linkGenerator: SeriesLinkGenerator = new SeriesLinkGenerator()
     return seriesArray.map((series: DiscSeries) => (
-        <div key={ series.id } className='series'><a href={ linkGenerator.detailPath(series.id) }>{ series.name }</a></div>
+        <div key={ series.id } className='series'>
+          <a href={ detailPathFor(ModelType.Series, series.id) }>{ series.name }</a>
+        </div>
     ))
   }
   const locationElement = (location: DiscLocation) => {
-    const linkGenerator: LocationLinkGenerator = new LocationLinkGenerator()
-    return (<a href={ linkGenerator.detailPath(location.id) }>{location.name}</a>)
+    return (<a href={ detailPathFor(ModelType.Location, location.id) }>{location.name}</a>)
   }
   return (
       <div className='disc-display'>

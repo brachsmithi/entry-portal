@@ -12,28 +12,29 @@ import { PaginatedDiscsScreen } from './discs/PaginatedDiscsScreen'
 import DetailDiscScreen from './discs/DetailDiscScreen'
 import DetailLocationScreen from './locations/DetailLocationScreen'
 import DetailPackageScreen from './packages/DetailPackageScreen'
-import ProgramLinkGenerator from './programs/ProgramLinkGenerator'
+import { ModelType } from './models/ModelType'
+import { linkGeneratorRegistry } from './registries/LinkGeneratorRegistry'
 
 function App() {
   return (
       <Router>
         <Switch>
-          <Route path='/programs'>
+          <Route path={pathFor(ModelType.Program)}>
             <Programs/>
           </Route>
-          <Route path='/persons'>
+          <Route path={pathFor(ModelType.Person)}>
             <Persons/>
           </Route>
-          <Route path='/series'>
+          <Route path={pathFor(ModelType.Series)}>
             <Series/>
           </Route>
-          <Route path='/discs'>
+          <Route path={pathFor(ModelType.Disc)}>
             <Discs/>
           </Route>
-          <Route path='/locations'>
+          <Route path={pathFor(ModelType.Location)}>
             <Locations/>
           </Route>
-          <Route path='/packages'>
+          <Route path={pathFor(ModelType.Package)}>
             <Packages/>
           </Route>
           <Route path='/search'>
@@ -48,6 +49,10 @@ function App() {
 }
 
 export default App
+
+function pathFor(modelType: ModelType): string {
+  return linkGeneratorRegistry.get(modelType).rootPath()
+}
 
 function Search() {
   let match = useRouteMatch()
@@ -82,7 +87,7 @@ function ProgramList() {
 function ProgramSearch() {
   return <SearchDisplay
       searchStrategy={ProgramSearchStrategy()}
-      linkAction={makeActionForRoot(new ProgramLinkGenerator())}
+      linkAction={makeActionForRoot(linkGeneratorRegistry.get(ModelType.Program))}
   />
 }
 

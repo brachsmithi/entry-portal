@@ -2,12 +2,14 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { ListingDisplay } from './ListingDisplay'
 import { ListingData } from '../../models/ListingData'
-import ProgramLinkGenerator from '../../programs/ProgramLinkGenerator'
-import DiscLinkGenerator from '../../discs/DiscLinkGenerator'
+import { linkGeneratorRegistry } from '../../registries/LinkGeneratorRegistry'
+import { ModelType } from '../../models/ModelType'
+import loadRegistries from '../../registries/RegistryLoader'
 
 describe('ProgramListDisplay', () => {
 
   it('lists given programs', async () => {
+    loadRegistries()
     const listings: ListingData[] = [
       {
         id: 236,
@@ -28,7 +30,7 @@ describe('ProgramListDisplay', () => {
         tertiary: []
       }
     ]
-    const linkGenerator = new ProgramLinkGenerator()
+    const linkGenerator = linkGeneratorRegistry.get(ModelType.Program)
     render(<ListingDisplay listings={listings} linkGenerator={linkGenerator}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).not.toBeInTheDocument()
@@ -42,7 +44,7 @@ describe('ProgramListDisplay', () => {
   })
 
   it('shows default text when there is no content', () => {
-    render(<ListingDisplay listings={[]} linkGenerator={new DiscLinkGenerator()}/>)
+    render(<ListingDisplay listings={[]} linkGenerator={linkGeneratorRegistry.get(ModelType.Disc)}/>)
 
     expect(screen.queryByText('No listings loaded yet.')).toBeInTheDocument()
   })
